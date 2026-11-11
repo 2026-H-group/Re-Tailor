@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <title>本人確認・アカウント認証 | Re:Tailor</title>
+  <link rel="stylesheet" href="../static/identity-verification.css">
+    <link rel="stylesheet" href="../static/common-footer.css">
+    <script src="../static/common-footer.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="back-link" href="member-profile.html" aria-label="会員情報ページへ戻る"><span aria-hidden="true">←</span></a>
+    <a class="brand" href="top-index.html">Re:Tailor</a>
+    <span class="header-spacer" aria-hidden="true"></span>
+  </header>
+
+  <main class="page-shell">
+    <p class="eyebrow">ACCOUNT SECURITY</p>
+    <h1>本人確認・アカウント認証</h1>
+    <p class="lead">安全なお取引のため、メールアドレスの認証状況および本人確認状況をご確認いただけます。</p>
+
+    <section class="account-card" aria-labelledby="emailHeading" aria-live="polite">
+      <div class="card-heading">
+        <div>
+          <p class="section-kicker">EMAIL AUTHENTICATION</p>
+          <h2 id="emailHeading">メールアドレス認証</h2>
+        </div>
+        <span class="status-badge" id="emailBadge" data-status="unverified">未認証（Unverified）</span>
+      </div>
+      <dl class="account-detail">
+        <div><dt>登録メールアドレス</dt><dd id="accountEmail">user@example.com</dd></div>
+      </dl>
+      <p class="card-copy" id="emailDescription">確認メールのリンクを開いて、メールアドレスの認証を完了してください。</p>
+      <button class="secondary-button" id="resendButton" type="button">確認メールを再送する</button>
+    </section>
+
+    <section class="account-card identity-card" aria-labelledby="identityHeading" aria-live="polite">
+      <div class="card-heading">
+        <div>
+          <p class="section-kicker">IDENTITY DOCUMENT</p>
+          <h2 id="identityHeading">本人確認（身分証提出）</h2>
+        </div>
+        <span class="status-badge" id="identityBadge" data-status="not_submitted">未提出</span>
+      </div>
+      <p class="card-copy" id="identityDescription">運転免許証、マイナンバーカードなどの画像を提出してください。</p>
+
+      <form id="identityForm" novalidate>
+        <label class="drop-zone" id="dropZone" for="identityFile">
+          <input class="file-input" id="identityFile" name="identityDocument" type="file" accept="image/jpeg,image/png,image/webp" capture="environment" aria-describedby="fileHelp fileError">
+          <span class="upload-symbol" aria-hidden="true">＋</span>
+          <span class="drop-title">画像をここにドロップ</span>
+          <span class="drop-description">またはファイルを選択してください</span>
+          <span class="file-picker">画像を選ぶ</span>
+          <span class="file-name" id="fileName" aria-live="polite">ファイルは選択されていません</span>
+        </label>
+        <p class="file-help" id="fileHelp">JPEG・PNG・WebP、10MBまで。本人確認書類の画像を1枚選択してください。</p>
+        <p class="form-error" id="fileError" role="alert" aria-live="assertive"></p>
+        <button class="primary-button" id="submitButton" type="submit" disabled>身分証明書を送信する<span aria-hidden="true">→</span></button>
+      </form>
+
+      <section class="submission-complete" id="submissionComplete" aria-labelledby="submissionHeading" tabindex="-1" hidden>
+        <span class="completion-mark" aria-hidden="true">✓</span>
+        <div>
+          <h3 id="submissionHeading">送信が完了しました</h3>
+          <p>送信が完了しました。審査結果をお待ちください。</p>
+        </div>
+      </section>
+    </section>
+
+    <details class="prototype-tools">
+      <summary>プロトタイプ確認用：認証状態を切り替える</summary>
+      <div class="mock-controls">
+        <label for="mockEmailStatus">メール認証状態</label>
+        <select id="mockEmailStatus" name="mockEmailStatus">
+          <option value="unverified">未認証</option>
+          <option value="verified">認証済み</option>
+        </select>
+        <label for="mockIdentityStatus">本人確認状態</label>
+        <select id="mockIdentityStatus" name="mockIdentityStatus">
+          <option value="not_submitted">未提出</option>
+          <option value="pending">審査中</option>
+          <option value="verified">確認済み</option>
+        </select>
+      </div>
+    </details>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+  <script src="../static/identity-verification.js"></script>
+</body>
+</html>

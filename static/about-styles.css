@@ -1,0 +1,205 @@
+/* ========================================
+   Re:Tailor - About Page
+   Extends top-styles.css — same tokens,
+   only new rules for About-specific sections
+======================================== */
+
+/* ========================================
+   ABOUT SECTION (bordered white card, same
+   footprint as .browse / .ai-advisor)
+======================================== */
+
+.about-section {
+    max-width: 1200px;
+    margin: 0 auto 24px;
+    padding: 0 24px;
+}
+
+.about-section-card {
+    padding: 40px;
+    background: #fff;
+    border: 1px solid var(--border);
+}
+
+.about-section-title {
+    margin: 0 0 6px;
+    font-size: 22px;
+}
+
+.about-section-sub {
+    margin: 0 0 28px;
+    color: var(--sub);
+    font-size: 14px;
+}
+
+/* ========================================
+   WHY GRID (3 columns, vertical dividers)
+======================================== */
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.why-item {
+    padding: 0 24px;
+    border-left: 1px solid var(--border);
+}
+
+.why-item:first-child {
+    border-left: none;
+    padding-left: 0;
+}
+
+.why-item h3 {
+    margin: 0 0 8px;
+    font-size: 15px;
+}
+
+.why-item p {
+    margin: 0;
+    color: var(--sub);
+    font-size: 13px;
+}
+
+/* ========================================
+   FEATURE LIST (stacked rows, like a
+   repeated ai-advisor-card but joined)
+======================================== */
+
+.feature-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 22px 0;
+    border-top: 1px solid #eee;
+}
+
+.feature-row:first-of-type {
+    border-top: none;
+    padding-top: 0;
+}
+
+.feature-text h3 {
+    margin: 0 0 6px;
+    font-size: 15px;
+}
+
+.feature-text p {
+    margin: 0;
+    color: var(--sub);
+    font-size: 13px;
+    max-width: 52ch;
+}
+
+.feature-tag {
+    flex-shrink: 0;
+    padding: 8px 16px;
+    border: 1px solid var(--border-dark);
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* ========================================
+   PERSONA SPLIT
+======================================== */
+
+.persona-card {
+    padding: 0 !important;
+}
+
+.persona-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.persona {
+    padding: 36px 40px;
+}
+
+.persona:first-child {
+    border-right: 1px solid var(--border);
+}
+
+.persona-label {
+    margin: 0 0 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--sub);
+    letter-spacing: 0.06em;
+}
+
+.persona h3 {
+    margin: 0 0 12px;
+    font-size: 17px;
+}
+
+.persona ul {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--sub);
+    font-size: 13px;
+}
+
+.persona li {
+    margin-bottom: 6px;
+}
+
+/* ========================================
+   STEPS
+======================================== */
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.step {
+    padding: 0 22px;
+    border-left: 1px solid #eee;
+}
+
+.step:first-child {
+    border-left: none;
+    padding-left: 0;
+}
+
+.step-num {
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--sub);
+}
+
+.step h3 {
+    margin: 0 0 6px;
+    font-size: 14px;
+}
+
+.step p {
+    margin: 0;
+    color: var(--sub);
+    font-size: 13px;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 780px) {
+    .about-section-card { padding: 28px 20px; }
+
+    .why-grid { grid-template-columns: 1fr; row-gap: 20px; }
+    .why-item { border-left: none; padding-left: 0; padding-top: 18px; border-top: 1px solid var(--border); }
+    .why-item:first-child { border-top: none; padding-top: 0; }
+
+    .feature-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+
+    .persona-split { grid-template-columns: 1fr; }
+    .persona:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+
+    .steps-grid { grid-template-columns: 1fr 1fr; row-gap: 24px; }
+    .step:nth-child(3) { border-left: none; }
+}

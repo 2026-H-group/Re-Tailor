@@ -1,0 +1,878 @@
+:root {
+    --bg: #f5f5f5;
+    --panel: #ffffff;
+    --border: #222222;
+    --text: #111111;
+    --muted: #666666;
+    --soft: #e5e5e5;
+    --hover: #f7f7f7;
+    --shadow: rgba(0, 0, 0, 0.07);
+}
+
+
+/* =========================
+   基本設定
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+
+    font-family:
+        "Hiragino Kaku Gothic Pro",
+        "Yu Gothic",
+        "Meiryo",
+        sans-serif;
+}
+
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+
+button,
+select,
+input {
+    outline: none;
+}
+
+
+/* =========================
+   ページ全体
+========================= */
+
+.page-shell {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+}
+
+
+/* =========================
+   ヘッダー
+========================= */
+
+.topbar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    margin-bottom: 30px;
+}
+
+
+.topbar h1 {
+    margin: 0;
+
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+
+.back-btn {
+    border: 1px solid var(--border);
+    background: #fff;
+
+    padding: 10px 18px;
+
+    cursor: pointer;
+    font-weight: 600;
+
+    transition: 0.2s;
+}
+
+
+.back-btn:hover {
+    background: #111;
+    color: #fff;
+}
+
+
+/* =========================
+   メインレイアウト
+========================= */
+
+.purchase-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        350px;
+
+    gap: 24px;
+
+    align-items: start;
+}
+
+
+.purchase-main {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+
+.purchase-side {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+
+/* =========================
+   パネル
+========================= */
+
+.panel {
+    background: var(--panel);
+
+    border: 1px solid var(--border);
+
+    box-shadow:
+        0 4px 12px var(--shadow);
+
+    padding: 24px;
+}
+
+
+.panel h2 {
+    margin: 0;
+
+    font-size: 20px;
+}
+
+
+/* =========================
+   セクションタイトル
+========================= */
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+
+    border-bottom: 2px solid var(--border);
+}
+
+
+.step-number {
+    display: flex;
+
+    width: 30px;
+    height: 30px;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #111;
+    color: #fff;
+
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   配送先
+========================= */
+
+.address-option {
+    margin-bottom: 20px;
+}
+
+
+.address-option:last-child {
+    margin-bottom: 0;
+}
+
+
+.radio-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    margin-bottom: 12px;
+}
+
+
+.radio-title input {
+    width: 18px;
+    height: 18px;
+
+    min-height: auto;
+}
+
+
+#registered-address {
+    padding-left: 28px;
+}
+
+
+#address-list {
+    width: 100%;
+}
+
+
+/* =========================
+   新しい住所
+========================= */
+
+.new-address-form {
+    display: none;
+
+    margin-top: 14px;
+    padding: 20px;
+
+    background: #fafafa;
+    border: 1px solid var(--soft);
+}
+
+
+.new-address-form.active {
+    display: block;
+}
+
+
+/* =========================
+   フォーム
+========================= */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+}
+
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+
+.field.full {
+    grid-column: 1 / -1;
+}
+
+
+.field label {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+.field label span {
+    color: var(--muted);
+
+    font-size: 12px;
+    font-weight: 400;
+}
+
+
+input,
+select {
+    width: 100%;
+
+    min-height: 44px;
+
+    padding: 10px 12px;
+
+    background: #fff;
+
+    border: 1px solid #aaa;
+
+    color: var(--text);
+
+    border-radius: 3px;
+}
+
+
+input:focus,
+select:focus {
+    border: 2px solid #111;
+}
+
+
+/* =========================
+   ラジオボタン
+========================= */
+
+.option-group {
+    display: flex;
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.radio-card {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    min-height: 62px;
+
+    padding: 12px 16px;
+
+    border: 1px solid var(--soft);
+
+    background: #fff;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.radio-card:hover {
+    background: var(--hover);
+    border-color: #999;
+}
+
+
+.radio-card input {
+    width: 18px;
+    height: 18px;
+
+    min-height: auto;
+}
+
+
+.radio-card span {
+    display: flex;
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+
+.radio-card strong {
+    font-size: 15px;
+}
+
+
+.radio-card small {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+
+/* =========================
+   クレジットカード
+========================= */
+
+.card-box {
+    margin-top: 18px;
+
+    padding: 20px;
+
+    background: #fafafa;
+
+    border: 1px solid var(--soft);
+}
+
+
+/* =========================
+   商品情報
+========================= */
+
+.product-row {
+    display: flex;
+
+    gap: 18px;
+}
+
+
+.product-image {
+    flex-shrink: 0;
+
+    width: 130px;
+    height: 160px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #eeeeee;
+
+    border: 1px solid #ccc;
+
+    color: #777;
+
+    font-size: 13px;
+}
+
+
+.product-info {
+    flex: 1;
+}
+
+
+.product-info h3 {
+    margin: 0 0 8px;
+
+    font-size: 17px;
+}
+
+
+.seller {
+    margin: 0 0 18px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+.product-info dl {
+    display: grid;
+
+    grid-template-columns: 70px 1fr;
+
+    gap: 8px;
+
+    margin: 0;
+}
+
+
+.product-info dt {
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+
+.product-info dd {
+    margin: 0;
+
+    font-size: 13px;
+}
+
+
+.product-price {
+    margin: 18px 0 0;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+/* =========================
+   注文内容
+========================= */
+
+.summary {
+    position: sticky;
+    top: 20px;
+}
+
+
+.summary h2 {
+    padding-bottom: 16px;
+
+    margin-bottom: 20px;
+
+    border-bottom: 2px solid var(--border);
+}
+
+
+.summary-list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+
+.summary-list > div {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    padding-bottom: 12px;
+
+    border-bottom: 1px solid var(--soft);
+}
+
+
+.summary-list span {
+    font-size: 14px;
+}
+
+
+.summary-list strong {
+    font-size: 15px;
+}
+
+
+.summary-list .total {
+    padding-top: 8px;
+
+    border-bottom: none;
+}
+
+
+.summary-list .total span {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+.summary-list .total strong {
+    font-size: 25px;
+}
+
+
+/* =========================
+   確認ボタン
+========================= */
+
+.confirm-btn {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+    min-height: 54px;
+
+    margin-top: 8px;
+
+    background: #111;
+    color: #fff;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    transition: 0.2s;
+}
+
+.buy-error {
+    margin: 12px 0 0;
+    color: #b23b3b;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.buy-error:empty {
+    display: none;
+}
+
+
+.confirm-btn:hover {
+    background: #333;
+}
+
+
+.confirm-btn span {
+    font-size: 18px;
+}
+
+
+/* =========================
+   注意書き
+========================= */
+
+.security-note {
+    margin: 14px 0 0;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    line-height: 1.6;
+
+    text-align: center;
+}
+
+
+/* =========================
+   タブレット
+========================= */
+
+@media (max-width: 900px) {
+
+    .purchase-layout {
+        grid-template-columns: 1fr;
+    }
+
+
+    .purchase-side {
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        align-items: start;
+    }
+
+
+    .summary {
+        position: static;
+    }
+
+}
+
+
+/* =========================
+   スマートフォン
+========================= */
+
+@media (max-width: 600px) {
+
+    .page-shell {
+        padding: 24px 14px 50px;
+    }
+
+
+    .topbar {
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+
+    .topbar h1 {
+        font-size: 23px;
+    }
+
+
+    .back-btn {
+        padding: 8px 12px;
+    }
+
+
+    .panel {
+        padding: 18px;
+    }
+
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .field.half {
+        grid-column: 1 / -1;
+    }
+
+
+    .purchase-side {
+        grid-template-columns: 1fr;
+    }
+
+
+    .product-row {
+        flex-direction: column;
+    }
+
+
+    .product-image {
+        width: 100%;
+        height: 220px;
+    }
+
+
+    .product-info dl {
+        grid-template-columns: 80px 1fr;
+    }
+
+}
+
+
+/* =========================
+   購入内容確認画面
+========================= */
+
+.confirm-page {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 0 20px 60px;
+}
+
+.confirm-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.confirm-header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.back-link {
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--text);
+    text-decoration: none;
+    padding: 10px 18px;
+    font-weight: 600;
+}
+
+.confirm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.info-block {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 12px var(--shadow);
+    padding: 24px;
+}
+
+.info-block h2 {
+    margin: 0 0 16px;
+    font-size: 1.2rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+}
+
+.confirm-section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.confirm-step {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--text);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.info-list {
+    display: grid;
+    gap: 10px;
+}
+
+.info-list-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--soft);
+}
+
+.info-list-row span {
+    color: var(--muted);
+}
+
+.info-list-row strong {
+    text-align: right;
+}
+
+.confirm-product {
+    margin-bottom: 24px;
+}
+
+.confirm-product .product-image {
+    width: 160px;
+    height: 160px;
+}
+
+.confirm-summary {
+    margin-bottom: 24px;
+}
+
+.confirm-summary .summary-list .total {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.confirm-summary .summary-list .total strong {
+    font-size: 1.5rem;
+}
+
+.confirm-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 200px;
+    padding: 14px 20px;
+    border: 1px solid var(--border);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.back-action {
+    background: #fff;
+    color: var(--text);
+}
+
+.purchase-action {
+    background: var(--text);
+    color: #fff;
+}
+
+.confirm-note {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 0.8rem;
+    text-align: right;
+}
+
+@media (max-width: 700px) {
+    .confirm-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-row {
+        flex-direction: column;
+    }
+
+    .confirm-actions {
+        flex-direction: column;
+    }
+
+    .action-btn {
+        width: 100%;
+    }
+}

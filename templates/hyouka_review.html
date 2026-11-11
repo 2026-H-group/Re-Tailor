@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="../static/syuppin.css">
+<link rel="stylesheet" href="../static/hyouka_review.css">
+<title>評価・レビュー</title>
+    <link rel="stylesheet" href="../static/common-footer.css">
+    <script src="../static/common-footer.js" defer></script>
+</head>
+<body>
+  <div class="site">
+    <div class="header">
+      <div class="header-inner">
+        <a class="back-btn" href="top-index.html" title="トップページへ戻る">←</a>
+        <div class="header-title">評価・レビュー</div>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="content">
+        <p class="review-nav"><a href="top-index.html">トップページ</a><span>/</span><a id="productLink" href="detail.html?id=1">商品詳細へ戻る</a></p>
+
+        <!-- 商品情報パネル：商品詳細ページからリンクされた場合のみ表示
+             （URLに ?product=xxx が付いているかどうかで hyouka_review.js が判断する） -->
+        <div class="review-product-panel" id="reviewProductPanel">
+          <div class="review-product-image"></div>
+          <div class="review-product-info">
+            <p class="review-product-title" id="panelProductName">商品名</p>
+            <p class="review-product-price" id="panelProductPrice">￥0</p>
+          </div>
+        </div>
+
+        <!-- ① 総合評価スコア + レーティング分布（5〜1星のヒストグラム） -->
+        <div class="review-summary">
+          <div class="summary-score">
+            <div class="score-number">4.5</div>
+            <div class="score-stars">★★★★☆</div>
+          </div>
+
+          <div class="score-bars">
+            <div class="bar-row">
+              <span class="bar-label">5</span>
+              <div class="bar-track"><div class="bar-fill" style="width: 78%"></div></div>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">4</span>
+              <div class="bar-track"><div class="bar-fill" style="width: 55%"></div></div>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">3</span>
+              <div class="bar-track"><div class="bar-fill" style="width: 30%"></div></div>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">2</span>
+              <div class="bar-track"><div class="bar-fill" style="width: 10%"></div></div>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">1</span>
+              <div class="bar-track"><div class="bar-fill" style="width: 4%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ② 個別レビュー：評価者名・★評価・コメント -->
+        <!-- 中身は hyouka_review.js が状況に応じて描画する
+             （プロフィール経由のときは各レビューに商品タグが付く） -->
+        <div class="review-list" id="reviewList"></div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="../static/hyouka_review.js"></script>
+</body>
+</html>

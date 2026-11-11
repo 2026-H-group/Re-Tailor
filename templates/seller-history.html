@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>出品履歴 | Re:Tailor</title>
+  <link rel="stylesheet" href="../static/seller-history.css">
+    <link rel="stylesheet" href="../static/common-footer.css">
+    <script src="../static/common-footer.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="back-link" href="my-page.html" aria-label="マイページへ戻る">←</a>
+    <a class="brand" href="top-index.html">Re:Tailor</a>
+    <a class="account-link" href="my-page.html">マイページ</a>
+  </header>
+  <main class="page-shell">
+    <p class="eyebrow">SELLING HISTORY</p>
+    <h1>出品履歴</h1>
+    <p class="lead">販売した商品と購入者からのレビューを確認できます。</p>
+    <div class="history-layout">
+      <section class="history-section" aria-labelledby="historyHeading">
+        <h2 id="historyHeading">販売した商品 <span id="historyCount"></span></h2>
+        <div id="historyList" class="history-list" aria-live="polite"></div>
+      </section>
+      <section id="saleDetail" class="sale-detail" aria-live="polite" aria-label="選択した商品の購入者とレビュー"></section>
+    </div>
+  </main>
+  <script src="../static/seller-history.js"></script>
+</body>
+</html>

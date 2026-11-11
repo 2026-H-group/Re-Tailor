@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="../static/syuppin.css">
+
+<title>出品</title>
+    <link rel="stylesheet" href="../static/common-footer.css">
+    <script src="../static/common-footer.js" defer></script>
+</head>
+<body>
+  <div class="site">
+    <div class="header">
+      <div class="header-inner">
+        <a class="back-btn" href="syuppin_itiran.html" title="戻る（出品一覧へ）">←</a>
+        <div class="header-title">出品</div>
+        <button class="save-btn" id="saveDraft" type="button" title="下書き保存">保存</button>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="content">
+        <div class="field">
+          <div class="field-label">商品画像<span class="optional">任意</span></div>
+          <div class="images">
+            <div class="img-box empty"></div>
+            <div class="img-box empty"></div>
+            <div class="img-box empty"></div>
+            <div class="add-box" title="画像追加">+</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field-label">商品名<span class="required">必須</span></div>
+          <input id="listingName" name="name" type="text" maxlength="20" placeholder="商品名を入力" />
+        </div>
+
+        <div class="field">
+          <div class="field-label">カテゴリ<span class="required">必須</span></div>
+          <div class="select-wrap">
+            <select id="listingCategory" name="category">
+              <option value="" selected disabled hidden>カテゴリを選択</option>
+              <option>トップス</option>
+              <option>アウター</option>
+              <option>ボトムス</option>
+              <option>ワンピース</option>
+              <option>シューズ</option>
+              <option>バッグ</option>
+              <option>アクセサリー</option>
+              <option>その他</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field-label">価格<span class="required">必須</span></div>
+          <input id="listingPrice" name="price" type="text" inputmode="numeric" maxlength="5" placeholder="￥価格を入力" />
+        </div>
+
+        <div class="field">
+          <div class="field-label">状態記入欄<span class="required">必須</span></div>
+          <div class="condition-box">
+            <div class="radios">
+              <label><input type="radio" name="condition" value="new" /> 新品</label>
+              <label><input type="radio" name="condition" value="used" /> 中古</label>
+            </div>
+            <div class="material-row">
+              素材：<span class="optional">任意</span>
+              <input id="listingMaterial" name="material" type="text" maxlength="20" placeholder="素材を入力（例：コットン）" />
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field-label">その他詳細<span class="optional">任意</span></div>
+          <textarea id="listingDescription" name="description" rows="5" maxlength="225" placeholder="汚れや傷の有無"></textarea>
+        </div>
+
+        <div class="field">
+          <div class="field-label">配送・取引について<span class="required">必須</span></div>
+          <div class="condition-box shipping-box">
+            <label for="shippingMethod">配送方法<span class="required">必須</span></label>
+            <div class="select-wrap"><select id="shippingMethod" name="shippingMethod"><option value="メルカリ便">メルカリ便</option><option value="ゆうパック">ゆうパック</option></select></div>
+            <label for="shippingHandling">発送まで<span class="required">必須</span></label>
+            <div class="select-wrap"><select id="shippingHandling" name="shippingHandling"><option value="1〜2日">1〜2日</option><option value="2〜3日">2〜3日</option><option value="4〜7日">4〜7日</option></select></div>
+            <label for="shippingCost">送料<span class="required">必須</span></label>
+            <div class="select-wrap"><select id="shippingCost" name="shippingCost"><option value="出品者負担（送料込み）">出品者負担（送料込み）</option></select></div>
+            <label for="returnPolicy">返品・交換<span class="required">必須</span></label>
+            <div class="select-wrap"><select id="returnPolicy" name="returnPolicy"><option value="購入者都合による返品はできません">購入者都合による返品はできません</option><option value="商品説明と異なる場合のみ対応">商品説明と異なる場合のみ対応</option></select></div>
+          </div>
+        </div>
+      </div>
+
+      <p id="listingError" class="required" role="alert"></p>
+      <div class="footer">
+        <button id="saveDraftFooter" class="draft-submit-btn" type="button">下書きに保存</button>
+        <a id="listingSubmit" class="submit-btn" href="syuppin_complete.html">出品を確定する</a>
+      </div>
+    </div>
+  </div>
+  <script src="../static/syuppin.js"></script>
+</body>
+</html>

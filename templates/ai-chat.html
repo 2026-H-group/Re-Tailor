@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIスタイリング相談 | Re:Tailor</title>
+  <link rel="stylesheet" href="../static/ai-chat.css">
+    <link rel="stylesheet" href="../static/common-footer.css">
+    <script src="../static/common-footer.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="back-link" href="top-index.html" aria-label="トップページへ戻る">←</a>
+    <a class="brand" href="top-index.html">Re:Tailor</a>
+    <a class="account-link" href="my-page.html">マイページ</a>
+  </header>
+  <main class="chat-page">
+    <aside class="intro-panel">
+      <p class="eyebrow">YOUR STYLING PARTNER</p>
+      <h1>Re:Tailor AI</h1>
+      <p>服選びに迷ったら、気軽に相談してください。好みや手持ちの服に合わせて、コーディネートや商品をご提案します。</p>
+      <h2>こんな聞き方ができます</h2>
+      <ul><li>手持ちのデニムに合うトップスは？</li><li>週末のお出かけコーデを考えて</li><li>秋に着回せるアウターを探したい</li></ul>
+      <p class="demo-note">回答は画面確認用のデモです。天気・気温は実際の情報ではありません。</p>
+    </aside>
+    <section class="chat-panel" aria-label="AIチャット">
+      <div class="chat-heading"><span class="ai-mark" aria-hidden="true">AI</span><div><strong>スタイリング相談</strong><span>いつでも相談できます</span></div><button id="resetChat" class="reset-button" type="button">最初から</button></div>
+      <div id="messages" class="messages" role="log" aria-live="polite" aria-relevant="additions text">
+        <article class="message assistant"><span class="avatar" aria-hidden="true">AI</span><div class="bubble"><p>こんにちは！今日はどんな服選びをお手伝いしましょう？</p><div id="choices" class="choices"></div></div></article>
+      </div>
+      <form id="composer" class="composer"><label class="sr-only" for="messageInput">相談内容を入力</label><input id="messageInput" name="message" type="text" placeholder="例：旅行に着ていく服を相談したい" autocomplete="off"><button type="submit" aria-label="メッセージを送信">送信</button></form>
+    </section>
+  </main>
+  <script src="../static/product-data.js"></script>
+  <script src="../static/ai-chat.js"></script>
+</body>
+</html>

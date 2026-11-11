@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アイテム登録 | マイクローゼット | Re:Tailor</title>
+  <link rel="stylesheet" href="../static/my-closet.css">
+  <link rel="stylesheet" href="../static/common-footer.css">
+  <script src="../static/common-footer.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="back-link" href="my-closet.html" aria-label="マイクローゼット一覧へ戻る">←</a>
+    <a class="brand" href="top-index.html">Re:Tailor</a>
+    <a class="nav-link" href="my-closet.html">一覧へ戻る</a>
+  </header>
+  <main class="page-shell">
+    <div class="heading">
+      <p class="eyebrow">MY CLOSET</p>
+      <h1>アイテムを登録</h1>
+      <p>自分が持っている服や小物を登録できます。</p>
+    </div>
+    <section class="panel">
+      <div class="section-heading">
+        <h2>アイテム情報</h2>
+        <span class="required">必須項目あり</span>
+      </div>
+      <form id="closetForm">
+        <div class="field">
+          <label for="itemName">商品名 <b>必須</b></label>
+          <input id="itemName" name="name" type="text" placeholder="例：お気に入りの白シャツ" required>
+        </div>
+        <div class="field">
+          <label for="itemImage">商品写真 <span>任意</span></label>
+          <input id="itemImage" name="imageFile" type="file" accept="image/*">
+          <p class="field-note">JPG・PNG・WEBPなどの画像を1枚登録できます。</p>
+        </div>
+        <div class="field">
+          <label for="category">商品カテゴリ <b>必須</b></label>
+          <select id="category" name="category" required>
+            <option value="tops">トップス</option>
+            <option value="bottoms">ボトムス</option>
+            <option value="outer">アウター</option>
+            <option value="shoes">靴</option>
+            <option value="accessories">アクセサリー</option>
+          </select>
+        </div>
+        <div id="categoryFields"></div>
+        <p class="form-error" id="formError" role="alert"></p>
+        <button class="primary-button" type="submit">クローゼットに登録する</button>
+      </form>
+    </section>
+  </main>
+  <script src="../static/my-closet.js"></script>
+</body>
+</html>

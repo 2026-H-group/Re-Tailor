@@ -1,0 +1,33 @@
+:root{--bg:#f4f4f4;--white:#fff;--text:#222;--sub:#666;--line:#c8c8c8;--olive:#3f4a2e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,"Yu Gothic","Meiryo",sans-serif;line-height:1.6}
+a{color:inherit}
+.topbar{height:72px;padding:0 28px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;background:var(--white);border-bottom:1px solid var(--line)}
+.back-link,.brand,.account-link{text-decoration:none}
+.back-link{font-size:14px}
+.brand{font-size:24px;font-weight:700}
+.account-link{justify-self:end;font-size:13px}
+.page-shell{max-width:1100px;margin:0 auto;padding:46px 24px}
+.eyebrow{margin:0;color:var(--sub);font-size:12px;letter-spacing:.16em;font-weight:700}
+h1{margin:5px 0;font-size:30px}
+.lead{margin:8px 0 28px;color:var(--sub)}
+.history-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.85fr);gap:24px;align-items:start}
+.history-section h2{display:flex;justify-content:space-between;margin:0 0 12px;font-size:18px}
+.history-section h2 span{color:var(--sub);font-size:13px;font-weight:400}
+.history-list{display:grid;gap:10px}
+.history-item{width:100%;display:grid;grid-template-columns:76px 1fr;gap:14px;align-items:center;padding:12px;border:1px solid var(--line);background:var(--white);color:var(--text);text-align:left;font:inherit;cursor:pointer}
+.history-item[aria-pressed="true"]{border:2px solid var(--olive);padding:11px}
+.product-image{aspect-ratio:1;display:grid;place-items:center;background:#e9e8e3;color:var(--sub);font-size:12px;text-align:center}
+.item-copy{min-width:0}
+.item-copy strong{display:block;font-size:15px;overflow-wrap:anywhere}
+.item-copy span{display:block;color:var(--sub);font-size:13px}
+.item-status{margin-top:5px!important;color:var(--olive)!important;font-weight:700}
+.sale-detail{min-height:220px;padding:24px;background:var(--white);border:1px solid var(--line)}
+.sale-detail h2{margin:0 0 18px;font-size:20px}
+.sale-detail h3{margin:0 0 5px;font-size:15px}
+.buyer-name{margin:0 0 22px}
+.review-rating{margin:0;color:var(--olive);font-size:18px;letter-spacing:2px}
+.review-date,.empty-copy{color:var(--sub);font-size:13px}
+.review-text{margin:8px 0 0;overflow-wrap:anywhere}
+.empty-state{padding:18px;background:var(--white);border:1px solid var(--line);color:var(--sub)}
+@media(max-width:700px){.topbar{height:64px;padding:0 14px}.brand{font-size:20px}.page-shell{padding:32px 14px}.history-layout{grid-template-columns:1fr;gap:20px}.sale-detail{min-height:0}}

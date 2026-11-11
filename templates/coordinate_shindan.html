@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="../static/syuppin.css">
+<link rel="stylesheet" href="../static/coordinate_shindan.css">
+<title>コーディネート診断</title>
+    <link rel="stylesheet" href="../static/common-footer.css">
+    <script src="../static/common-footer.js" defer></script>
+</head>
+<body>
+  <div class="site">
+    <div class="header">
+      <div class="header-inner">
+        <a class="back-btn" href="top-index.html" title="トップページへ戻る">←</a>
+        <div class="header-title">コーディネート診断</div>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="content">
+
+        <!-- マイクローゼットからカテゴリ別に診断するアイテムを選択 -->
+        <section class="coord-card">
+          <div class="field-label">マイクローゼットからアイテムを選択</div>
+          <p class="selection-note">カテゴリごとに選べます。複数のアイテムを選択できます。</p>
+          <div class="closet-selectors" id="closetSelectors"></div>
+          <p class="selection-empty" id="selectionEmpty" hidden>登録アイテムがありません。<a href="my-closet-register.html">アイテムを登録する</a></p>
+        </section>
+
+        <section class="coord-card">
+          <div class="field-label">あなたが選んだアイテム <span id="selectedCount"></span></div>
+          <div class="images" id="selectedItems"></div>
+          <p class="selection-empty" id="selectedEmpty" hidden>診断するアイテムを選択してください。</p>
+        </section>
+
+        <!-- ③ AIが生成したコーディネート提案のビジュアル表示 -->
+        <section class="coord-card ai-card">
+          <div class="ai-card-header">
+            <span class="ai-badge">AI</span>
+            <span class="ai-card-title">コーディネート診断結果</span>
+          </div>
+          <div class="ai-suggestion-box" id="aiSuggestionBox">
+            <span id="aiSuggestionText">診断中…</span>
+          </div>
+        </section>
+
+        <!-- ④ 色彩調和スコア（相性度）＋検出されたカラーパレット -->
+        <section class="coord-card compatibility-field">
+          <div class="compat-score">
+            <span class="compat-label">相性度</span>
+            <span class="compat-number" id="compatScore">--%</span>
+          </div>
+          <div class="compat-bar-track">
+            <div class="compat-bar-fill" id="compatBarFill"></div>
+          </div>
+          <div class="color-dots" id="colorDots"></div>
+          <p class="compat-note">色の相性を分析してスコア化しています</p>
+        </section>
+
+        <!-- ⑤ この着こなしを完成させる追加おすすめアイテム
+             AIの診断結果に応じて coordinate_shindan.js が中身を入れ替える -->
+        <section class="coord-card">
+          <div class="field-label">この着こなしに合うアイテム</div>
+          <div class="images" id="recommendedItems"></div>
+        </section>
+
+      </div>
+
+      <!-- ⑥ 「保存する」で気に入った組み合わせを保存／「やり直す」で再診断 -->
+      <div class="footer">
+        <button class="btn-retry" id="retryBtn" type="button">やり直す</button>
+        <button class="btn-save" id="saveComboBtn" type="button">この組み合わせを保存</button>
+        <p class="save-status" id="saveStatus" role="status"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="../static/coordinate_shindan.js"></script>
+</body>
+</html>

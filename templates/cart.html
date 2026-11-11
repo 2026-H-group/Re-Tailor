@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カート一覧 | Re:Tailor</title>
+  <link rel="stylesheet" href="../static/cart.css">
+    <link rel="stylesheet" href="../static/common-footer.css">
+    <script src="../static/common-footer.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a href="top-index.html" class="back-link" aria-label="トップページへ戻る">←</a><a href="top-index.html" class="brand">Re:Tailor</a><a href="my-page.html" class="account-link">マイページ</a></header>
+  <main class="page-shell"><p class="eyebrow">SHOPPING CART</p><h1>カート一覧</h1><p class="lead">購入する商品を選択してください。</p><div id="cartList" class="cart-list"></div><p id="emptyCart" class="empty" hidden>カートに商品がありません。</p><section class="cart-summary"><span id="selectedCount">0商品を選択中</span><strong id="selectedTotal">¥0</strong><button id="checkoutButton" type="button">選択した商品を購入する →</button><p id="cartError" class="error" role="alert"></p></section></main>
+  <script src="../static/product-data.js"></script>
+  <script src="../static/cart.js"></script>
+</body>
+</html>

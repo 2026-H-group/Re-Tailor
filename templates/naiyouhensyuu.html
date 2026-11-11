@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="../static/syuppin.css">
+<title>出品内容編集</title>
+    <link rel="stylesheet" href="../static/common-footer.css">
+    <script src="../static/common-footer.js" defer></script>
+</head>
+<body>
+  <div class="site">
+    <div class="header">
+      <div class="header-inner">
+        <a class="back-btn" href="syuppin_itiran.html" title="戻る（出品一覧へ）">←</a>
+        <div class="header-title">出品内容編集</div>
+        <button class="save-btn">保存</button>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="content">
+        <div class="field">
+          <div class="field-label">商品画像</div>
+          <div class="images">
+            <div class="img-box empty"></div>
+            <div class="img-box empty"></div>
+            <div class="img-box empty"></div>
+            <div class="add-box" title="画像追加">+</div>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field-label">商品名</div>
+          <input id="editName" type="text" maxlength="20" placeholder="商品名を入力" />
+        </div>
+
+        <div class="field">
+          <div class="field-label">カテゴリ</div>
+          <div class="select-wrap">
+            <select id="editCategory">
+              <option value="" selected disabled hidden>カテゴリを選択</option>
+              <option>トップス</option>
+              <option>アウター</option>
+              <option>ボトムス</option>
+              <option>ワンピース</option>
+              <option>シューズ</option>
+              <option>バッグ</option>
+              <option>アクセサリー</option>
+              <option>その他</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field-label">価格</div>
+          <input id="editPrice" type="text" inputmode="numeric" maxlength="5" placeholder="￥価格を入力" />
+        </div>
+
+        <div class="field">
+          <div class="field-label">状態記入欄</div>
+          <div class="condition-box">
+            <div class="radios">
+              <label><input type="radio" name="condition" value="new" /> 新品</label>
+              <label><input type="radio" name="condition" value="used" /> 中古</label>
+            </div>
+            <div class="material-row">
+              素材：
+              <input id="editMaterial" type="text" maxlength="20" placeholder="素材を入力（例：コットン）" />
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="field-label">その他詳細</div>
+          <textarea id="editDescription" rows="5" maxlength="225" placeholder="汚れや傷の有無"></textarea>
+        </div>
+      </div>
+
+      <div class="footer">
+        <a class="withdraw-link" href="torisage.html">出品を取り下げる</a>
+        <button id="editSubmit" class="update-btn" type="button">更新する</button>
+      </div>
+    </div>
+  </div>
+</body>
+  <script src="../static/edit-listing.js"></script>
+</body>
+</html>

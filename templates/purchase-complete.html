@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>購入完了 | Re:Tailor</title>
+  <link rel="stylesheet" href="../static/purchase-history.css">
+  <link rel="stylesheet" href="../static/purchase-complete.css">
+  <link rel="stylesheet" href="../static/common-footer.css">
+  <script src="../static/common-footer.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="back-link" href="top-index.html" aria-label="トップページへ戻る">←</a>
+    <a class="brand" href="top-index.html">Re:Tailor</a>
+    <a class="account-link" href="purchase-history.html">購入履歴</a>
+  </header>
+  <main class="page-shell">
+    <p class="eyebrow">PURCHASE COMPLETE</p>
+    <h1>ご購入ありがとうございます</h1>
+    <p class="lead">購入したアイテムをマイクローゼットに登録できます。</p>
+    <p id="completeError" class="history-empty" role="alert" hidden></p>
+    <form id="closetPurchaseForm">
+      <section id="purchasedItems" class="history-list" aria-label="今回購入した商品"></section>
+      <p id="registerStatus" class="register-status" role="status"></p>
+      <div class="complete-actions">
+        <button id="registerButton" class="register-button" type="submit">選択した商品を登録する</button>
+        <a class="history-button" href="purchase-history.html">購入履歴を見る</a>
+      </div>
+    </form>
+  </main>
+  <script src="../static/closet-purchase.js"></script>
+  <script src="../static/purchase-complete.js"></script>
+</body>
+</html>

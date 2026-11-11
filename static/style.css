@@ -1,0 +1,287 @@
+/* CSS変数 */
+:root {
+    --bg-color: #FAFAFA;
+    --text-main: #111111;
+    --text-sub: #666666;
+    --surface-white: #FFFFFF;
+    --border-color: #E5E5E5;
+    --border-dark: #111111;
+    --pill-bg: #F2F1F2;
+    --pill-hover: #E5E4E5;
+    --font-serif: "Shippori Mincho", "Georgia", serif;
+    --font-sans: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+}
+
+/* リセット */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ----------------------------------
+   ヘッダー（シンプル化）
+---------------------------------- */
+.site-header {
+    background: var(--surface-white);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    text-align: center;
+}
+
+.logo a {
+    color: #111111;
+    text-decoration: none;
+}
+
+.header-right-icons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.header-right-icons a {
+    color: #4A4A4A;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.header-right-icons a:hover {
+    color: var(--text-main);
+}
+
+/* ----------------------------------
+   中央ヒーロー検索 ＋ カタログフィルター
+---------------------------------- */
+.hero-search-section {
+    padding: 4rem 1.5rem 3rem;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.search-title {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 0.75rem;
+}
+
+.search-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-sub);
+    margin-bottom: 2.25rem;
+}
+
+/* 中央の大型検索バー (⑩) */
+.main-search-bar {
+    max-width: 680px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    background: var(--surface-white);
+    border: 2px solid #111111;
+    border-radius: 35px;
+    padding: 0.4rem 0.5rem 0.4rem 1.4rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.2s ease;
+}
+
+.main-search-bar:focus-within {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.search-icon-left {
+    color: #888888;
+    font-size: 1.2rem;
+    margin-right: 0.75rem;
+}
+
+.main-search-bar input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1rem;
+    color: var(--text-main);
+}
+
+.main-search-bar input::placeholder {
+    color: #999999;
+}
+
+.search-submit-btn {
+    background-color: var(--text-main);
+    color: var(--surface-white);
+    border: none;
+    border-radius: 28px;
+    padding: 0.75rem 1.8rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+.search-submit-btn:hover {
+    opacity: 0.85;
+}
+
+/* 検索欄のすぐ下に移動したカタログフィルター */
+.search-catalog-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.catalog-pill-btn {
+    background-color: var(--pill-bg);
+    border: 1px solid transparent;
+    border-radius: 24px;
+    padding: 0.5rem 1.1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333333;
+    cursor: pointer;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.2s ease;
+}
+
+.catalog-pill-btn:hover {
+    background-color: var(--pill-hover);
+}
+
+.catalog-pill-btn.active {
+    background-color: var(--text-main);
+    color: var(--surface-white);
+}
+
+.catalog-pill-btn i {
+    font-size: 0.75rem;
+    color: currentColor;
+}
+
+/* ----------------------------------
+   カタログセクション
+---------------------------------- */
+.catalog-section {
+    max-width: 1200px;
+    margin: 1rem auto 5rem;
+    padding: 0 2rem;
+}
+
+.catalog-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.catalog-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--surface-white);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+    border-color: var(--border-dark);
+    transform: translateY(-2px);
+}
+
+.card-image {
+    width: 100%;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    background-color: #EAEAEA;
+    color: #888888;
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+.card-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-sub);
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+}
+
+.card-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--text-sub);
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.card-meta strong {
+    color: var(--text-main);
+    font-weight: 700;
+}

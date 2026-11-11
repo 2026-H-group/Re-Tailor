@@ -1,0 +1,226 @@
+* {
+box-sizing: border-box;
+}
+
+body {
+
+width: min(1000px, 90%);
+margin: 50px auto;
+
+font-family: Arial, sans-serif;
+background-color: #fff;
+align-items: center;
+text-align: center;
+}
+
+
+/* ログイン画面全体 */
+.container {
+width: min(500px, 90%);
+margin: 60px auto;
+background-color: #fff;
+padding: 40px 50px;
+}
+
+/* ログインフォーム */
+.box {
+width: 100%;
+max-width: 430px;
+text-align: center;
+}
+
+/* Re:Tailor */
+.logo {
+font-size: 28px;
+margin-bottom: 65px;
+color: #222;
+}
+
+/* Welcome back! */
+.welcome {
+font-size: 24px;
+margin-bottom: 8px;
+}
+
+/* 説明文 */
+.description {
+font-size: 12px;
+margin-bottom: 35px;
+color: #333;
+}
+
+/* 入力部分 */
+.input-group {
+text-align: left;
+margin-bottom: 18px;
+}
+
+.input-group label {
+display: block;
+font-size: 12px;
+margin-bottom: 6px;
+color: #222;
+}
+
+.input-group input {
+width: 100%;
+height: 36px;
+border: 1px solid #ddd;
+border-radius: 6px;
+padding: 0 10px;
+}
+
+/* パスワード欄 */
+.password-label {
+display: flex !important;
+justify-content: space-between;
+}
+
+/* パスワードを忘れた場合 */
+.forgot {
+border-color: #1f1f1f;
+font-size: 9px;
+text-decoration: none;
+}
+
+/* Remember for 30 days */
+.remember {
+text-align: left;
+font-size: 10px;
+margin: 5px 0 15px;
+}
+
+.remember input {
+vertical-align: middle;
+}
+
+/* ログインボタン */
+.button {
+width: 100%;
+height: 34px;
+border: none;
+border-radius: 6px;
+background-color: #365f20;
+color: white;
+font-weight: bold;
+cursor: pointer;
+}
+
+.button:hover {
+background-color: #2b4d19;
+}
+
+/* エラーメッセージ */
+.error {
+color: #d33;
+font-size: 12px;
+margin-bottom: 15px;
+}
+
+/* OR */
+.or {
+display: flex;
+align-items: center;
+gap: 10px;
+margin: 20px 0;
+color: #999;
+font-size: 11px;
+}
+
+.or::before,
+.or::after {
+content: "";
+height: 1px;
+background-color: #eee;
+flex: 1;
+}
+
+/* Google / Apple */
+.social-login {
+display: flex;
+gap: 10px;
+}
+
+/* Google / Apple ボタン */
+.social-button {
+flex: 1;
+height: 36px;
+border: 1px solid #ddd;
+border-radius: 6px;
+background-color: white;
+cursor: pointer;
+font-size: 11px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 8px;
+}
+
+.social-button:hover {
+background-color: #f5f5f5;
+}
+
+/* Google / Apple ロゴ */
+.social-button img {
+width: 16px;
+height: 16px;
+object-fit: contain;
+}
+
+/* 新規登録 */
+.welcome {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.description {
+    font-size: 12px;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 12px;
+    margin-bottom: 6px;
+    color: #222;
+}
+
+.input-group input {
+    width: 100%;
+    height: 36px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0 10px;
+}
+
+.form-message {
+    min-height: 18px;
+    margin: 10px 0 0;
+    color: #365f20;
+    font-size: 12px;
+}
+
+
+.error {
+    color: #d33;
+    font-size: 12px;
+    margin-bottom: 15px;
+}
+
+.login {
+    margin-top: 18px;
+    font-size: 11px;
+}
+
+.login a {
+    color: #365f20;
+    text-decoration: none;
+    font-weight: bold;
+}

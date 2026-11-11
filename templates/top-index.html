@@ -1,11 +1,135 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Re:Tailor</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Re:Tailor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../static/top-styles.css">
+    <link rel="stylesheet" href="../static/common-footer.css">
+    <script src="../static/common-footer.js" defer></script>
 </head>
 <body>
-    
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open menu">
+        <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+
+      <a href="top-index.html" class="logo">Re:Tailor</a>
+
+      <div class="header-icons">
+        <a class="icon-btn" href="notification.html" aria-label="お知らせ">
+          <svg viewBox="0 0 24 24"><path d="M12 3a5 5 0 0 0-5 5v3.4c0 .5-.2 1-.5 1.4L5 15.5c-.6.8 0 2 1 2h12c1 0 1.6-1.2 1-2l-1.5-2.1c-.3-.4-.5-.9-.5-1.4V8a5 5 0 0 0-5-5Z"/><path d="M9.5 19a2.5 2.5 0 0 0 5 0"/></svg>
+        </a>
+        <a class="icon-btn" href="cart.html" id="cartBtn" aria-label="カート">
+          <svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/><path d="M2.5 3h2l2.2 11.4a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L20 7H5.3"/></svg>
+          <span class="cart-count" id="cartCount">0</span>
+        </a>
+        <a class="icon-btn" href="my-page.html" aria-label="マイページ">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- NAV ROW -->
+    <nav class="nav-row" id="navRow">
+      <div class="pill-group">
+        <a class="pill" href="new-arrivals.html">新着</a>
+        <a class="pill" href="my-closet.html">マイクローゼット</a>
+      </div>
+
+      <a class="search-wrap" href="search.html" aria-label="検索画面を開く">
+        <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <span class="search-placeholder">商品を検索</span>
+      </a>
+      <span class="nav-balance" aria-hidden="true"></span>
+
+    </nav>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <nav class="mobile-drawer" id="mobileDrawer" aria-label="Main menu">
+    <button class="icon-btn drawer-close" id="drawerClose" aria-label="Close menu">
+      <svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+    <a href="top-index.html" class="drawer-logo">Re:Tailor</a>
+    <a href="top-index.html" class="drawer-link">ホーム</a>
+    <a href="#products" class="drawer-link">ショップ</a>
+    <a href="./about-index.html" class="drawer-link">アバウト</a>
+    <a href="help.html" class="drawer-link">お問い合わせ</a>
+    <a href="cart.html" class="drawer-link">カート商品</a>
+    <a href="syuppin_itiran.html" class="drawer-link">商品を出品</a>
+    <a href="personality.html" class="drawer-link">自分の個性を見つける</a>
+    <a href="my-closet.html" class="drawer-link">マイクローゼット</a>
+    <a href="signup.html" class="drawer-link">サインイン</a>
+    <a href="管理者/login.html" class="drawer-link">管理者ログイン</a>
+  </nav>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-card">
+        <p class="hero-mark">Re:Tailor</p>
+        <div class="stitch-divider"></div>
+        <h1 class="hero-title">誰かの手から<br>誰かの手へ渡る</h1>
+        <p class="hero-sub">Secondhand clothing and handmade goods, passed on to someone who'll love them next.</p>
+
+        <div class="hero-actions">
+          <a href="#products" class="btn btn-primary">Shop Now</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- AI COORDINATE ADVISOR -->
+    <section class="ai-advisor">
+      <div class="ai-advisor-card">
+        <div class="ai-advisor-text">
+          <p class="ai-advisor-title">★ 何が合うかわかりませんか？</p>
+          <p class="ai-advisor-sub">AIコーディネートアドバイザーをお試しください。</p>
+        </div>
+        <a class="btn btn-advisor" href="ai-chat.html">Get styled</a>
+      </div>
+    </section>
+
+    <!-- PRODUCT BROWSE -->
+    <section class="browse" id="products">
+      <div class="browse-header">
+        <h2 class="browse-title">必要なものをすべてチェック</h2>
+        <p class="browse-sub">すべての品に、物語があります。そこに、新たな章を。</p>
+      </div>
+
+      <div class="category-row" id="categoryRow">
+        <button class="cat-pill active" data-cat="all">一覧表示</button>
+        <button class="cat-pill" data-cat="tops">トップス</button>
+        <button class="cat-pill" data-cat="outwear">アウター</button>
+        <button class="cat-pill" data-cat="bottom">ボトムス</button>
+        <button class="cat-pill" data-cat="onepiece">ワンピース</button>
+        <button class="cat-pill" data-cat="shoes">シューズ</button>
+        <button class="cat-pill" data-cat="bag">バッグ</button>
+        <button class="cat-pill" data-cat="accessories">アクセサリー</button>
+        <button class="cat-pill" data-cat="other">その他</button>
+      </div>
+
+      <div class="product-grid" id="productGrid">
+        <!-- product cards injected by script.js -->
+      </div>
+    </section>
+
+    <section class="recent-section" aria-labelledby="recentTitle">
+      <div class="recent-header"><h2 id="recentTitle">最近閲覧した商品</h2><a href="#products">商品一覧へ</a></div>
+      <div class="recent-grid" id="recentProducts"></div>
+      <p class="recent-empty" id="recentEmpty">閲覧した商品はまだありません。</p>
+    </section>
+  </main>
+
+
+  <script src="../static/product-data.js"></script>
+  <script src="../static/top-script.js"></script>
 </body>
 </html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>マイクローゼット | Re:Tailor</title>
+  <link rel="stylesheet" href="../static/my-closet.css">
+  <link rel="stylesheet" href="../static/common-footer.css">
+  <script src="../static/common-footer.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="back-link" href="top-index.html" aria-label="トップページへ戻る">←</a>
+    <a class="brand" href="top-index.html">Re:Tailor</a>
+    <a class="nav-link" href="coordinate_shindan.html">コーデ診断</a>
+  </header>
+  <main class="page-shell">
+    <div class="heading">
+      <p class="eyebrow">MY CLOSET</p>
+      <h1>マイクローゼット</h1>
+      <p>自分が持っている服や小物を一覧で確認できます。</p>
+    </div>
+    <p id="statusMessage" class="status-message" role="status" hidden></p>
+    <section class="panel closet-panel" aria-labelledby="closetTitle">
+      <div class="section-heading">
+        <div>
+          <h2 id="closetTitle">登録済みアイテム</h2>
+          <span id="itemCount" class="item-count">0件</span>
+        </div>
+        <a class="primary-button" href="my-closet-register.html">アイテムを登録</a>
+      </div>
+      <div class="filter-field">
+        <label for="colorFilter">カラーで絞り込む</label>
+        <select id="colorFilter">
+          <option value="all">すべてのカラー</option>
+        </select>
+      </div>
+      <div id="categoryGroups"></div>
+      <p id="emptyMessage" class="empty" hidden>まだアイテムが登録されていません。</p>
+      <p id="noResultsMessage" class="empty" hidden>選択したカラーのアイテムはありません。</p>
+      <a class="diagnosis-link" href="coordinate_shindan.html">登録アイテムでコーディネート診断を見る →</a>
+    </section>
+  </main>
+  <script src="../static/my-closet.js"></script>
+</body>
+</html>

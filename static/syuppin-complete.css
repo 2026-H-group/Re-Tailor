@@ -1,0 +1,86 @@
+:root {
+  --olive: #3f4a2e;
+  --olive-dark: #2f3823;
+  --ink: #222;
+  --muted: #686b62;
+  --line: #dedfd8;
+  --paper: #fff;
+  --canvas: #f7f8f4;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background: var(--canvas);
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+}
+.header {
+  min-height: 70px;
+  padding: 16px max(24px, calc((100% - 960px) / 2));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+.brand { color: var(--olive); font-size: 20px; font-weight: 700; text-decoration: none; }
+.header-title { color: var(--muted); font-size: 14px; }
+.page { width: min(100% - 32px, 760px); margin: 0 auto; padding: 48px 0 64px; }
+.completion { text-align: center; }
+.success-mark {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 12px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--olive);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+.eyebrow { margin: 0; color: var(--olive); font-size: 11px; font-weight: 700; }
+h1 { margin: 8px 0; font-size: 26px; }
+.intro { margin: 0 0 28px; color: var(--muted); font-size: 14px; }
+.product { padding: 24px; text-align: left; background: var(--paper); border: 1px solid var(--line); border-radius: 6px; }
+.product-heading { display: flex; align-items: center; gap: 20px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+.product-image {
+  width: 112px;
+  aspect-ratio: 1;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  background: #eceee8;
+  color: #777b70;
+  font-size: 13px;
+}
+.product-title { min-width: 0; }
+.category { margin: 0 0 6px; color: var(--muted); font-size: 13px; }
+h2 { margin: 0; overflow-wrap: anywhere; font-size: 20px; }
+.price { margin: 10px 0 0; color: var(--olive); font-size: 22px; font-weight: 700; }
+.details { margin: 0; }
+.details > div { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; padding: 14px 4px; border-bottom: 1px solid var(--line); }
+.details > div:last-child { border-bottom: 0; }
+dt { color: var(--muted); font-size: 14px; }
+dd { margin: 0; overflow-wrap: anywhere; font-size: 14px; line-height: 1.7; white-space: pre-wrap; }
+.notice { margin: 16px 0 0; color: #9b342d; font-size: 14px; }
+.actions { display: flex; justify-content: center; gap: 12px; margin-top: 24px; }
+.button { min-height: 50px; padding: 14px 22px; display: inline-flex; justify-content: center; align-items: center; border: 1px solid var(--olive); border-radius: 4px; font-size: 15px; font-weight: 700; text-decoration: none; }
+.button-primary { color: #fff; background: var(--olive); }
+.button-primary:hover { background: var(--olive-dark); }
+.button-secondary { color: var(--olive); background: var(--paper); }
+.button:focus-visible, .brand:focus-visible { outline: 3px solid #a8b28f; outline-offset: 3px; }
+@media (max-width: 560px) {
+  .header { min-height: 60px; padding: 14px 16px; }
+  .page { padding-top: 32px; }
+  .product { padding: 16px; }
+  .product-heading { gap: 14px; }
+  .product-image { width: 84px; }
+  h1 { font-size: 22px; }
+  h2 { font-size: 17px; }
+  .details > div { grid-template-columns: 1fr; gap: 4px; }
+  .actions { flex-direction: column; }
+  .button { width: 100%; }
+}

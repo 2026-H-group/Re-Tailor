@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>購入手続き</title>
+
+    <link rel="stylesheet" href="../static/buy-style.css">
+    <link rel="stylesheet" href="../static/common-footer.css">
+    <script src="../static/common-footer.js" defer></script>
+</head>
+
+<body>
+
+<div class="page-shell">
+
+    <!-- ヘッダー -->
+    <header class="topbar">
+        <!-- ボタンをクリックしたらトップページに遷移します -->
+        <a href="top-index.html" class="back-btn" aria-label="トップページへ戻る">
+            ←
+        </a>
+
+        <h1>購入手続き</h1>
+    </header>
+
+
+    <main class="purchase-layout">
+
+        <!-- =========================
+             左側
+        ========================== -->
+
+        <div class="purchase-main">
+
+            <!-- 配送先 -->
+            <section class="panel">
+
+                <div class="section-title">
+                    <span class="step-number">1</span>
+                    <h2>配送先</h2>
+                </div>
+
+
+                <!-- 登録済み住所 -->
+                <div class="address-option">
+
+                    <label class="radio-title">
+                        <input
+                            type="radio"
+                            name="address"
+                            value="registered"
+                            checked
+                        >
+                        <span>登録済み住所を使用</span>
+                    </label>
+
+                    <div id="registered-address">
+
+                        <select id="address-list">
+                            <option>
+                                〒150-0001　東京都渋谷区神南1-1-1
+                            </option>
+
+                            <option>
+                                〒530-0001　大阪府大阪市北区梅田2-2-2
+                            </option>
+
+                            <option>
+                                〒812-0011　福岡県福岡市博多区博多駅3-3-3
+                            </option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- 新しい住所 -->
+                <div class="address-option">
+
+                    <label class="radio-title">
+                        <input
+                            type="radio"
+                            name="address"
+                            value="new"
+                        >
+                        <span>新しい住所を入力</span>
+                    </label>
+
+
+                    <!-- 新しい住所入力フォーム -->
+                    <div
+                        id="new-address-form"
+                        class="new-address-form"
+                    >
+
+                        <div class="form-grid">
+
+                            <div class="field full">
+                                <label for="name">
+                                    お名前
+                                </label>
+
+                                <input
+                                    id="name"
+                                    type="text"
+                                    placeholder="山田 太郎"
+                                >
+                            </div>
+
+
+                            <div class="field half">
+                                <label for="postal">
+                                    郵便番号
+                                </label>
+
+                                <input
+                                    id="postal"
+                                    type="text"
+                                    placeholder="150-0001"
+                                >
+                            </div>
+
+
+                            <div class="field half">
+                                <label for="prefecture">
+                                    都道府県
+                                </label>
+
+                                <select id="prefecture">
+
+                                    <option value="">
+                                        選択してください
+                                    </option>
+
+                                    <option>北海道</option>
+                                    <option>青森県</option>
+                                    <option>岩手県</option>
+                                    <option>宮城県</option>
+                                    <option>秋田県</option>
+                                    <option>山形県</option>
+                                    <option>福島県</option>
+
+                                    <option>東京都</option>
+                                    <option>神奈川県</option>
+                                    <option>埼玉県</option>
+                                    <option>千葉県</option>
+
+                                    <option>愛知県</option>
+                                    <option>大阪府</option>
+                                    <option>京都府</option>
+                                    <option>兵庫県</option>
+
+                                    <option>福岡県</option>
+
+                                </select>
+                            </div>
+
+
+                            <div class="field full">
+                                <label for="address">
+                                    市区町村・番地
+                                </label>
+
+                                <input
+                                    id="address"
+                                    type="text"
+                                    placeholder="渋谷区神南1-1-1"
+                                >
+                            </div>
+
+
+                            <div class="field full">
+                                <label for="building">
+                                    建物名・部屋番号
+                                    <span>任意</span>
+                                </label>
+
+                                <input
+                                    id="building"
+                                    type="text"
+                                    placeholder="○○マンション101号室"
+                                >
+                            </div>
+
+
+                            <div class="field full">
+                                <label for="phone">
+                                    電話番号
+                                </label>
+
+                                <input
+                                    id="phone"
+                                    type="tel"
+                                    placeholder="090-1234-5678"
+                                >
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- 支払い方法 -->
+            <section class="panel">
+
+                <div class="section-title">
+                    <span class="step-number">2</span>
+                    <h2>支払い方法</h2>
+                </div>
+
+
+                <div class="option-group payment-type">
+
+                    <label class="radio-card">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="bank"
+                        >
+
+                        <span>
+                            <strong>銀行振込</strong>
+                            <small>銀行口座への振り込み</small>
+                        </span>
+
+                    </label>
+
+
+                    <label class="radio-card">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="convenience"
+                        >
+
+                        <span>
+                            <strong>コンビニ支払い</strong>
+                            <small>コンビニエンスストアで支払い</small>
+                        </span>
+
+                    </label>
+
+
+                    <label class="radio-card">
+
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="credit"
+                            checked
+                        >
+
+                        <span>
+                            <strong>クレジットカード</strong>
+                            <small>クレジットカードで支払い</small>
+                        </span>
+
+                    </label>
+
+                </div>
+
+
+                <!-- クレジットカード情報 -->
+                <div
+                    id="card-box"
+                    class="card-box"
+                >
+
+                    <div class="form-grid">
+
+                        <div class="field full">
+
+                            <label for="card-number">
+                                カード番号
+                            </label>
+
+                            <input
+                                id="card-number"
+                                type="text"
+                                placeholder="1234 5678 9012 3456"
+                            >
+
+                        </div>
+
+
+                        <div class="field half">
+
+                            <label for="expiry">
+                                有効期限
+                            </label>
+
+                            <input
+                                id="expiry"
+                                type="text"
+                                placeholder="MM / YY"
+                            >
+
+                        </div>
+
+
+                        <div class="field half">
+
+                            <label for="holder">
+                                名義人
+                            </label>
+
+                            <input
+                                id="holder"
+                                type="text"
+                                placeholder="YAMADA TARO"
+                            >
+
+                        </div>
+
+
+                        <div class="field half">
+
+                            <label for="security">
+                                セキュリティコード
+                            </label>
+
+                            <input
+                                id="security"
+                                type="password"
+                                placeholder="123"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- 配送方法 -->
+            <section class="panel">
+
+                <div class="section-title">
+                    <span class="step-number">3</span>
+                    <h2>配送方法</h2>
+                </div>
+
+
+                <div class="option-group shipping-type">
+
+                    <label class="radio-card">
+
+                        <input
+                            type="radio"
+                            name="shipping"
+                            value="mercari"
+                            checked
+                        >
+
+                        <span>
+                            <strong>メルカリ便</strong>
+                            <small>匿名配送対応</small>
+                        </span>
+
+                    </label>
+
+
+                    <label class="radio-card">
+
+                        <input
+                            type="radio"
+                            name="shipping"
+                            value="yupack"
+                        >
+
+                        <span>
+                            <strong>ゆうパック</strong>
+                            <small>日本郵便による配送</small>
+                        </span>
+
+                    </label>
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+        <!-- =========================
+             右側
+        ========================== -->
+
+        <aside class="purchase-side">
+
+
+            <!-- 商品情報 -->
+            <section class="panel product-panel">
+
+                <div class="section-title">
+
+                    <h2>商品情報</h2>
+
+                </div>
+
+
+                <div class="product-row">
+
+                    <div class="product-image">
+                        商品画像
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <h3 id="buyProductName">
+                            シンプルブラックTシャツ
+                        </h3>
+
+                        <p class="seller">
+                            出品者：Style Market
+                        </p>
+
+
+                        <dl>
+
+                            <div>
+                                <dt>カラー</dt>
+                                <dd>ブラック</dd>
+                            </div>
+
+                            <div>
+                                <dt>サイズ</dt>
+                                <dd>M</dd>
+                            </div>
+
+                            <div>
+                                <dt>数量</dt>
+                                <dd>1</dd>
+                            </div>
+
+                        </dl>
+
+
+                        <p class="product-price">
+                            ¥3,980
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- 注文内容 -->
+            <section class="panel summary">
+
+                <h2>注文内容</h2>
+
+
+                <div class="summary-list">
+
+                    <div>
+                        <span>商品価格</span>
+                        <strong>¥3,980</strong>
+                    </div>
+
+
+                    <div>
+                        <span>送料</span>
+                        <strong>¥300</strong>
+                    </div>
+
+
+                    <div class="total">
+
+                        <span>合計金額</span>
+
+                        <strong>
+                            ¥4,280
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <p id="buyError" class="buy-error" role="alert" aria-live="polite"></p>
+                <a
+                    id="confirmLink"
+                    href="confirm.html"
+                    class="confirm-btn"
+                >
+                    確認画面へ進む
+                    <span>→</span>
+                </a>
+
+
+                <p class="security-note">
+                    ※ 次の画面で注文内容を確認してから
+                    注文を確定します。
+                </p>
+
+            </section>
+
+        </aside>
+
+    </main>
+
+</div>
+
+
+<script src="../static/product-data.js"></script>
+<script src="../static/script.js"></script>
+
+</body>
+</html>

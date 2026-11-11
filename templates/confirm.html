@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>購入内容確認</title>
+
+    <link rel="stylesheet" href="../static/buy-style.css">
+    <link rel="stylesheet" href="../static/common-footer.css">
+    <script src="../static/common-footer.js" defer></script>
+</head>
+
+
+<body>
+
+<div class="confirm-page">
+
+    <!-- =========================
+         ヘッダー
+    ========================== -->
+
+    <header class="confirm-header">
+
+        <a
+            href="buy.html"
+            class="back-link" aria-label="購入手続きへ戻る"
+        >
+            ←
+        </a>
+
+        <h1>購入内容確認</h1>
+
+    </header>
+
+
+    <!-- =========================
+         配送先・支払い方法
+    ========================== -->
+
+    <div class="confirm-grid">
+
+
+        <!-- 配送先 -->
+        <section class="info-block">
+
+            <div class="confirm-section-title">
+                <span class="confirm-step">1</span>
+                <h2>配送先</h2>
+            </div>
+
+
+            <div class="info-list">
+
+                <div class="info-list-row">
+                    <span>お名前</span>
+                    <strong>山田 太郎</strong>
+                </div>
+
+                <div class="info-list-row">
+                    <span>郵便番号</span>
+                    <strong>〒150-0001</strong>
+                </div>
+
+                <div class="info-list-row">
+                    <span>住所</span>
+                    <strong>
+                        東京都渋谷区神南1-1-1
+                    </strong>
+                </div>
+
+                <div class="info-list-row">
+                    <span>電話番号</span>
+                    <strong>090-1234-5678</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 支払い方法 -->
+        <section class="info-block">
+
+            <div class="confirm-section-title">
+                <span class="confirm-step">2</span>
+                <h2>支払い・配送方法</h2>
+            </div>
+
+
+            <div class="info-list">
+
+                <div class="info-list-row">
+                    <span>支払い方法</span>
+                    <strong>クレジットカード</strong>
+                </div>
+
+                <div class="info-list-row">
+                    <span>カード</span>
+                    <strong>**** **** **** 3456</strong>
+                </div>
+
+                <div class="info-list-row">
+                    <span>配送方法</span>
+                    <strong>メルカリ便</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- =========================
+         商品情報
+    ========================== -->
+
+    <section class="info-block confirm-product">
+
+        <div class="confirm-section-title">
+            <span class="confirm-step">3</span>
+            <h2>商品情報</h2>
+        </div>
+
+
+        <div class="product-row">
+
+            <div
+                class="product-image"
+                aria-label="商品画像"
+            >
+                商品画像
+            </div>
+
+
+            <div class="product-info">
+
+                <h3 id="confirmProductName">
+                    シンプルブラックTシャツ
+                </h3>
+
+                <p class="seller">
+                    出品者：Style Market
+                </p>
+
+
+                <dl>
+
+                    <div>
+                        <dt>カラー</dt>
+                        <dd>ブラック</dd>
+                    </div>
+
+                    <div>
+                        <dt>サイズ</dt>
+                        <dd>M</dd>
+                    </div>
+
+                    <div>
+                        <dt>数量</dt>
+                        <dd>1</dd>
+                    </div>
+
+                    <div>
+                        <dt>価格</dt>
+                        <dd>¥3,980</dd>
+                    </div>
+
+                </dl>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         注文内容
+    ========================== -->
+
+    <section class="info-block confirm-summary">
+
+        <div class="confirm-section-title">
+            <h2>注文内容</h2>
+        </div>
+
+
+        <div class="summary-list">
+
+            <div>
+                <span>商品価格</span>
+                <strong>¥3,980</strong>
+            </div>
+
+
+            <div>
+                <span>送料</span>
+                <strong>¥300</strong>
+            </div>
+
+
+            <div class="total">
+
+                <span>合計金額</span>
+
+                <strong>
+                    ¥4,280
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         確定ボタン
+    ========================== -->
+
+    <div class="confirm-actions">
+
+        <a
+            href="buy.html"
+            class="action-btn back-action"
+        >
+            ← 購入手続きに戻る
+        </a>
+
+
+        <a
+            href="purchase-history.html"
+            class="action-btn purchase-action"
+        >
+            購入を確定する
+            <span>→</span>
+        </a>
+
+    </div>
+
+
+    <p class="confirm-note">
+        ※ 「購入を確定する」を押すと注文が確定します。
+    </p>
+
+
+</div>
+
+
+<script src="../static/product-data.js"></script>
+<script src="../static/confirm.js"></script>
+</body>
+</html>

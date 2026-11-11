@@ -3,9 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>新規登録</title>
+    <link rel="stylesheet" href="../static/login.css">
+
+
+    <title>Sign Up - Re:Tailor</title>
 </head>
+
 <body>
-    
+
+
+    <div class="container">
+
+        <div class="box">
+
+            <h1 class="logo">
+                Re:Tailor
+            </h1>
+
+            <h2 class="welcome">
+                アカウントを作成
+            </h2>
+
+            <p class="description">
+                情報を入力してアカウントを作成してください
+            </p>
+
+          
+
+            <form id="signupForm" novalidate>
+
+                <!-- 名前 -->
+                <div class="input-group">
+
+                    <label for="name">
+                        名前
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="名前を入力してください"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+                <!-- メールアドレス -->
+                <div class="input-group">
+
+                    <label for="email">
+                        Emailアドレス
+                    </label>
+
+                    <input
+                        type="text"
+                        id="email"
+                        name="emailId"
+                        value=""
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+                <!-- パスワード -->
+                <div class="input-group">
+
+                    <label for="password">
+                        パスワード
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="txtPass"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+                <!-- パスワード確認 -->
+                <div class="input-group">
+
+                    <label for="password_confirm">
+                        確認のためもう一度入力してください。
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password_confirm"
+                        name="txtPassConfirm"
+                        placeholder="Confirm your password"
+                        required
+                    >
+
+                </div>
+
+                <!-- 登録 -->
+                <input
+                    type="submit"
+                    value="サインアップ"
+                    class="button"
+                >
+                <p id="signupError" class="field-error" role="alert"></p>
+
+            </form>
+
+            <!-- ログインへ戻る -->
+            <div class="login">
+
+                すでにアカウントをお持ちですか？
+
+                <a href="login.html">
+                    ログイン
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="../static/auth.js"></script>
 </body>
 </html>

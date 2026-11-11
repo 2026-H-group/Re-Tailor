@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="../static/syuppin.css">
+
+<title>商品取り下げ</title>
+    <link rel="stylesheet" href="../static/common-footer.css">
+    <script src="../static/common-footer.js" defer></script>
+</head>
+<body>
+  <div class="site">
+    <div class="header">
+      <div class="header-inner">
+        <a class="back-btn" href="syuppin_itiran.html" title="出品一覧へ戻る">←</a>
+        <div class="header-title">商品取り下げ</div>
+        <span></span>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="content">
+        <div class="target">
+          <div class="target-img empty"></div>
+          <div>
+            <div class="target-name">ヴィンテージデニムジャケット</div>
+            <div class="target-price">￥8,900</div>
+          </div>
+        </div>
+
+        <div class="field-label">取り下げ理由の記入<span class="required">必須</span></div>
+        <textarea id="withdrawReason" rows="6" maxlength="225" placeholder="商品を取り下げる理由を入力してください"></textarea>
+        <p id="withdrawError" class="required" role="alert"></p>
+        <div class="note">取り下げると、この商品は出品一覧から非表示になります。<br>この操作は購入希望者には通知されません。</div>
+      </div>
+
+      <div class="footer">
+        <a class="btn-cancel" href="syuppin_itiran.html">キャンセル</a>
+        <a id="withdrawSubmit" class="btn-withdraw" href="syuppin_itiran.html">取り下げる</a>
+      </div>
+    </div>
+  </div>
+  <script src="../static/withdraw.js"></script>
+</body>
+</html>

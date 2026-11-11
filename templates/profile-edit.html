@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プロフィール編集 | Re:Tailor</title>
+  <link rel="stylesheet" href="../static/my-page.css">
+    <link rel="stylesheet" href="../static/common-footer.css">
+    <script src="../static/common-footer.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="back-link" href="my-page.html" aria-label="マイページへ戻る">←</a><a class="brand" href="top-index.html">Re:Tailor</a><span></span></header>
+  <main class="edit-shell"><p class="eyebrow">PROFILE SETTINGS</p><h1>プロフィールを編集</h1><form id="profileForm" class="edit-form"><label for="name">ユーザー名<input id="name" name="name" type="text" required></label><label for="joined">利用開始日<input id="joined" name="joined" type="month" required></label><label for="bio">自己紹介<textarea id="bio" name="bio" rows="5" placeholder="好きなファッションや出品について書いてみましょう"></textarea></label><p id="formStatus" role="status"></p><div class="form-actions"><a href="my-page.html">キャンセル</a><button type="submit">変更を保存する</button></div></form></main>
+  <script src="../static/profile-edit.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>マイページ | Re:Tailor</title>
+  <link rel="stylesheet" href="../static/my-page.css">
+  <link rel="stylesheet" href="../static/my-page-follow.css">
+    <link rel="stylesheet" href="../static/common-footer.css">
+    <script src="../static/common-footer.js" defer></script>
+</head>
+<body>
+  <header class="topbar"><a class="back-link" href="top-index.html" aria-label="トップページへ戻る">←</a><a class="brand" href="top-index.html">Re:Tailor</a><a class="cart-link" href="cart.html">カート</a></header>
+  <main class="page-shell">
+    <section class="profile-head">
+      <div class="avatar" id="avatar">Y</div>
+      <div class="profile-copy"><p class="eyebrow">MY PAGE</p><h1 id="userName">ユーザー名</h1><p id="joinedDate">2025年6月から利用</p><div class="rating"><span>★★★★★</span><strong id="ratingValue">4.5</strong><span>（<b id="ratingCount">32</b>件の評価）</span></div><div class="follow-stats"><button class="follow-stat" id="showFollowing" type="button" aria-expanded="false" aria-controls="followListPanel">フォロー <b id="followingCount">0</b></button><button class="follow-stat" id="showFollowers" type="button" aria-expanded="false" aria-controls="followListPanel">フォロワー <b id="followerCount">12</b></button></div><section class="follow-list-panel" id="followListPanel" role="dialog" aria-modal="true" aria-labelledby="followListTitle" hidden><div class="follow-list-heading"><h2 id="followListTitle"></h2><button class="follow-list-close" id="closeFollowList" type="button">閉じる</button></div><ul class="follow-list" id="followList"></ul></section></div>
+      <a class="edit-button" href="profile-edit.html">プロフィールを編集</a><a class="edit-button" href="member-profile.html">会員情報</a><a class="edit-button" href="purchase-history.html">購入履歴を見る</a>
+    </section>
+    <nav class="tabs" aria-label="マイページの表示切替" role="tablist"><button class="tab active" id="listing-tab" type="button" role="tab" aria-controls="listing" aria-selected="true" data-tab="listing">出品中</button><button class="tab" id="reviews-tab" type="button" role="tab" aria-controls="reviews" aria-selected="false" data-tab="reviews">評価</button><button class="tab" id="favorites-tab" type="button" role="tab" aria-controls="favorites" aria-selected="false" data-tab="favorites">お気に入り</button></nav>
+    <section class="tab-panel active" id="listing" role="tabpanel" aria-labelledby="listing-tab"><div class="panel-heading"><h2>出品中の商品</h2><span id="listingCount">0件</span><a class="edit-button" href="seller-history.html">出品履歴を見る</a></div><div class="product-grid" id="userListings"></div><p class="profile-empty" id="listingEmpty" hidden>出品中の商品はありません。</p></section>
+    <section class="tab-panel" id="reviews" role="tabpanel" aria-labelledby="reviews-tab"><div class="panel-heading"><h2>自分が投稿したレビュー</h2><span id="userReviewCount">0件</span></div><div class="review-list" id="userReviews"></div><p class="profile-empty" id="reviewEmpty" hidden>投稿したレビューはありません。</p></section>
+    <section class="tab-panel" id="favorites" role="tabpanel" aria-labelledby="favorites-tab"><div class="panel-heading"><h2>お気に入り登録した商品</h2><span id="favoriteCount">0件</span></div><div class="product-grid" id="favoriteProducts"></div><p class="profile-empty" id="favoriteEmpty" hidden>お気に入り商品はありません。</p></section>
+  </main>
+  <button class="follow-list-backdrop" id="followListBackdrop" type="button" aria-label="一覧を閉じる" hidden></button>
+  <script src="../static/product-data.js"></script>
+  <script src="../static/my-page.js"></script>
+</body>
+</html>

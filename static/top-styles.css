@@ -1,0 +1,633 @@
+/* ========================================
+   Re:Tailor - Prototype Style
+   HTML / JavaScript は変更せず使用
+======================================== */
+
+:root {
+    --bg: #f4f4f4;
+    --white: #ffffff;
+    --border: #c8c8c8;
+    --border-dark: #333;
+    --text: #222;
+    --sub: #666;
+    --accent: #333;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, "Yu Gothic", "Meiryo", sans-serif;
+    line-height: 1.6;
+}
+
+/* ========================================
+   共通
+======================================== */
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+}
+
+.icon-btn {
+    border: 0;
+    background: transparent;
+    padding: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-btn svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* ========================================
+   HEADER
+======================================== */
+
+.site-header {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+    max-width: 1200px;
+    height: 72px;
+    margin: 0 auto;
+    padding: 0 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: var(--ink);
+    padding: var(--sp-2);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: background 0.18s var(--ease), color 0.18s var(--ease), transform 0.15s var(--ease);
+}
+.icon-btn:hover { background: var(--linen-deep); color: var(--indigo-dark); }
+.icon-btn:active { transform: scale(0.92); }
+
+.header-icons { display: flex; align-items: center; gap: 2px; }
+
+
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cart-count {
+    min-width: 18px;
+    height: 18px;
+    padding: 0 5px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    background: #333;
+    color: #fff;
+    font-size: 11px;
+}
+
+/* ========================================
+   NAVIGATION
+======================================== */
+
+.nav-row {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px 24px;
+
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    border-top: 1px solid #eee;
+}
+
+.pill-group {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.pill {
+    min-height: 38px;
+    padding: 7px 16px;
+
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--border);
+    background: #fff;
+    color: var(--text);
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+.pill:hover,
+.pill.active {
+    background: #333;
+    color: #fff;
+}
+
+.nav-row > .pill-group:first-child .pill {
+    white-space: nowrap;
+}
+
+.chev {
+    width: 14px;
+    height: 14px;
+    margin-left: 5px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.category-select {
+    min-height: 38px;
+    padding: 7px 30px 7px 12px;
+    border: 1px solid #c8c8c8;
+    background: #fff;
+    color: #222;
+    font-size: 13px;
+    cursor: pointer;
+}
+/* ========================================
+   SEARCH
+======================================== */
+
+.search-wrap {
+    position: relative;
+    flex: 1;
+    max-width: 420px;
+    min-width: 0;
+    margin: 0 auto;
+}
+
+.search-wrap input {
+    width: 100%;
+    height: 40px;
+
+    padding: 0 14px 0 40px;
+
+    border: 1px solid var(--border);
+    background: #fff;
+
+    outline: none;
+}
+
+.search-wrap { display: block; text-decoration: none; }
+.search-placeholder { display: block; height: 40px; padding: 8px 14px 8px 40px; border: 1px solid var(--border); background: #fff; color: #777; font-size: 13px; }
+.search-wrap:hover .search-placeholder { border-color: #555; }
+.nav-balance { flex: 0 0 139px; }
+
+@media (max-width: 1180px) {
+    .nav-row { display: grid; grid-template-columns: minmax(0, 1fr); }
+    .nav-row > .pill-group:first-child { flex-wrap: wrap; justify-content: center; }
+    .nav-row > .search-wrap { width: min(100%, 420px); justify-self: center; }
+    .nav-balance { display: none; }
+}
+
+.search-wrap input:focus {
+    border-color: #555;
+}
+
+.search-icon {
+    position: absolute;
+    left: 13px;
+    top: 11px;
+
+    width: 18px;
+    height: 18px;
+
+    fill: none;
+    stroke: #666;
+    stroke-width: 2;
+}
+
+
+/* ========================================
+   HERO
+======================================== */
+
+.hero {
+    max-width: 1200px;
+    margin: 32px auto;
+    padding: 0 24px;
+}
+
+.hero-card {
+    padding: 50px 40px;
+
+    background: #fff;
+    border: 1px solid var(--border);
+
+    text-align: center;
+}
+
+.hero-mark {
+    margin: 0 0 10px;
+    font-size: 13px;
+    color: var(--sub);
+    font-weight: 600;
+}
+
+.stitch-divider {
+    width: 50px;
+    height: 1px;
+    margin: 0 auto 24px;
+    background: var(--border-dark);
+}
+
+.hero-title {
+    margin: 0;
+
+    font-size: 38px;
+    line-height: 1.4;
+    font-weight: 600;
+}
+
+.hero-sub {
+    max-width: 650px;
+    margin: 18px auto 28px;
+
+    color: var(--sub);
+    font-size: 14px;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 150px;
+    min-height: 42px;
+
+    padding: 9px 20px;
+
+    border: 1px solid #333;
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: #333;
+    color: #fff;
+}
+
+.btn-outline {
+    background: #fff;
+    color: #333;
+}
+
+.btn:hover {
+    opacity: 0.75;
+}
+
+/* ========================================
+   HERO FEATURE
+======================================== */
+
+.feature-bar {
+    max-width: 650px;
+    margin: 40px auto 0;
+    padding-top: 20px;
+
+    border-top: 1px solid var(--soft);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    color: #555;
+    font-size: 20px;
+}
+
+.feature svg {
+    width: 19px;
+    height: 19px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.feature-divider {
+    width: 1px;
+    height: 20px;
+    background: #ccc;
+}
+
+/* ========================================
+   モバイル用ドロワーメニュー
+======================================== */
+.drawer-backdrop{
+    position: fixed;
+    inset: 0;
+    background-color:rgba(35, 46, 66, 0.42);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s var(--ease); /* --ease が存在しないから、この行はスキップされちゃう */
+    z-index: 40;
+}
+.drawer-backdrop.open{
+    opacity: 1;
+    pointer-events: auto;
+}
+.mobile-drawer{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: min(300px, 82vw);
+    background: #fff;
+    z-index: 50;
+    padding: var(--sp-6) var(--sp-5); /* どちらも存在しない → 余白（padding）が全くつかない */
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    transform: translateX(-100%);
+    transition: transform 0.3s var(--ease); /* 上と同じく、この行もスキップされる */
+    box-shadow: 16px 0 40px rgba(0,0,0,0.1) ;
+}
+.mobile-open{
+    transform: translateX(0);
+}
+.drawer-close{
+    align-self: flex-end;
+    margin-bottom: var(--sp-4); /* 存在しない → margin がつかない */
+}
+.drawer-logo{
+    font-family: var(--font-display); /* 存在しない → デフォルトのフォントが使われる */
+    font-size: 1.35rem;
+    color: var(--indigo-dark); /* 存在しない → 色が設定されない */
+    margin-bottom: var(--sp-5); /* 存在しない → margin がつかない */
+}
+.drawer-link{
+    padding: 13px 4px;
+    border-bottom: 1px solid var(--line-soft); /* 存在しない → 下線が表示されない */
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink); /* 存在しない → 色が設定されない */
+    transition: color 0.15s ease;
+    padding-left: 0.15s ease; /* これはそもそも別のバグ — padding-left は 8px みたいな「長さ」じゃないとダメなのに、「時間」の値が入ってる */
+}
+.drawer-link:hover {
+    color: var(--thread); /* 存在しない → hover時の色の変化が起きない */
+    padding-left: 8px;
+}
+
+
+/* ========================================
+   AI ADVISOR
+======================================== */
+
+.ai-advisor {
+    max-width: 1200px;
+    margin: 0 auto 32px;
+    padding: 0 24px;
+}
+
+.ai-advisor-card {
+    padding: 20px 24px;
+
+    background: #fff;
+    border: 1px solid var(--border);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.ai-advisor-title {
+    margin: 0;
+    font-weight: 900;
+}
+
+.ai-advisor-sub {
+    margin: 3px 0 0;
+    color: var(--sub);
+    font-size: 16px;
+}
+
+.btn-advisor {
+    min-width: 120px;
+}
+
+/* ========================================
+   PRODUCT BROWSE
+======================================== */
+
+.browse {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 35px 24px 70px;
+}
+
+.browse-header {
+    margin-bottom: 22px;
+}
+
+.browse-title {
+    margin: 0;
+    font-size: 26px;
+}
+
+.browse-sub {
+    margin: 5px 0 0;
+    color: var(--sub);
+    font-size: 16px;
+}
+
+/* ========================================
+   CATEGORY
+======================================== */
+
+.category-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.cat-pill {
+    padding: 8px 17px;
+
+    border: 1px solid var(--border);
+    background: #fff;
+
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.cat-pill:hover,
+.cat-pill.active {
+    background: #333;
+    color: #fff;
+}
+
+/* ========================================
+   PRODUCT GRID
+======================================== */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+/*
+   JavaScriptで生成される商品カード
+   よくあるクラス名をまとめてシンプルにする
+*/
+
+.product-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.product-card:hover {
+    border-color: #555;
+}
+
+.product-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.product-card-content {
+    padding: 14px;
+}
+
+.product-card h3 {
+    margin: 0 0 5px;
+    font-size: 15px;
+}
+
+.product-card p {
+    margin: 3px 0;
+    color: var(--sub);
+    font-size: 12px;
+}
+
+.product-card .price {
+    margin-top: 8px;
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.product-info {
+    padding: 14px;
+}
+
+.product-name {
+    display: block;
+    color: var(--text);
+    text-decoration: none;
+}
+.product-seller { display: block; margin-top: 5px; color: var(--sub); font-size: 12px; text-decoration: none; }
+.product-seller:hover { text-decoration: underline; }
+
+.product-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.product-price {
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 700;
+    text-align: right;
+}
+
+.product-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+.recent-section { max-width: 1180px; margin: 56px auto 80px; padding: 0 28px; }
+.recent-header { display: flex; align-items: baseline; justify-content: space-between; border-bottom: 1px solid var(--border); margin-bottom: 18px; }
+.recent-header h2 { margin: 0 0 12px; font-size: 24px; }
+.recent-header a { color: var(--sub); font-size: 13px; }
+.recent-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.recent-card { display: grid; gap: 8px; color: var(--text); text-decoration: none; }
+.recent-image { display: grid; place-items: center; aspect-ratio: 1; background: #e9e8e3; color: var(--sub); border: 1px solid var(--border); }
+.recent-card strong { font-size: 14px; }
+.recent-card > span:last-child { color: var(--sub); font-size: 13px; }
+.recent-empty { color: var(--sub); font-size: 13px; }
+@media (max-width: 700px) { .recent-section { padding: 0 16px; margin-top: 36px; } .recent-grid { grid-template-columns: repeat(2, 1fr); } }
+

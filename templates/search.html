@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Re:Tailor - 検索</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../static/search.css">
+    <link rel="stylesheet" href="../static/common-footer.css">
+    <script src="../static/common-footer.js" defer></script>
+</head>
+<body>
+
+    <!-- ヘッダー（上部のピルボタンを撤去しシンプル化） -->
+    <header class="site-header">
+        <div class="header-container">
+            <div class="header-left"><a class="back-link" href="top-index.html" aria-label="トップページへ戻る">←</a></div>
+            <div class="logo"><a href="top-index.html">Re:Tailor</a></div>
+            <div class="header-right-icons">
+                <a href="notification.html" aria-label="Notifications"><i class="fa-regular fa-bell"></i></a>
+                <a href="buy.html" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="my-page.html" aria-label="Account"><i class="fa-regular fa-user"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-search-section">
+            <p class="eyebrow">FIND YOUR NEXT FAVORITE</p>
+            <h1 class="search-title">お気に入りの一着を探す</h1>
+            <p class="search-subtitle">キーワードや条件を組み合わせて商品を絞り込めます。</p>
+            <form id="searchForm" class="main-search-bar" action="search.html" method="GET">
+                <i class="fa-solid fa-magnifying-glass search-icon-left"></i>
+                <input id="searchInput" name="q" type="search" placeholder="商品名、素材、出品者を検索" aria-label="商品を検索">
+                <button type="submit" class="search-submit-btn">検索</button>
+            </form>
+        </section>
+        <section class="catalog-section" aria-labelledby="catalogTitle">
+            <div class="catalog-header">
+                <div><p class="eyebrow">SEARCH RESULTS</p><h2 class="catalog-title" id="catalogTitle">商品一覧</h2></div>
+                <button class="reset-button" id="resetFilters" type="button">条件をリセット</button>
+            </div>
+            <form id="filterForm" class="filter-grid" aria-label="商品を絞り込む">
+                <label>系統<select id="styleFilter" name="style"><option value="">すべて</option><option>カジュアル</option><option>きれいめ</option><option>ストリート</option><option>ナチュラル</option><option>ヴィンテージ</option><option>かわいい</option></select></label>
+                <label>カテゴリ<select id="categoryFilter" name="category"><option value="">すべて</option><option>トップス</option><option>ボトムス</option><option>アウター</option><option>ワンピース</option><option>バッグ</option><option>アクセサリー</option></select></label>
+                <label>カラー<select id="colorFilter" name="color"><option value="">すべて</option><option>ナチュラル</option><option>アイボリー</option><option>インディゴ</option><option>生成り</option><option>ブラウン</option><option>ベージュ</option><option>ミックス</option></select></label>
+                <label>サイズ<select id="sizeFilter" name="size"><option value="">すべて</option><option value="XS">XS</option><option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option><option value="F">F</option></select></label>
+            </form>
+            <p id="searchStatus" class="search-status" role="status" aria-live="polite"></p>
+            <div class="grid-container" id="searchResults"></div>
+            <p id="emptyState" class="empty-state" hidden>条件に合う商品がありません。検索条件を変更してください。</p>
+        </section>
+    </main>
+    <script src="../static/product-data.js"></script>
+    <script src="../static/search.js"></script>
+
+</body>
+</html>

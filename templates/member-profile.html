@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>会員情報 | Re:Tailor</title>
+  <link rel="stylesheet" href="../static/member-profile.css">
+    <link rel="stylesheet" href="../static/common-footer.css">
+    <script src="../static/common-footer.js" defer></script>
+</head>
+<body>
+  <div class="page-wrap">
+    <div class="phone">
+      <header class="header">
+        <a class="back-btn" href="./my-page.html" aria-label="マイページへ戻る">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="m15 5-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </a>
+        <h1>会員情報</h1>
+      </header>
+
+      <section class="intro" aria-labelledby="intro-title">
+        <h2 id="intro-title">登録内容のご確認</h2>
+        <p>登録した内容を保存します。</p>
+        <button class="text-link is-muted hidden" type="button" id="cancelEdit">変更をキャンセル</button>
+      </section>
+
+      <div class="cards">
+        <section class="card" aria-labelledby="profile-title">
+          <h2 class="section-title" id="profile-title">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="8" r="3" stroke="currentColor" stroke-width="1.8"></circle>
+              <path d="M6.5 19c.6-3.1 2.4-4.7 5.5-4.7s4.9 1.6 5.5 4.7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+            </svg>
+            基本プロファイル
+          </h2>
+
+          <div id="viewMode">
+            <dl>
+              <div class="row"><dt>氏名</dt><dd id="viewName"></dd></div>
+              <div class="row"><dt>ふりがな</dt><dd id="viewKana"></dd></div>
+              <div class="row"><dt>ユーザー名</dt><dd id="viewUsername"></dd></div>
+              <div class="row"><dt>性別</dt><dd id="viewGender" class="is-muted"></dd></div>
+              <div class="row"><dt>生年月日</dt><dd id="viewBirth" class="is-muted"></dd></div>
+            </dl>
+            <p class="lock-note">本人確認のため変更できません</p>
+          </div>
+
+          <div id="editMode" class="hidden">
+            <div class="split">
+              <div>
+                <label class="field-label" for="lastName">姓</label>
+                <input class="control" id="lastName" autocomplete="family-name">
+                <p class="field-error" id="lastNameError"></p>
+              </div>
+              <div>
+                <label class="field-label" for="firstName">名</label>
+                <input class="control" id="firstName" autocomplete="given-name">
+                <p class="field-error" id="firstNameError"></p>
+              </div>
+            </div>
+            <div class="split">
+              <div>
+                <label class="field-label" for="lastNameKana">せい</label>
+                <input class="control" id="lastNameKana">
+                <p class="field-error" id="lastNameKanaError"></p>
+              </div>
+              <div>
+                <label class="field-label" for="firstNameKana">めい</label>
+                <input class="control" id="firstNameKana">
+                <p class="field-error" id="firstNameKanaError"></p>
+              </div>
+            </div>
+            <div class="row">
+              <label class="field-label" for="username">ユーザー名</label>
+              <div>
+                <input class="control" id="username" autocomplete="username">
+                <p class="field-error" id="usernameError"></p>
+              </div>
+            </div>
+            <div class="row"><p class="field-label">性別</p><p class="is-muted" id="editGenderNote"></p></div>
+            <div class="row"><p class="field-label">生年月日</p><p class="is-muted" id="editBirthNote"></p></div>
+            <p class="lock-note">本人確認のため変更できません</p>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="contact-title">
+          <h2 class="section-title" id="contact-title">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="4" y="6" width="16" height="12" rx="1" stroke="currentColor" stroke-width="1.8"></rect>
+              <path d="m5 7 7 5 7-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            連絡先・お届け先
+          </h2>
+          <dl id="contactView">
+            <div class="row"><dt>宛名</dt><dd id="viewRecipient"></dd></div>
+            <div class="row"><dt>郵便番号</dt><dd id="viewPostal"></dd></div>
+            <div class="row"><dt>住所</dt><dd id="viewAddress"></dd></div>
+            <div class="row"><dt>電話番号</dt><dd id="viewPhone" class="is-muted"></dd></div>
+            <div class="row"><dt>メールアドレス</dt><dd id="viewEmail" class="is-muted"></dd></div>
+          </dl>
+          <div id="contactEdit" class="hidden">
+            <div class="row">
+              <label class="field-label" for="recipientName">宛名</label>
+              <div>
+                <input class="control" id="recipientName">
+                <p class="field-error" id="recipientNameError"></p>
+              </div>
+            </div>
+            <div class="row">
+              <label class="field-label" for="postalCode">郵便番号</label>
+              <div>
+                <input class="control" id="postalCode" inputmode="numeric" maxlength="8" autocomplete="postal-code">
+                <p class="field-error" id="postalCodeError"></p>
+              </div>
+            </div>
+            <div class="row">
+              <label class="field-label" for="address">住所</label>
+              <div>
+                <textarea class="control" id="address" rows="3" autocomplete="street-address"></textarea>
+                <p class="field-error" id="addressError"></p>
+              </div>
+            </div>
+            <div class="row">
+              <label class="field-label" for="phone">電話番号</label>
+              <div>
+                <input class="control" id="phone" type="tel" autocomplete="tel">
+                <p class="field-error" id="phoneError"></p>
+              </div>
+            </div>
+            <div class="row">
+              <label class="field-label" for="email">メールアドレス</label>
+              <div>
+                <input class="control" id="email" type="email" autocomplete="email">
+                <p class="field-error" id="emailError"></p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="account-title">
+          <h2 class="section-title" id="account-title">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 3 19 6v5c0 4.4-2.8 7.7-7 9-4.2-1.3-7-4.6-7-9V6l7-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path>
+              <path d="m9.5 12 1.7 1.7 3.4-3.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+            アカウント・決済
+          </h2>
+          <div class="action-row">
+            <div>
+              <p class="field-label">パスワード</p>
+              <p class="password-mask" aria-label="パスワードは非表示です">••••••••</p>
+            </div>
+            <a class="ghost-btn" href="./password.html">パスワード変更</a>
+          </div>
+          <div class="action-row">
+            <div>
+              <p class="field-label">お支払い方法</p>
+              <p id="viewPayment"></p>
+            </div>
+            <button class="ghost-btn" type="button" id="changePayment">お支払い方法を変更</button>
+          </div>
+          <div class="action-row">
+            <div>
+              <p class="field-label">本人確認</p>
+              <p>安全なお取引のための確認手続き</p>
+            </div>
+            <a class="ghost-btn" href="./identity-verification.html">本人確認へ進む</a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast success hidden" role="status" aria-live="polite"></div>
+  <div id="emailDialog" class="dialog-backdrop hidden">
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="emailDialogTitle">
+      <h2 id="emailDialogTitle">メールアドレスを変更しますか？</h2>
+      <p>確認メールを送信する想定です（モック）。新しいアドレス: <strong id="dialogEmail"></strong></p>
+      <div class="dialog-actions">
+        <button class="dialog-cancel" type="button" id="cancelEmail">キャンセル</button>
+        <button class="dialog-ok" type="button" id="confirmEmail">変更して保存</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../static/api.js"></script>
+  <script src="../static/member-profile.js"></script>
+  <script>
+    const contactView = document.getElementById("contactView");
+    const contactEdit = document.getElementById("contactEdit");
+    const viewMode = document.getElementById("viewMode");
+    const editMode = document.getElementById("editMode");
+    const observer = new MutationObserver(() => {
+      const editing = !editMode.classList.contains("hidden");
+      contactView.classList.toggle("hidden", editing);
+      contactEdit.classList.toggle("hidden", !editing);
+    });
+    observer.observe(editMode, { attributes: true, attributeFilter: ["class"] });
+  </script>
+</body>
+</html>

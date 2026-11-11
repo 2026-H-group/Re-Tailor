@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../static/syuppin-complete.css" />
+  <title>出品完了 | Re:Tailor</title>
+    <link rel="stylesheet" href="../static/common-footer.css">
+    <script src="../static/common-footer.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <a class="brand" href="top-index.html">Re:Tailor</a>
+    <span class="header-title">出品完了</span>
+  </header>
+  <main class="page">
+    <section class="completion" aria-labelledby="page-title">
+      <div class="success-mark" aria-hidden="true">OK</div>
+      <p class="eyebrow">LISTING COMPLETE</p>
+      <h1 id="page-title">出品が完了しました</h1>
+      <p class="intro">商品の出品情報を受け付けました。</p>
+
+      <article class="product" aria-label="出品した商品">
+        <div class="product-heading">
+          <div class="product-image" aria-hidden="true">商品画像</div>
+          <div class="product-title">
+            <p class="category" data-field="category">-</p>
+            <h2 data-field="name">出品商品</h2>
+            <p class="price">￥<span data-field="price">-</span></p>
+          </div>
+        </div>
+        <dl class="details">
+          <div><dt>商品の状態</dt><dd data-field="condition">-</dd></div>
+          <div><dt>素材</dt><dd data-field="material">-</dd></div>
+          <div class="description-row"><dt>商品説明</dt><dd data-field="description">-</dd></div>
+          <div><dt>配送方法</dt><dd data-field="shippingMethod">-</dd></div>
+          <div><dt>発送までの日数</dt><dd data-field="shippingHandling">-</dd></div>
+          <div class="description-row"><dt>送料</dt><dd data-field="shippingCost">-</dd></div>
+          <div class="description-row"><dt>返品・交換</dt><dd data-field="returnPolicy">-</dd></div>
+        </dl>
+        <p id="listingNotice" class="notice" role="status" hidden></p>
+      </article>
+
+      <nav class="actions" aria-label="次の操作">
+        <a class="button button-primary" href="syuppin_itiran.html">出品一覧へ戻る</a>
+        <a class="button button-secondary" id="editListing" href="naiyouhensyuu.html">出品内容を編集</a>
+      </nav>
+    </section>
+  </main>
+  <script src="../static/syuppin-complete.js"></script>
+</body>
+</html>

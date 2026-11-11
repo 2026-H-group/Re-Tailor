@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品詳細 | Re:Tailor</title>
+    <link rel="stylesheet" href="../static/detail.css">
+    <link rel="stylesheet" href="../static/common-footer.css">
+    <script src="../static/common-footer.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <a class="back-link" href="top-index.html" aria-label="商品一覧へ戻る">←</a>
+        <a class="brand" href="top-index.html">Re:Tailor</a>
+        <a class="header-cart" href="cart.html">カート</a>
+    </header>
+
+    <main class="page-shell" id="productDetail">
+        <p class="eyebrow">PRODUCT DETAIL</p>
+        <p class="breadcrumb"><a href="top-index.html">商品一覧</a> / 商品詳細</p>
+
+        <section class="detail-layout" aria-label="商品情報">
+            <div class="main-image" id="productImage" role="img" aria-label="商品画像">商品画像</div>
+            <div class="summary">
+                <div class="tag-row"><span class="tag" id="productType"></span><span class="tag" id="productCategory"></span></div>
+                <h1 id="productName"></h1>
+                <p class="seller-line">出品者：<a href="#seller" id="sellerName"></a></p>
+                <div class="rating-line"><span class="stars" id="productRating" aria-label="評価"></span><strong id="ratingText"></strong><span id="reviewCount"></span></div>
+                <p class="price" id="productPrice"></p>
+                <p class="stock">在庫：1点のみ　　出品日：<span id="listedAt"></span></p>
+                <div class="action-row"><button class="primary-button" id="buyButton" type="button">購入手続きへ</button><button class="favorite-button" id="favoriteButton" type="button" aria-pressed="false">♡ お気に入り</button></div>
+                <p class="notice">購入前に商品の状態・サイズ・配送情報をご確認ください。</p>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2>商品の詳細</h2>
+            <dl class="detail-list">
+                <div><dt>商品の種類</dt><dd id="detailType"></dd></div>
+                <div><dt>商品の状態</dt><dd id="condition"></dd></div>
+                <div><dt>ブランド</dt><dd id="brand"></dd></div>
+                <div><dt>サイズ</dt><dd id="size"></dd></div>
+                <div><dt>カラー</dt><dd id="color"></dd></div>
+                <div><dt>素材</dt><dd id="material"></dd></div>
+                <div><dt>購入時期</dt><dd id="purchaseDate"></dd></div>
+            </dl>
+            <h3>商品説明</h3>
+            <p class="description" id="description"></p>
+        </section>
+
+        <section class="content-section shipping-section">
+            <h2>配送・取引について</h2>
+            <dl class="detail-list compact-list">
+                <div><dt>配送方法</dt><dd id="shipping"></dd></div>
+                <div><dt>発送まで</dt><dd id="handling"></dd></div>
+                <div><dt>送料</dt><dd>出品者負担（送料込み）</dd></div>
+                <div><dt>返品・交換</dt><dd>購入者都合による返品はできません</dd></div>
+            </dl>
+        </section>
+
+        <section class="content-section seller-section" id="seller">
+            <h2>出品者について</h2>
+            <div class="seller-card"><a class="seller-profile-link" id="sellerProfileLink" href="seller.html"><span class="seller-avatar" id="sellerInitial"></span><div class="seller-profile-copy"><h3 id="sellerNameLarge"></h3><span class="seller-stats"><span id="sellerRating"></span>　<span id="sellerSales"></span>　<span id="sellerFollowers"></span></span><span class="muted">丁寧な梱包と迅速な発送を心がけています。</span><span class="profile-link-label">プロフィールを見る →</span></div></a><button id="followButton" class="follow-button" type="button" aria-pressed="false">フォローする</button></div>
+        </section>
+
+        <section class="content-section reviews-section" id="reviews">
+            <div class="section-heading"><h2>購入者レビュー</h2><span><a id="allReviewsLink" href="hyouka_review.html?product=1">すべてのレビューを見る</a><a href="review.html">レビューを投稿する</a></span></div>
+            <div id="reviewList"></div>
+        </section>
+    </main>
+    <script src="../static/product-data.js"></script>
+    <script src="../static/detail.js"></script>
+</body>
+</html>

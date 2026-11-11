@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>管理者ログイン | Re:Tailor Admin</title>
+  <link rel="stylesheet" href="../../static/admin.css">
+</head>
+<body data-page="login">
+  <main class="login-page">
+    <section class="login-side">
+      <div class="login-card">
+        <a class="login-logo" href="login.html"><span class="brand-mark" aria-hidden="true">R</span><strong>Re:Tailor Admin</strong></a>
+        <h2>管理者ログイン</h2>
+        <p>管理者IDとパスワードを入力してください。</p>
+        <form id="adminLoginForm" class="login-form" novalidate>
+          <div class="form-field"><label for="loginId">ログインID</label><input id="loginId" name="loginId" type="text" autocomplete="username" required></div>
+          <div class="form-field"><label for="loginPassword">パスワード</label><input id="loginPassword" name="password" type="password" autocomplete="current-password" required></div>
+          <p id="loginError" class="login-error" role="alert" aria-live="polite"></p>
+          <button class="button" type="submit">ログイン</button>
+        </form>
+        <div class="login-demo">プロトタイプ用ログイン<br>ID: <strong>admin</strong>　パスワード: <strong>admin1234</strong></div>
+      </div>
+    </section>
+  </main>
+  <script src="../../static/admin.js"></script>
+</body>
+</html>

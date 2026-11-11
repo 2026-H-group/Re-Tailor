@@ -3,9 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ログイン</title>
+    <title>Log in - Re:Tailor</title>
+    <link rel="stylesheet" href="../static/login.css">
 </head>
+
+
 <body>
-    
+
+
+    <!-- ログイン画面 -->
+    <div class="container">
+
+        <div class="box">
+
+            <!-- ロゴ -->
+            <h1 class="logo">
+                Re:Tailor
+            </h1>
+
+
+            <!-- Welcome -->
+            <h2 class="welcome">
+                おかえりなさい!
+            </h2>
+
+            <p class="description">
+               アカウントにアクセスするには、ログイン情報を入力してください。 
+            </p>
+
+
+            <!-- ログインフォーム -->
+            <form id="loginForm" novalidate>
+
+                <!-- メールアドレス -->
+                <div class="input-group">
+
+                    <label for="email">
+                        Emailアドレス
+                    </label>
+
+                    <input
+                        type="text"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                    >
+
+                </div>
+
+
+                <!-- パスワード -->
+                <div class="input-group">
+
+                    <label
+                        for="password"
+                        class="password-label"
+                    >
+
+                        <span>
+                            パスワード
+                        </span>
+
+                        <a
+                            href="forgot-password.html"
+                            class="forgot"
+                        >
+                            パスワードを忘れた場合
+                        </a>
+
+                    </label>
+
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Password"
+                    >
+
+                </div>
+
+
+                <!-- ログイン状態を保持 -->
+                <div class="remember">
+
+                    <input
+                        type="checkbox"
+                        id="remember"
+                        name="remember"
+                    >
+
+                    <label for="remember">
+                        30日間保持する
+                    </label>
+
+                </div>
+
+
+                <!-- ログイン -->
+                
+                <button type="submit" class="button">ログイン</button>
+                <p id="loginError" class="field-error" role="alert"></p>
+
+
+                <!-- OR -->
+                <div class="or"> Or </div>
+
+
+                <!-- Google / Apple -->
+                <div class="social-login">
+
+
+                    <!-- Google -->
+                    <button
+                        type="button"
+                        class="social-button"
+                    >
+
+                        
+                        <img src="../image/google-logo.png">
+
+                        Googleアカウントでサインインする
+
+                    </button>
+
+
+                    <!-- Apple -->
+                    <button
+                        type="button"
+                        class="social-button"
+                    >
+
+                        <img src="../image/apple-logo.jpg">
+
+                        Appleアカウントでサインインする
+
+                    </button>
+
+                </div>
+
+
+                <!-- 新規登録 -->
+                <div class="login">
+
+                    アカウントをお持ちでありませんか？
+
+                    <a href="signup.html">
+                        サインアップ
+                    </a>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script src="../static/auth.js"></script>
 </body>
 </html>

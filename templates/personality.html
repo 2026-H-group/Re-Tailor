@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>個性発掘 | Re:Tailor</title>
+  <link rel="stylesheet" href="../static/personality.css">
+    <link rel="stylesheet" href="../static/common-footer.css">
+    <script src="../static/common-footer.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="back-link" href="top-index.html" aria-label="トップページへ戻る">←</a>
+    <a class="brand" href="top-index.html">Re:Tailor</a>
+    <span class="header-space" aria-hidden="true"></span>
+  </header>
+  <main class="page-shell">
+    <section class="intro" id="intro">
+      <p class="eyebrow">PERSONALITY DISCOVERY</p>
+      <h1>あなたの「好き」を<br>発掘しよう</h1>
+      <p>いくつかの質問に答えると、あなたらしいファッションの系統を見つけます。</p>
+      <button class="primary-button" id="startButton" type="button">診断をはじめる</button>
+    </section>
+    <form class="quiz" id="quiz" hidden novalidate>
+      <div class="quiz-heading"><span id="progressText">1 / 5</span><div class="progress"><span id="progressBar"></span></div></div>
+      <fieldset><legend id="questionText"></legend><div class="choices" id="choices"></div><p class="error" id="quizError" role="alert"></p></fieldset>
+      <div class="quiz-actions"><button class="secondary-button" id="backButton" type="button">戻る</button><button class="primary-button" id="nextButton" type="submit">次へ</button></div>
+    </form>
+    <section class="result" id="result" hidden>
+      <p class="eyebrow">YOUR STYLE</p>
+      <h2>あなたの個性は<br><strong id="resultName"></strong></h2>
+      <p id="resultLead"></p>
+      <div class="result-grid"><div><span>似合う雰囲気</span><strong id="resultMood"></strong></div><div><span>おすすめの選び方</span><strong id="resultTip"></strong></div></div>
+      <a class="primary-button link-button" href="top-index.html#products">おすすめ商品を見る</a>
+      <button class="reset-button" id="resetButton" type="button">もう一度診断する</button>
+    </section>
+  </main>
+  <script src="../static/personality.js"></script>
+</body>
+</html>

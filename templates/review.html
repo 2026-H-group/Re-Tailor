@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レビューを投稿</title>
+    <link rel="stylesheet" href="../static/review.css">
+    <link rel="stylesheet" href="../static/common-footer.css">
+    <script src="../static/common-footer.js" defer></script>
+</head>
+<body>
+    <div class="page-shell">
+        <header class="topbar">
+            <a class="back-link" href="top-index.html" aria-label="トップページへ戻る">←</a>
+            <a class="brand" href="top-index.html">Re:Tailor</a>
+            <span class="header-space" aria-hidden="true"></span>
+        </header>
+
+        <main class="content">
+            <p class="eyebrow">購入ありがとうございました</p>
+            <h1>レビューを投稿</h1>
+            <p class="lead">受け取った商品の感想を、次の人へ届けましょう。</p>
+
+            <p id="reviewProductError" class="field-error" role="alert" hidden>レビュー対象の商品を確認できません。購入履歴から対象商品を選び直してください。</p>
+            <section class="product-card" id="reviewProductPanel" aria-label="レビュー対象の商品">
+                <div class="product-image" id="reviewProductImage" role="img" aria-label="商品画像"></div>
+                <div>
+                    <p class="product-label">購入した商品</p>
+                    <h2 id="reviewProductName"></h2>
+                    <p class="seller">出品者：<span id="reviewSeller"></span></p>
+                </div>
+            </section>
+
+            <form id="reviewForm" novalidate hidden>
+                <fieldset class="rating-field" aria-describedby="ratingError">
+                    <legend>商品の満足度 <span class="required">必須</span></legend>
+                    <div class="stars" role="radiogroup" aria-label="星の数">
+                        <label><input type="radio" name="rating" value="1"><span aria-hidden="true">★</span><b>1</b></label>
+                        <label><input type="radio" name="rating" value="2"><span aria-hidden="true">★</span><b>2</b></label>
+                        <label><input type="radio" name="rating" value="3"><span aria-hidden="true">★</span><b>3</b></label>
+                        <label><input type="radio" name="rating" value="4"><span aria-hidden="true">★</span><b>4</b></label>
+                        <label><input type="radio" name="rating" value="5"><span aria-hidden="true">★</span><b>5</b></label>
+                    </div>
+                    <p class="field-error" id="ratingError"></p>
+                </fieldset>
+
+                <div class="field">
+                    <label for="comment">レビュー本文 <span class="required">必須</span></label>
+                    <textarea id="comment" name="comment" maxlength="300" placeholder="商品の状態や取引について教えてください。"></textarea>
+                    <div class="field-meta"><span id="commentError" class="field-error"></span><span id="counter">0 / 300</span></div>
+                </div>
+
+                <label class="check-row"><input type="checkbox" name="again"><span>また利用したいと思う</span></label>
+                <p class="privacy">レビューは商品ページに公開されます。個人情報は入力しないでください。</p>
+                <button class="submit-button" type="submit">レビューを投稿する</button>
+                <p class="form-status" id="formStatus" role="status"></p>
+            </form>
+        </main>
+    </div>
+    <script src="../static/product-data.js"></script>
+    <script src="../static/review.js"></script>
+</body>
+</html>
