@@ -54,8 +54,8 @@
     document.getElementById("viewGender").textContent = api.GENDER_LABELS[data.gender];
     document.getElementById("viewBirth").textContent = api.formatBirthDateJa(data.birthDate);
     document.getElementById("viewRecipient").textContent = data.recipientName;
-    document.getElementById("viewPostal").textContent = `〒${data.postalCode}`;
-    document.getElementById("viewAddress").textContent = data.address;
+    document.getElementById("viewPostal").textContent = data.postalCode ? `〒${data.postalCode}` : "未登録";
+    document.getElementById("viewAddress").textContent = data.address || "未登録";
     document.getElementById("viewPhone").textContent = api.formatPhoneDisplay(data.phone);
     document.getElementById("viewEmail").textContent = api.formatEmailDisplay(data.email);
     document.getElementById("viewPayment").textContent = api.formatPaymentMethod(data.paymentMethod);
@@ -70,8 +70,8 @@
     inputs.firstNameKana.value = data.firstNameKana;
     inputs.username.value = api.formatUsername(data.username);
     inputs.recipientName.value = data.recipientName;
-    inputs.postalCode.value = data.postalCode;
-    inputs.address.value = data.address;
+    inputs.postalCode.value = data.postalCode || "";
+    inputs.address.value = data.address || "";
     inputs.phone.value = data.phone;
     inputs.email.value = data.email;
   }
@@ -136,12 +136,8 @@
       setError("recipientName", "宛名を入力してください。");
       ok = false;
     }
-    if (!/^\d{7}$/.test(form.postalCode.replace(/\D/g, ""))) {
+    if (form.postalCode.trim() && !/^\d{7}$/.test(form.postalCode.replace(/\D/g, ""))) {
       setError("postalCode", "郵便番号は7桁で入力してください。");
-      ok = false;
-    }
-    if (form.address.trim().length < 8) {
-      setError("address", "住所は8文字以上で入力してください。");
       ok = false;
     }
     if (!/^\d{10,11}$/.test(form.phone.replace(/\D/g, ""))) {

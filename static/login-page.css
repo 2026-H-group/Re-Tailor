@@ -1,0 +1,281 @@
+:root {
+    --login-primary: #696B53;
+    --login-primary-hover: #555742;
+    --login-background: #F3F0E9;
+    --login-surface: #FFFFFF;
+    --login-text: #35362F;
+    --login-text-sub: #85847C;
+    --login-beige: #EAE4DA;
+    --login-border: #D8D2C6;
+    --login-divider: #E3DED4;
+    --login-error: #B34B45;
+    --login-font-main: "Noto Sans JP", sans-serif;
+    --login-font-heading: "Cormorant Garamond", serif;
+}
+
+.login-page {
+    width: auto;
+    min-height: 100vh;
+    margin: 0;
+    padding: 32px 16px;
+    background:
+        radial-gradient(ellipse at 50% 24%, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.48) 34%, transparent 72%),
+        linear-gradient(135deg, #F8F6F1 0%, var(--login-background) 58%, var(--login-beige) 100%);
+    color: var(--login-text);
+    font-family: var(--login-font-main);
+    text-align: left;
+}
+
+.login-page .container {
+    width: min(100%, 520px);
+    margin: 0 auto;
+    border: 0;
+    border-radius: 0;
+    padding: clamp(24px, 5vw, 48px);
+    background: transparent;
+    box-shadow: none;
+}
+
+.login-page .box {
+    width: 100%;
+    max-width: 460px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.login-page .logo {
+    margin: 0 0 32px;
+    color: var(--login-primary);
+    font-family: var(--login-font-heading);
+    font-size: 34px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-align: center;
+}
+
+.login-page .welcome {
+    margin: 0 0 8px;
+    color: var(--login-text);
+    font-size: 24px;
+    text-align: center;
+}
+
+.login-page .description {
+    margin: 0 0 32px;
+    color: var(--login-text-sub);
+    font-size: 14px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+.login-page .input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.login-page .input-group label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--login-text);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.login-page .input-group .password-label {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.login-page .input-group input {
+    width: 100%;
+    min-height: 46px;
+    border: 1px solid var(--login-border);
+    border-radius: 8px;
+    padding: 0 12px;
+    background: var(--login-surface);
+    color: var(--login-text);
+    font: inherit;
+    font-size: 14px;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.login-page .input-group input::placeholder {
+    color: var(--login-text-sub);
+    opacity: 0.8;
+}
+
+.login-page .input-group input:focus-visible {
+    border-color: var(--login-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(105, 107, 83, 0.16);
+}
+
+.login-page .forgot {
+    color: var(--login-primary);
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.login-page .forgot:hover,
+.login-page .login a:hover {
+    color: var(--login-primary-hover);
+    text-decoration: underline;
+}
+
+.login-page .remember {
+    margin: 4px 0 20px;
+    color: var(--login-text-sub);
+    font-size: 13px;
+}
+
+.login-page .remember input {
+    margin-right: 5px;
+    accent-color: var(--login-primary);
+    vertical-align: middle;
+}
+
+.login-page .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 48px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--login-primary);
+    color: var(--login-surface);
+    font: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 150ms ease;
+}
+
+.login-page .button:hover {
+    background: var(--login-primary-hover);
+}
+
+.login-page .button:focus-visible,
+.login-page .social-button:focus-visible {
+    outline: 3px solid rgba(105, 107, 83, 0.35);
+    outline-offset: 3px;
+}
+
+.login-page .field-error:not(:empty) {
+    margin: 0 0 8px;
+    border-radius: 6px;
+    padding: 8px 10px;
+    background: #FFF9F8;
+    color: var(--login-error);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.login-page .or {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 24px 0;
+    color: var(--login-text-sub);
+    font-size: 13px;
+}
+
+.login-page .or::before,
+.login-page .or::after {
+    content: "";
+    height: 1px;
+    flex: 1;
+    background: var(--login-divider);
+}
+
+.login-page .social-login {
+    display: flex;
+    gap: 12px;
+}
+
+.login-page .social-button {
+    display: flex;
+    min-width: 0;
+    min-height: 48px;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid var(--login-border);
+    border-radius: 8px;
+    padding: 8px 10px;
+    background: rgba(255, 255, 255, 0.64);
+    color: var(--login-text);
+    font: inherit;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.login-page .social-button:hover {
+    background: var(--login-surface);
+}
+
+.login-page .social-button img {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 auto;
+    object-fit: contain;
+}
+
+.login-page .login {
+    margin-top: 24px;
+    color: var(--login-text-sub);
+    font-size: 13px;
+    text-align: center;
+}
+
+.login-page .login a {
+    color: var(--login-primary);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+@media (max-width: 480px) {
+    .login-page {
+        padding: 20px 10px;
+    }
+
+    .login-page .container {
+        padding: 24px 18px;
+    }
+
+    .login-page .social-login {
+        flex-direction: column;
+    }
+
+    .login-page .logo {
+        font-size: 30px;
+    }
+
+    .login-page .welcome {
+        font-size: 21px;
+    }
+}
+
+@media (max-width: 360px) {
+    .login-page .container {
+        padding: 22px 14px;
+    }
+
+    .login-page .input-group .password-label {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .login-page *,
+    .login-page *::before,
+    .login-page *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}

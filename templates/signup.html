@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../static/login.css">
+    <link rel="stylesheet" href="../static/signup.css">
 
 
-    <title>Sign Up - Re:Tailor</title>
+    <title>新規会員登録 - Re:Tailor</title>
 </head>
 
-<body>
+<body class="signup-page">
 
 
     <div class="container">
@@ -25,92 +29,139 @@
             </h2>
 
             <p class="description">
-                情報を入力してアカウントを作成してください
+                郵便番号・住所は任意です。その他の項目はすべて必須です。
             </p>
 
-          
-
             <form id="signupForm" novalidate>
+                <fieldset class="signup-section">
+                    <legend>基本情報</legend>
+                    <p class="section-description">会員情報として表示される情報を入力してください。</p>
 
-                <!-- 名前 -->
-                <div class="input-group">
+                    <div class="input-group" role="group" aria-labelledby="name-label">
+                        <p class="group-label" id="name-label">氏名</p>
+                        <div class="name-fields">
+                            <div class="field-control">
+                                <label for="lastName">姓</label>
+                                <p class="field-error" id="error-lastName" data-field-error="lastName"></p>
+                                <input type="text" id="lastName" name="lastName" placeholder="姓" autocomplete="family-name" required>
+                            </div>
+                            <div class="field-control">
+                                <label for="firstName">名</label>
+                                <p class="field-error" id="error-firstName" data-field-error="firstName"></p>
+                                <input type="text" id="firstName" name="firstName" placeholder="名" autocomplete="given-name" required>
+                            </div>
+                        </div>
+                    </div>
 
-                    <label for="name">
-                        名前
-                    </label>
+                    <div class="input-group" role="group" aria-labelledby="kana-label">
+                        <p class="group-label" id="kana-label">ふりがな</p>
+                        <div class="name-fields">
+                            <div class="field-control">
+                                <label for="lastNameKana">せい</label>
+                                <p class="field-error" id="error-lastNameKana" data-field-error="lastNameKana"></p>
+                                <input type="text" id="lastNameKana" name="lastNameKana" placeholder="せい" autocomplete="off" required>
+                            </div>
+                            <div class="field-control">
+                                <label for="firstNameKana">めい</label>
+                                <p class="field-error" id="error-firstNameKana" data-field-error="firstNameKana"></p>
+                                <input type="text" id="firstNameKana" name="firstNameKana" placeholder="めい" autocomplete="off" required>
+                            </div>
+                        </div>
+                    </div>
 
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        placeholder="名前を入力してください"
-                        autocomplete="name"
-                        required
-                    >
+                    <div class="input-group">
+                        <label for="username">ユーザー名</label>
+                        <p class="field-error" id="error-username" data-field-error="username"></p>
+                        <input type="text" id="username" name="username" placeholder="例：yamada_taro" autocomplete="username" required>
+                    </div>
 
-                </div>
+                    <div class="input-group">
+                        <label for="gender">性別</label>
+                        <p class="field-error" id="error-gender" data-field-error="gender"></p>
+                        <select id="gender" name="gender" required>
+                            <option value="">選択してください</option>
+                            <option value="male">男性</option>
+                            <option value="female">女性</option>
+                            <option value="other">その他</option>
+                            <option value="unspecified">回答しない</option>
+                        </select>
+                    </div>
 
-                <!-- メールアドレス -->
-                <div class="input-group">
+                    <div class="input-group">
+                        <label for="birthDate">生年月日</label>
+                        <p class="field-error" id="error-birthDate" data-field-error="birthDate"></p>
+                        <input type="date" id="birthDate" name="birthDate" autocomplete="bday" required>
+                    </div>
+                </fieldset>
 
-                    <label for="email">
-                        Emailアドレス
-                    </label>
+                <fieldset class="signup-section">
+                    <legend>ログイン情報</legend>
+                    <p class="section-description">ログインに使用する情報を入力してください。</p>
 
-                    <input
-                        type="text"
-                        id="email"
-                        name="emailId"
-                        value=""
-                        placeholder="Enter your email"
-                        required
-                    >
+                    <div class="input-group">
+                        <label for="email">メールアドレス</label>
+                        <p class="field-error" id="error-email" data-field-error="email"></p>
+                        <input type="email" id="email" name="emailId" placeholder="例：name@example.com" autocomplete="email" required>
+                    </div>
 
-                </div>
+                    <div class="input-group">
+                        <label for="password">パスワード</label>
+                        <p class="field-hint" id="password-hint">英大文字を1文字以上含む、8文字以上の半角英数字（記号は使用できません）</p>
+                        <p class="field-error" id="error-password" data-field-error="password"></p>
+                        <div class="password-control">
+                            <input type="password" id="password" name="txtPass" autocomplete="new-password" aria-describedby="password-hint" required>
+                            <button class="password-toggle" type="button" aria-controls="password" aria-label="パスワードを表示">表示</button>
+                        </div>
+                    </div>
 
-                <!-- パスワード -->
-                <div class="input-group">
+                    <div class="input-group">
+                        <label for="password_confirm">パスワード（確認）</label>
+                        <p class="field-error" id="error-password_confirm" data-field-error="password_confirm"></p>
+                        <div class="password-control">
+                            <input type="password" id="password_confirm" name="txtPassConfirm" autocomplete="new-password" required>
+                            <button class="password-toggle" type="button" aria-controls="password_confirm" aria-label="確認用パスワードを表示">表示</button>
+                        </div>
+                    </div>
+                </fieldset>
 
-                    <label for="password">
-                        パスワード
-                    </label>
+                <fieldset class="signup-section">
+                    <legend>連絡先情報</legend>
+                    <p class="section-description">電話番号は必須です。郵便番号・住所は任意で、自動補完は行いません。</p>
 
-                    <input
-                        type="password"
-                        id="password"
-                        name="txtPass"
-                        placeholder="Enter your password"
-                        required
-                    >
+                    <div class="input-group">
+                        <label for="postalCode">郵便番号（任意）</label>
+                        <p class="field-error" id="error-postalCode" data-field-error="postalCode"></p>
+                        <input type="text" id="postalCode" name="postalCode" placeholder="例：123-4567" autocomplete="postal-code" inputmode="numeric">
+                    </div>
 
-                </div>
+                    <div class="input-group">
+                        <label for="address">住所（任意）</label>
+                        <p class="field-error" id="error-address" data-field-error="address"></p>
+                        <textarea id="address" name="address" rows="3" placeholder="住所を入力してください" autocomplete="street-address"></textarea>
+                    </div>
 
-                <!-- パスワード確認 -->
-                <div class="input-group">
-
-                    <label for="password_confirm">
-                        確認のためもう一度入力してください。
-                    </label>
-
-                    <input
-                        type="password"
-                        id="password_confirm"
-                        name="txtPassConfirm"
-                        placeholder="Confirm your password"
-                        required
-                    >
-
-                </div>
+                    <div class="input-group">
+                        <label for="phone">電話番号</label>
+                        <p class="field-hint" id="phone-hint">ハイフンを入れず、数字のみで入力してください。</p>
+                        <p class="field-error" id="error-phone" data-field-error="phone"></p>
+                        <input type="tel" id="phone" name="phone" placeholder="例：09012345678" autocomplete="tel" inputmode="numeric" aria-describedby="phone-hint" required>
+                    </div>
+                </fieldset>
 
                 <!-- 登録 -->
                 <input
                     type="submit"
-                    value="サインアップ"
+                    value="会員登録"
                     class="button"
                 >
-                <p id="signupError" class="field-error" role="alert"></p>
 
             </form>
+
+            <section class="signup-complete" id="signupComplete" aria-labelledby="signupCompleteTitle" aria-live="polite" hidden>
+                <h2 id="signupCompleteTitle" tabindex="-1">会員登録が完了しました</h2>
+                <p>登録が完了しました。Re:Tailorをご利用いただけます。</p>
+                <a class="button complete-button" href="top-index.html">サービスを利用する</a>
+            </section>
 
             <!-- ログインへ戻る -->
             <div class="login">

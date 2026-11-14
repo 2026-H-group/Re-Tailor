@@ -1,0 +1,372 @@
+:root {
+    --color-primary: #696B53;
+    --color-primary-hover: #555742;
+    --color-background: #F3F0E9;
+    --color-surface: #FFFFFF;
+    --color-text: #35362F;
+    --color-text-sub: #85847C;
+    --color-beige: #EAE4DA;
+    --color-border: #D8D2C6;
+    --color-divider: #E3DED4;
+    --color-accent: #B87961;
+    --color-error: #B34B45;
+    --color-success: #54745B;
+    --color-disabled: #D8D5CD;
+    --font-main: "Noto Sans JP", sans-serif;
+    --font-heading: "Cormorant Garamond", serif;
+    --font-section: "Noto Serif JP", serif;
+}
+
+.signup-page {
+    width: auto;
+    min-height: 100vh;
+    margin: 0;
+    padding: 32px 16px;
+    background:
+        radial-gradient(ellipse at 50% 24%, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.48) 34%, transparent 72%),
+        linear-gradient(135deg, #F8F6F1 0%, var(--color-background) 58%, var(--color-beige) 100%);
+    color: var(--color-text);
+    font-family: var(--font-main);
+    text-align: left;
+}
+
+.signup-page .container {
+    width: min(100%, 680px);
+    margin: 0 auto;
+    padding: clamp(24px, 5vw, 48px);
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+}
+
+.signup-page .box {
+    width: 100%;
+    max-width: none;
+    text-align: left;
+}
+
+.signup-page .logo {
+    margin: 0 0 28px;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 34px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-align: center;
+}
+
+.signup-page .welcome {
+    margin: 0 0 8px;
+    color: var(--color-text);
+    font-size: 24px;
+    text-align: center;
+}
+
+.signup-page .description {
+    margin: 0 0 32px;
+    color: var(--color-text-sub);
+    font-size: 14px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+.signup-page .signup-section {
+    min-width: 0;
+    margin: 0 0 32px;
+    border: 0;
+    padding: 0;
+}
+
+.signup-page .signup-section legend {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid var(--color-border);
+    padding: 0 0 12px;
+    color: var(--color-text);
+    font-family: var(--font-section);
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+.signup-page .section-description {
+    margin: 10px 0 22px;
+    color: var(--color-text-sub);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.signup-page .input-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.signup-page .group-label {
+    margin: 0 0 8px;
+    color: var(--color-text);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.signup-page .input-group label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--color-text);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.signup-page .name-fields {
+    display: flex;
+    gap: 12px;
+}
+
+.signup-page .field-control {
+    min-width: 0;
+    flex: 1;
+}
+
+.signup-page .field-control label {
+    color: var(--color-text-sub);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.signup-page .input-group input,
+.signup-page .input-group select,
+.signup-page .input-group textarea {
+    width: 100%;
+    min-height: 44px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0 12px;
+    background: var(--color-surface);
+    color: var(--color-text);
+    font: inherit;
+    font-size: 14px;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.signup-page .password-control {
+    display: flex;
+    align-items: stretch;
+}
+
+.signup-page .password-control input {
+    min-width: 0;
+    padding-right: 10px;
+}
+
+.signup-page .password-toggle {
+    min-width: 56px;
+    margin-left: 8px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: var(--color-beige);
+    color: var(--color-text);
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.signup-page .password-toggle:hover {
+    background: var(--color-divider);
+}
+
+.signup-page .password-toggle:focus-visible {
+    outline: 3px solid rgba(105, 107, 83, 0.3);
+    outline-offset: 2px;
+}
+
+.signup-page .input-group .name-field {
+    min-width: 0;
+    flex: 1;
+}
+
+.signup-page .input-group textarea {
+    min-height: 104px;
+    padding: 11px 12px;
+    resize: vertical;
+}
+
+.signup-page .input-group input::placeholder,
+.signup-page .input-group textarea::placeholder {
+    color: var(--color-text-sub);
+    opacity: 0.8;
+}
+
+.signup-page .field-hint {
+    margin: -2px 0 8px;
+    color: var(--color-text-sub);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.signup-page .field-error {
+    display: none;
+}
+
+.signup-page .field-error:not(:empty) {
+    display: block;
+    margin: 0 0 7px;
+    color: var(--color-error);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.signup-page .input-group input[aria-invalid="true"],
+.signup-page .input-group select[aria-invalid="true"],
+.signup-page .input-group textarea[aria-invalid="true"] {
+    border: 2px solid var(--color-error);
+    background-color: #FFF9F8;
+}
+
+.signup-page .input-group input:focus-visible,
+.signup-page .input-group select:focus-visible,
+.signup-page .input-group textarea:focus-visible {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(105, 107, 83, 0.16);
+}
+
+.signup-page .button {
+    width: 100%;
+    min-height: 48px;
+    margin-top: 6px;
+    border: 0;
+    border-radius: 8px;
+    background: var(--color-primary);
+    color: var(--color-surface);
+    font: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 150ms ease, box-shadow 150ms ease;
+}
+
+.signup-page .button:hover {
+    background: var(--color-primary-hover);
+}
+
+.signup-page .button:focus-visible {
+    outline: 3px solid rgba(105, 107, 83, 0.35);
+    outline-offset: 3px;
+}
+
+.signup-page .button:disabled {
+    background: var(--color-disabled);
+    color: var(--color-text-sub);
+    cursor: not-allowed;
+}
+
+.signup-page .input-group input[aria-invalid="true"]:focus-visible,
+.signup-page .input-group select[aria-invalid="true"]:focus-visible,
+.signup-page .input-group textarea[aria-invalid="true"]:focus-visible {
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 3px rgba(179, 75, 69, 0.16);
+}
+
+.signup-page .login {
+    margin-top: 22px;
+    color: var(--color-text-sub);
+    font-size: 13px;
+    text-align: center;
+}
+
+.signup-page .login a {
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.signup-page .login a:hover {
+    color: var(--color-primary-hover);
+    text-decoration: underline;
+}
+
+.signup-page .signup-complete {
+    padding: 24px 0 8px;
+    text-align: center;
+}
+
+.signup-page .signup-complete[hidden] {
+    display: none;
+}
+
+.signup-page .signup-complete h2 {
+    margin: 0 0 12px;
+    color: var(--color-primary);
+    font-family: var(--font-section);
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.signup-page .signup-complete p {
+    margin: 0 0 24px;
+    color: var(--color-text-sub);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.signup-page .complete-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+    .signup-page {
+        padding: 16px 10px;
+    }
+
+    .signup-page .container {
+        padding: 24px 18px;
+    }
+
+    .signup-page .name-fields {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .signup-page .name-fields .field-control {
+        width: 100%;
+    }
+
+    .signup-page .signup-section {
+        margin-bottom: 26px;
+    }
+
+    .signup-page .logo {
+        font-size: 30px;
+    }
+
+    .signup-page .welcome {
+        font-size: 21px;
+    }
+
+    .signup-page .description {
+        margin-bottom: 26px;
+    }
+}
+
+@media (max-width: 360px) {
+    .signup-page .container {
+        padding: 22px 14px;
+    }
+
+    .signup-page .password-toggle {
+        min-width: 50px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .signup-page *,
+    .signup-page *::before,
+    .signup-page *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}

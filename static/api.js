@@ -119,7 +119,7 @@ async function updateUserProfile(input) {
     firstNameKana: input.firstNameKana.trim(),
     username: formatUsername(input.username).replace(/^@/, ""),
     recipientName: input.recipientName.trim(),
-    postalCode: formatPostalCode(input.postalCode),
+    postalCode: input.postalCode.trim() ? formatPostalCode(input.postalCode) : "",
     address: input.address.trim(),
     phone: input.phone.replace(/\D/g, ""),
     email: input.email.trim(),
