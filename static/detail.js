@@ -23,6 +23,7 @@ function renderProduct(product) {
   document.getElementById("sellerProfileLink").href = sellerUrl;
   setText("productPrice", `¥${product.price.toLocaleString()}`); setText("listedAt", product.listedAt); setText("productRating", "★★★★★"); setText("ratingText", product.rating); setText("reviewCount", `(${product.reviews}件)`); setText("productImage", product.image);
   setText("detailType", product.type);
+  setText("style", product.style || "未設定");
   ["condition", "brand", "size", "color", "material", "purchaseDate", "shipping", "handling", "description"].forEach((key) => setText(key, product[key]));
   setText("sellerInitial", product.seller.slice(0, 1).toUpperCase()); setText("sellerRating", product.sellerRating); setText("sellerSales", product.sales);
 }

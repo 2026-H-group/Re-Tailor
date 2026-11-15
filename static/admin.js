@@ -19,11 +19,11 @@
       { id: "M-24014", name: "伊藤 蓮", email: "ren.ito@example.com", joined: "2026-09-06", status: "停止中", listings: 0, orders: 1 }
     ],
     products: [
-      { id: "P-08126", name: "ヴィンテージデニムジャケット", category: "アウター", type: "中古", seller: "old_closet", price: 8900, condition: "目立った傷や汚れなし", status: "販売中" },
-      { id: "P-08125", name: "ハンドメイドニットセーター", category: "トップス", type: "ハンドメイド", seller: "atelier_mio", price: 5400, condition: "新品", status: "販売中" },
-      { id: "P-08124", name: "コットンワンピース", category: "ワンピース", type: "中古", seller: "mori_fuku", price: 3200, condition: "目立った傷や汚れなし", status: "販売中" },
-      { id: "P-08123", name: "リネンシャツ", category: "トップス", type: "中古", seller: "linen_days", price: 2800, condition: "やや傷や汚れあり", status: "審査中" },
-      { id: "P-08122", name: "ハンドメイドポーチ", category: "その他", type: "ハンドメイド", seller: "ito_to_nuno", price: 1600, condition: "新品", status: "販売中" }
+      { id: "P-08126", name: "ヴィンテージデニムジャケット", category: "アウター", style: "アメカジ", type: "中古", seller: "old_closet", price: 8900, condition: "目立った傷や汚れなし", status: "販売中" },
+      { id: "P-08125", name: "ハンドメイドニットセーター", category: "トップス", style: "きれいめカジュアル", type: "ハンドメイド", seller: "atelier_mio", price: 5400, condition: "新品", status: "販売中" },
+      { id: "P-08124", name: "コットンワンピース", category: "ワンピース", style: "フェミニン", type: "中古", seller: "mori_fuku", price: 3200, condition: "目立った傷や汚れなし", status: "販売中" },
+      { id: "P-08123", name: "リネンシャツ", category: "トップス", style: "ベーシック", type: "中古", seller: "linen_days", price: 2800, condition: "やや傷や汚れあり", status: "審査中" },
+      { id: "P-08122", name: "ハンドメイドポーチ", category: "その他", style: "ガーリー", type: "ハンドメイド", seller: "ito_to_nuno", price: 1600, condition: "新品", status: "販売中" }
     ],
     orders: [
       { id: "RT-2026-0918", date: "2026-09-29 10:42", buyer: "佐藤 美咲", total: 8900, method: "クレジットカード", status: "発送待ち", product: "ヴィンテージデニムジャケット" },
@@ -472,7 +472,7 @@
   if (page === "members") renderMembers();
   if (page === "member-detail") setDetails("members", { id: "[data-field='id']", name: "[data-field='name']", email: "[data-field='email']", joined: "[data-field='joined']", status: "[data-field='status']", listings: "[data-field='listings']", orders: "[data-field='orders']" });
   if (page === "products") renderProducts();
-  if (page === "product-detail") setDetails("products", { id: "[data-field='id']", name: "[data-field='name']", category: "[data-field='category']", type: "[data-field='type']", seller: "[data-field='seller']", price: "[data-field='price']", condition: "[data-field='condition']", status: "[data-field='status']" });
+  if (page === "product-detail") setDetails("products", { id: "[data-field='id']", name: "[data-field='name']", category: "[data-field='category']", style: "[data-field='style']", type: "[data-field='type']", seller: "[data-field='seller']", price: "[data-field='price']", condition: "[data-field='condition']", status: "[data-field='status']" });
   if (page === "product-edit") setupProductEdit();
   if (page === "orders") renderOrders();
   if (page === "order-detail") setDetails("orders", { id: "[data-field='id']", date: "[data-field='date']", buyer: "[data-field='buyer']", total: "[data-field='total']", method: "[data-field='method']", status: "[data-field='status']", product: "[data-field='product']" });

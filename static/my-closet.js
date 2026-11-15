@@ -6,7 +6,8 @@ const categories = {
   shoes: { label: "靴", fields: [["categoryDetail", "カテゴリー", "スニーカー / ブーツ / サンダル / その他", "text"], ["color", "カラー", "例：ホワイト", "text"], ["size", "サイズ（cm）", "例：24.5", "text"]] },
   accessories: { label: "アクセサリー", fields: [["categoryDetail", "カテゴリー", "バッグ / 帽子 / ネックレス / その他", "text"], ["color", "カラー", "例：シルバー", "text"], ["size", "サイズ", "例：フリー", "text"]] }
 };
-const extraFields = [["season", "季節", "春 / 夏 / 秋 / 冬 / オールシーズン", "text"], ["style", "系統", "カジュアル / ストリート / Y2K / ナチュラル", "text"]];
+const styleOptions = ["コンサバ", "トラッド", "きれいめカジュアル", "フェミニン", "アメカジ", "スポカジ", "ストリート", "ベーシック", "ミニマル", "モード", "ガーリー", "エレガンス"];
+const extraFields = [["season", "季節", "春 / 夏 / 秋 / 冬 / オールシーズン", "text"], ["style", "系統", "", "select"]];
 const categoryOrder = Object.keys(categories);
 const $ = (id) => document.getElementById(id);
 const getItems = () => JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
@@ -15,7 +16,13 @@ const saveItems = (items) => localStorage.setItem(STORAGE_KEY, JSON.stringify(it
 function renderFields() {
   const config = categories[$("category").value];
   const fields = config.fields.concat(extraFields);
-  $("categoryFields").innerHTML = `<p class="field-note">${config.label}の登録項目</p><div class="field-grid">${fields.map(([id, label, placeholder, type]) => `<div class="field"><label for="${id}">${label}</label><input id="${id}" name="${id}" type="${type}" placeholder="${placeholder}"></div>`).join("")}</div>`;
+  $("categoryFields").innerHTML = `<p class="field-note">${config.label}の登録項目</p><div class="field-grid">${fields.map(([id, label, placeholder, type]) => {
+    const control = type === "select"
+      ? `<select id="${id}" name="${id}"><option value="">選択してください</option>${styleOptions.map((option) => `<option value="${option}">${option}</option>`).join("")}</select>`
+      : `<input id="${id}" name="${id}" type="${type}" placeholder="${placeholder}">`;
+    const optional = id === "style" ? "<span>任意</span>" : "";
+    return `<div class="field"><label for="${id}">${label}${optional}</label>${control}</div>`;
+  }).join("")}</div>`;
 }
 
 function readImage(file) {

@@ -169,6 +169,7 @@ function setupListingForm() {
     const condition = document.querySelector('input[name="condition"]:checked');
     const listing = {
       id: Date.now(), name, category, price, status: "販売中",
+      style: document.getElementById("listingStyle").value,
       condition: condition ? (condition.value === "new" ? "新品" : "中古") : "未選択",
       material: document.getElementById("listingMaterial").value.trim(),
       description: document.getElementById("listingDescription").value.trim(),
@@ -193,6 +194,7 @@ function setupDraftSave() {
       id: `draft-${Date.now()}`,
       name: document.getElementById("listingName").value.trim() || "商品名未入力",
       category: document.getElementById("listingCategory").value,
+      style: document.getElementById("listingStyle").value,
       price: Number(document.getElementById("listingPrice").value.replace(/,/g, "")) || 0,
       status: "下書き",
       condition: condition ? (condition.value === "new" ? "新品" : "中古") : "未選択",
