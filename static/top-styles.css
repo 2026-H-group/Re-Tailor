@@ -262,14 +262,13 @@ a {
     max-width: 1200px;
     margin: 32px auto;
     padding: 0 24px;
+    
 }
 
 .hero-card {
+    background-color: #fff;
     padding: 50px 40px;
-
-    background: #fff;
     border: 1px solid var(--border);
-
     text-align: center;
 }
 
@@ -382,66 +381,6 @@ a {
     height: 20px;
     background: #ccc;
 }
-
-/* ========================================
-   モバイル用ドロワーメニュー
-======================================== */
-.drawer-backdrop{
-    position: fixed;
-    inset: 0;
-    background-color:rgba(35, 46, 66, 0.42);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.25s var(--ease); /* --ease が存在しないから、この行はスキップされちゃう */
-    z-index: 40;
-}
-.drawer-backdrop.open{
-    opacity: 1;
-    pointer-events: auto;
-}
-.mobile-drawer{
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: min(300px, 82vw);
-    background: #fff;
-    z-index: 50;
-    padding: var(--sp-6) var(--sp-5); /* どちらも存在しない → 余白（padding）が全くつかない */
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    transform: translateX(-100%);
-    transition: transform 0.3s var(--ease); /* 上と同じく、この行もスキップされる */
-    box-shadow: 16px 0 40px rgba(0,0,0,0.1) ;
-}
-.mobile-open{
-    transform: translateX(0);
-}
-.drawer-close{
-    align-self: flex-end;
-    margin-bottom: var(--sp-4); /* 存在しない → margin がつかない */
-}
-.drawer-logo{
-    font-family: var(--font-display); /* 存在しない → デフォルトのフォントが使われる */
-    font-size: 1.35rem;
-    color: var(--indigo-dark); /* 存在しない → 色が設定されない */
-    margin-bottom: var(--sp-5); /* 存在しない → margin がつかない */
-}
-.drawer-link{
-    padding: 13px 4px;
-    border-bottom: 1px solid var(--line-soft); /* 存在しない → 下線が表示されない */
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--ink); /* 存在しない → 色が設定されない */
-    transition: color 0.15s ease;
-    padding-left: 0.15s ease; /* これはそもそも別のバグ — padding-left は 8px みたいな「長さ」じゃないとダメなのに、「時間」の値が入ってる */
-}
-.drawer-link:hover {
-    color: var(--thread); /* 存在しない → hover時の色の変化が起きない */
-    padding-left: 8px;
-}
-
 
 /* ========================================
    AI ADVISOR
@@ -619,7 +558,7 @@ a {
     gap: 6px;
 }
 
-.recent-section { max-width: 1180px; margin: 56px auto 80px; padding: 0 28px; }
+.recent-section { max-width: 1200px; margin: 56px auto 72px; padding: 0 24px; }
 .recent-header { display: flex; align-items: baseline; justify-content: space-between; border-bottom: 1px solid var(--border); margin-bottom: 18px; }
 .recent-header h2 { margin: 0 0 12px; font-size: 24px; }
 .recent-header a { color: var(--sub); font-size: 13px; }
@@ -765,11 +704,27 @@ a {
 }
 
 .home-page .hero-card {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
     padding: clamp(52px, 8vw, 92px) 28px;
     border: 1px solid rgba(216, 210, 198, 0.8);
-    background:
+    background-color: #fff;
+}
+
+.home-page .hero-card::before {
+    content: "";
+    position: absolute;
+    inset: -20px;
+    z-index: -1;
+    background-image:
         radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.86), transparent 68%),
-        rgba(255, 255, 255, 0.42);
+        linear-gradient(rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.42)),
+        url("../images/huku.jpg");
+    background-size: auto, auto, cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(4px);
 }
 
 .home-page .hero-mark {
@@ -960,41 +915,6 @@ a {
     font-size: 13px;
 }
 
-.home-page .drawer-backdrop {
-    background: rgba(53, 54, 47, 0.42);
-    transition: opacity 0.25s ease;
-}
-
-.home-page .mobile-drawer {
-    width: min(340px, 88vw);
-    padding: 24px;
-    background: #F8F6F1;
-    box-shadow: 16px 0 40px rgba(53, 54, 47, 0.16);
-    transition: transform 0.3s ease;
-}
-
-.home-page .drawer-close {
-    margin-bottom: 12px;
-}
-
-.home-page .drawer-logo {
-    margin-bottom: 20px;
-    color: var(--color-primary);
-    font-family: var(--font-heading);
-    text-decoration: none;
-}
-
-.home-page .drawer-link {
-    padding: 12px 4px;
-    border-bottom-color: var(--color-divider);
-    color: var(--color-text);
-    transition: color 0.15s ease, padding-left 0.15s ease;
-}
-
-.home-page .drawer-link:hover {
-    color: var(--color-primary);
-}
-
 @media (max-width: 700px) {
     .home-page .hero {
         margin-top: 20px;
@@ -1059,3 +979,465 @@ a {
     }
 }
 
+
+/* ========================================
+   V2  デザイン強化（CSSだけ・HTML/JSは変更なし）
+   モチーフ：ステッチ（縫い目）= 点線。ブランド名 "Tailor" に合わせた共通の装飾
+======================================== */
+
+.home-page {
+    --color-accent-deep: #9A5D46;        /* 白文字でも読める濃さのアクセント色 */
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --shadow-soft: 0 18px 36px -24px rgba(53, 54, 47, 0.45);
+    --stitch: rgba(105, 107, 83, 0.38);
+}
+
+/* ---------- HERO ---------- */
+
+.home-page .hero-card {
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+}
+
+/* 縫い目の枠線 */
+.home-page .hero-card::after {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 1px dashed var(--stitch);
+    border-radius: calc(var(--radius-lg) - 6px);
+    pointer-events: none;
+}
+
+.home-page .hero-title {
+    font-size: clamp(32px, 4.6vw, 52px);
+}
+
+/* 画像の上でも読みやすいように、色を濃く・日本語に合うフォントに */
+.home-page .hero-sub {
+    max-width: 560px;
+    color: var(--color-text);
+    font-family: var(--font-main);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.9;
+}
+
+/* ---------- AI ADVISOR ---------- */
+
+.home-page .ai-advisor-card {
+    padding: 24px 30px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(100deg, rgba(234, 228, 218, 0.95), rgba(248, 246, 241, 0.95));
+}
+
+/* ---------- カテゴリー ---------- */
+
+.home-page .category-row {
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+/* ---------- 商品カード ---------- */
+
+.home-page .product-card {
+    border-radius: var(--radius-md);
+    transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.home-page .product-card:hover {
+    box-shadow: var(--shadow-soft);
+}
+
+/* 画像がまだ無いときのプレースホルダー（縫い目付き）。服は縦長 4:5 が自然 */
+.home-page .product-image {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    font-family: var(--font-section);
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    color: rgba(53, 54, 47, 0.6);
+}
+
+.home-page .product-image::after {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border: 1px dashed var(--stitch);
+    border-radius: 6px;
+    pointer-events: none;
+}
+
+/* カテゴリーごとに少しずつ色を変える（JSが付ける tint-◯◯ クラスを利用） */
+.home-page .tint-tops        { background: #ECE5DA; }
+.home-page .tint-outwear     { background: #E3D9CB; }
+.home-page .tint-bottom      { background: #E2E3D5; }
+.home-page .tint-onepiece    { background: #EBDDD6; }
+.home-page .tint-shoes       { background: #DDD8CC; }
+.home-page .tint-bag         { background: #E7DCCB; }
+.home-page .tint-accessories { background: #E9E3D3; }
+.home-page .tint-other       { background: #E6E3DC; }
+
+.home-page .product-name {
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 3em;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.home-page .product-name:hover {
+    color: var(--color-primary);
+}
+
+/* 価格を左、ボタンを右に */
+.home-page .product-footer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--color-divider);
+}
+
+.home-page .product-price {
+    font-size: 17px;
+    text-align: left;
+}
+
+/* ========================================
+   ハンバーガーメニュー（ドロワー）
+   HTMLは「リンクが縦に並んでいるだけ」。
+   → order（並び順）・属性セレクタ（href で狙い撃ち）・疑似要素（::before/::after）で
+     アイコン・ボタン・区切り線をすべてCSSだけで作っている。
+======================================== */
+
+/* メニューが開いている間、後ろのページが動かないように（JS不要） */
+body.home-page:has(.mobile-drawer.mobile-open) {
+    overflow: hidden;
+}
+
+.home-page .drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    background: rgba(53, 54, 47, 0.45);
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.home-page .drawer-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.home-page .mobile-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    width: min(380px, 90vw);
+    height: 100%;
+    padding: 0 0 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: #F8F6F1;
+    border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+    box-shadow: 24px 0 60px -20px rgba(53, 54, 47, 0.4);
+
+    /* 閉じている間は visibility:hidden にして、Tabキーでも入れないようにする */
+    visibility: hidden;
+    transform: translateX(-102%);
+    transition: transform 0.38s cubic-bezier(0.22, 0.8, 0.2, 1), visibility 0s linear 0.38s;
+}
+
+.home-page .mobile-drawer.mobile-open {
+    visibility: visible;
+    transform: none;
+    transition: transform 0.38s cubic-bezier(0.22, 0.8, 0.2, 1), visibility 0s;
+}
+
+/* ロゴ = ヘッダーと同じ茶色の帯（高さ76pxも同じ） */
+.home-page .drawer-logo {
+    order: 0;
+    flex: 0 0 auto;
+    height: 76px;
+    margin: 0 0 20px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    background: var(--color-header);
+    color: var(--color-surface);
+    font-family: var(--font-heading);
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+}
+
+/* ×ボタンは茶色の帯の右端に重ねる */
+.home-page .drawer-close {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    z-index: 1;
+    margin: 0;
+    color: var(--color-surface);
+}
+
+.home-page .drawer-close:hover {
+    background: rgba(255, 255, 255, 0.14);
+    color: var(--color-surface);
+}
+
+/* --- 共通：メニューの1行 --- */
+.home-page .drawer-link {
+    margin: 0 20px;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border: 0;
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.18s ease, color 0.18s ease;
+}
+
+.home-page .drawer-link:hover {
+    background: var(--color-surface);
+    color: var(--color-primary);
+    padding-left: 10px;               /* 元のCSSの「動いてしまう」挙動を打ち消す */
+}
+
+/* アイコンのタイル */
+.home-page .drawer-link::before {
+    content: "";
+    width: 38px;
+    height: 38px;
+    flex: 0 0 auto;
+    border-radius: 10px;
+    background-color: var(--color-beige);
+    background-image: var(--ico);
+    background-position: center;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    transition: background-color 0.18s ease;
+}
+
+.home-page .drawer-link:hover::before {
+    background-color: var(--color-primary);
+    background-image: var(--ico-on);
+}
+
+/* 右の「＞」（正方形の上と右の枠線だけを45度回転）。margin-left:auto で右端へ */
+.home-page .drawer-link::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    margin-left: auto;
+    margin-right: 4px;
+    border-top: 2px solid currentColor;
+    border-right: 2px solid currentColor;
+    transform: rotate(45deg);
+    opacity: 0.4;
+    transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.home-page .drawer-link:hover::after {
+    opacity: 0.9;
+    transform: translateX(3px) rotate(45deg);
+}
+
+/* --- リンクごとの設定（並び順 order とアイコン） --- */
+.home-page .drawer-link[href="syuppin_itiran.html"] {
+    --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23696B53' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 8h3l1.5-2h7L17 8h3v11H4z'/%3E%3Ccircle cx='12' cy='13' r='3.2'/%3E%3C/svg%3E");
+    --ico-on: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 8h3l1.5-2h7L17 8h3v11H4z'/%3E%3Ccircle cx='12' cy='13' r='3.2'/%3E%3C/svg%3E");
+    --i: 1;
+    order: 1;
+}
+.home-page .drawer-link[href="top-index.html"] {
+    --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23696B53' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z'/%3E%3C/svg%3E");
+    --ico-on: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z'/%3E%3C/svg%3E");
+    --i: 3;
+    order: 3;
+}
+.home-page .drawer-link[href="#products"] {
+    --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23696B53' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 8h14l-1 11H6z'/%3E%3Cpath d='M9 8V7a3 3 0 0 1 6 0v1'/%3E%3C/svg%3E");
+    --ico-on: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 8h14l-1 11H6z'/%3E%3Cpath d='M9 8V7a3 3 0 0 1 6 0v1'/%3E%3C/svg%3E");
+    --i: 4;
+    order: 4;
+}
+.home-page .drawer-link[href="personality.html"] {
+    --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23696B53' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='8.5'/%3E%3Cpath d='M9 14.5c.8 1 1.8 1.5 3 1.5s2.2-.5 3-1.5'/%3E%3Cpath d='M9.5 10h.01M14.5 10h.01'/%3E%3C/svg%3E");
+    --ico-on: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='8.5'/%3E%3Cpath d='M9 14.5c.8 1 1.8 1.5 3 1.5s2.2-.5 3-1.5'/%3E%3Cpath d='M9.5 10h.01M14.5 10h.01'/%3E%3C/svg%3E");
+    --i: 5;
+    order: 5;
+}
+.home-page .drawer-link[href="my-closet.html"] {
+    --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23696B53' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 7a2 2 0 1 1 2 2c-1 .5-2 1-2 2v1'/%3E%3Cpath d='m12 12 8 5.5a1 1 0 0 1-.6 1.8H4.6a1 1 0 0 1-.6-1.8z'/%3E%3C/svg%3E");
+    --ico-on: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 7a2 2 0 1 1 2 2c-1 .5-2 1-2 2v1'/%3E%3Cpath d='m12 12 8 5.5a1 1 0 0 1-.6 1.8H4.6a1 1 0 0 1-.6-1.8z'/%3E%3C/svg%3E");
+    --i: 6;
+    order: 6;
+}
+.home-page .drawer-link[href="cart.html"] {
+    --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23696B53' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='9' cy='20' r='1.4'/%3E%3Ccircle cx='17' cy='20' r='1.4'/%3E%3Cpath d='M2.5 3h2l2.2 11.4a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L20 7H5.3'/%3E%3C/svg%3E");
+    --ico-on: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='9' cy='20' r='1.4'/%3E%3Ccircle cx='17' cy='20' r='1.4'/%3E%3Cpath d='M2.5 3h2l2.2 11.4a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L20 7H5.3'/%3E%3C/svg%3E");
+    --i: 7;
+    order: 7;
+}
+.home-page .drawer-link[href$="about-index.html"] {
+    --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23696B53' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='8.5'/%3E%3Cpath d='M12 11v5M12 8h.01'/%3E%3C/svg%3E");
+    --ico-on: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='8.5'/%3E%3Cpath d='M12 11v5M12 8h.01'/%3E%3C/svg%3E");
+    --i: 8;
+    order: 8;
+}
+.home-page .drawer-link[href="help.html"] {
+    --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23696B53' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3.5' y='5.5' width='17' height='13' rx='2'/%3E%3Cpath d='m4 7 8 6 8-6'/%3E%3C/svg%3E");
+    --ico-on: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3.5' y='5.5' width='17' height='13' rx='2'/%3E%3Cpath d='m4 7 8 6 8-6'/%3E%3C/svg%3E");
+    --i: 9;
+    order: 9;
+}
+.home-page .drawer-link[href$="login.html"] {
+    --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23696B53' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='11' width='14' height='9' rx='2'/%3E%3Cpath d='M8 11V8a4 4 0 0 1 8 0v3'/%3E%3C/svg%3E");
+    --ico-on: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='11' width='14' height='9' rx='2'/%3E%3Cpath d='M8 11V8a4 4 0 0 1 8 0v3'/%3E%3C/svg%3E");
+    --i: 11;
+    order: 11;
+}
+
+/* --- ① 出品ボタン：いちばん目立たせる --- */
+.home-page .drawer-link[href="syuppin_itiran.html"] {
+    min-height: 50px;
+    margin-bottom: 8px;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 999px;
+    background: var(--color-accent-deep);
+    color: var(--color-surface);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.home-page .drawer-link[href="syuppin_itiran.html"]:hover {
+    background: #834C38;
+    color: var(--color-surface);
+}
+
+.home-page .drawer-link[href="syuppin_itiran.html"]::before,
+.home-page .drawer-link[href="syuppin_itiran.html"]:hover::before {
+    width: 20px;
+    height: 20px;
+    border-radius: 0;
+    background-color: transparent;
+    background-image: var(--ico-on);
+}
+
+.home-page .drawer-link[href="syuppin_itiran.html"]::after {
+    display: none;
+}
+
+/* --- ② サインイン：枠線だけのボタン --- */
+.home-page .drawer-link[href="signup.html"] {
+    order: 2;
+    --i: 2;
+    min-height: 46px;
+    margin-bottom: 14px;
+    justify-content: center;
+    border: 1px solid var(--color-primary);
+    border-radius: 999px;
+    color: var(--color-primary);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.home-page .drawer-link[href="signup.html"]:hover {
+    background: var(--color-primary);
+    color: var(--color-surface);
+}
+
+.home-page .drawer-link[href="signup.html"]::before,
+.home-page .drawer-link[href="signup.html"]::after {
+    display: none;
+}
+
+/* --- ③ グループの区切り線（縫い目の点線） --- */
+.home-page .drawer-link[href="my-closet.html"],
+.home-page .drawer-link[href$="about-index.html"] {
+    margin-top: 14px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--stitch);
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+/* --- ④ 管理者ログイン：目立たせず、いちばん下へ --- */
+.home-page .drawer-link[href$="login.html"] {
+    margin-top: auto;
+    padding: 18px 10px 0;
+    gap: 8px;
+    border-top: 1px dashed var(--stitch);
+    border-radius: 0;
+    background: none;
+    color: var(--color-text-sub);
+    font-size: 12px;
+}
+
+.home-page .drawer-link[href$="login.html"]:hover {
+    background: none;
+    color: var(--color-primary);
+}
+
+.home-page .drawer-link[href$="login.html"]::before,
+.home-page .drawer-link[href$="login.html"]:hover::before {
+    width: 15px;
+    height: 15px;
+    border-radius: 0;
+    background-color: transparent;
+    background-size: 15px 15px;
+    background-image: var(--ico);
+}
+
+.home-page .drawer-link[href$="login.html"]::after {
+    display: none;
+}
+
+/* 開いた瞬間だけ、順番にふわっと出てくる（ユーザー操作への反応なのでOK） */
+@keyframes drawerIn {
+    from { opacity: 0; transform: translateX(-12px); }
+    to   { opacity: 1; transform: none; }
+}
+
+.home-page .mobile-open .drawer-link {
+    animation: drawerIn 0.45s cubic-bezier(0.22, 0.8, 0.2, 1) both;
+    animation-delay: calc(var(--i, 1) * 35ms);
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 700px) {
+    .home-page .ai-advisor-card { padding: 20px; }
+    .home-page .recent-grid { gap: 12px; }
+
+    /* カテゴリーは横スクロールにして、何行にも折り返さない */
+    .home-page .category-row {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        margin-right: -16px;
+        margin-left: -16px;
+        padding: 0 16px 6px;
+        scrollbar-width: none;
+    }
+    .home-page .category-row::-webkit-scrollbar { display: none; }
+    .home-page .cat-pill { flex: 0 0 auto; white-space: nowrap; }
+}
