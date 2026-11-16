@@ -510,57 +510,106 @@
 }
 
 /* ========================================
-   ノートPC・iPad（横）： 1024px～
+   ノートPC・デスクトップ・iPad（横）： 1024px～
+   ★ スクロールしないで1画面に収める ★
+   上下の余白・入力欄の高さを「画面の高さ(vh)」に合わせて自動で縮める
+   clamp(最小, 画面の高さに比例, 最大) … 画面が低いほど縮み、高いと最大で止まる
 ======================================== */
 
 @media (min-width: 1024px) {
     .login-page {
-        --fs-logo: 34px;
-        --fs-welcome: 26px;
+        --fs-logo: 30px;
+        --fs-welcome: 22px;
+        --ctl-h: clamp(38px, 6vh, 46px);
 
-        padding: 48px 32px 64px;
+        padding: 16px 32px;
     }
 
     .login-page .container {
-        --pad-x: 52px;
-        --pad-y: 44px;
+        --pad-x: 48px;
+        --pad-y: clamp(16px, 3vh, 28px);
+
+        width: min(100%, 660px);
+    }
+
+    .login-page .logo {
+        margin-bottom: clamp(12px, 2.6vh, 22px);
+        padding: clamp(10px, 1.8vh, 14px) 16px clamp(14px, 2.6vh, 20px);
+    }
+
+    .login-page .logo::after {
+        bottom: 7px;
+    }
+
+    .login-page .welcome {
+        margin-bottom: 6px;
+    }
+
+    .login-page .welcome::after {
+        margin-top: 8px;
+    }
+
+    .login-page .description {
+        margin-bottom: clamp(10px, 2.4vh, 20px);
+    }
+
+    .login-page .input-group {
+        margin-bottom: clamp(8px, 1.8vh, 16px);
+    }
+
+    .login-page .input-group label {
+        margin-bottom: 6px;
+    }
+
+    .login-page .remember {
+        margin: 2px 0 clamp(10px, 2.2vh, 18px);
+    }
+
+    .login-page .field-error:not(:empty) {
+        margin-top: 10px;
+        padding: 8px 12px;
+    }
+
+    .login-page .or {
+        margin: clamp(10px, 2.2vh, 20px) 0 clamp(10px, 2vh, 18px);
+    }
+
+    .login-page .login {
+        margin-top: clamp(10px, 2.2vh, 20px);
+        padding-top: 12px;
     }
 }
 
 /* ========================================
-   デスクトップ： 1440px～
+   Google / Apple ボタンを「よこ並び」にするのは
+   ・幅が 1024px 以上 かつ
+   ・マウスで操作する端末（ノートPC・デスクトップ）だけ
+   スマホ・iPad は（横向きでも）たて並びのまま
 ======================================== */
 
-@media (min-width: 1440px) {
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+    .login-page .social-login {
+        flex-direction: row;
+    }
+
+    .login-page .social-button {
+        flex: 1 1 0;
+        padding: 8px 12px;
+    }
+}
+
+/* ========================================
+   背が高い大きなモニター（幅1440px～ かつ 高さ900px～）
+   余裕があるので、カードと入力欄を少し大きく
+======================================== */
+
+@media (min-width: 1440px) and (min-height: 900px) {
     .login-page {
-        --fs-logo: 36px;
-        --fs-welcome: 28px;
-        --fs-label: 15px;
-        --fs-input: 15px;
-        --fs-body: 15px;
-        --fs-note: 14px;
-        --fs-small: 13px;
         --ctl-h: 50px;
     }
 
     .login-page .container {
-        --pad-x: 56px;
-        --pad-y: 48px;
-
-        width: min(100%, 600px);
-    }
-}
-
-/* ========================================
-   ワイド画面（フルHD以上）： 1920px～
-======================================== */
-
-@media (min-width: 1920px) {
-    .login-page .container {
-        --pad-x: 60px;
-        --pad-y: 52px;
-
-        width: min(100%, 640px);
+        width: min(100%, 700px);
     }
 }
 
