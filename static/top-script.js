@@ -1,8 +1,9 @@
 const products = window.reTailorProducts.map((product) => ({ ...product, category: product.categoryKey }));
 
 // 服の種類ごとに文字で表示（アイコンは形が崩れるためNG）。
-  const TEXT = {
-  coat:    "アウター",
+// 写真（photo）が無い商品のときだけ、この文字を表示する。
+const TEXT = {
+  coat:     "アウター",
   trousers: "ボトムス",
   cardigan: "トップス",
   bag:      "バッグ",
@@ -20,8 +21,41 @@ const state = {
   activeCategory: "all",
 };
 const recentKey = "reTailorRecentlyViewed";
-function saveRecentProduct(id) { const recent = JSON.parse(localStorage.getItem(recentKey) || "[]").filter((itemId) => itemId !== id); recent.unshift(id); localStorage.setItem(recentKey, JSON.stringify(recent.slice(0, 4))); }
-function renderRecentProducts() { const ids = JSON.parse(localStorage.getItem(recentKey) || "[]"); const items = ids.map((id) => products.find((product) => product.id === id)).filter(Boolean); const grid = document.getElementById("recentProducts"); const empty = document.getElementById("recentEmpty"); if (!grid || !empty) return; empty.hidden = items.length > 0; grid.innerHTML = items.map((item) => `<a class="recent-card" href="detail.html?id=${item.id}"><span class="recent-image tint-${item.category}">${TEXT[item.icon] || item.category}</span><strong>${item.name}</strong><span>¥${item.price.toLocaleString()}</span></a>`).join(""); }
+
+// ---- 商品画像（image）があれば画像、なければ文字を返す ----
+// 写真ファイルが見つからないときは onerror で文字表示に戻す（壊れた画像アイコンは出ない）
+function imageOrText(item) {
+  const text = TEXT[item.icon] || item.category;
+  if (item.photo) {
+    return `<img src="${item.photo}" alt="${item.name}" loading="lazy" data-fallback="${text}" onerror="this.replaceWith(document.createTextNode(this.dataset.fallback))">`;
+  }
+  return text;
+}
+
+// ---- 1. 最近閲覧した商品 ----
+function saveRecentProduct(id) {
+  const recent = JSON.parse(localStorage.getItem(recentKey) || "[]").filter((itemId) => itemId !== id);
+  recent.unshift(id);
+  localStorage.setItem(recentKey, JSON.stringify(recent.slice(0, 4)));
+}
+
+function renderRecentProducts() {
+  const ids = JSON.parse(localStorage.getItem(recentKey) || "[]");
+  const items = ids
+    .map((id) => products.find((product) => product.id === id))
+    .filter(Boolean);
+  const grid = document.getElementById("recentProducts");
+  const empty = document.getElementById("recentEmpty");
+  if (!grid || !empty) return;
+
+  empty.hidden = items.length > 0;
+  grid.innerHTML = items.map((item) => `
+    <a class="recent-card" href="detail.html?id=${item.id}">
+      <span class="recent-image tint-${item.category}">${imageOrText(item)}</span>
+      <strong>${item.name}</strong>
+      <span>¥${item.price.toLocaleString()}</span>
+    </a>`).join("");
+}
 
 // ---- 2. 商品カードをグリッドに描画する ----
 function renderProducts() {
@@ -41,24 +75,25 @@ function cardTemplate(product) {
   return `
     <article class="product-card">
       <a href="detail.html?id=${product.id}" class="product-image tint-${product.category}" aria-label="${product.name}の商品詳細">
-            ${TEXT[product.icon]}
-      </a>      <div class="product-info">
-      <a class="product-name" href="detail.html?id=${product.id}">${product.name}</a>
+        ${imageOrText(product)}
+      </a>
+      <div class="product-info">
+        <a class="product-name" href="detail.html?id=${product.id}">${product.name}</a>
         <a class="product-seller" href="seller.html?seller=${encodeURIComponent(product.seller)}">出品者：${product.seller}</a>
         <div class="product-footer">
           <span class="product-price">¥${product.price.toLocaleString()}</span>
           <div class="product-actions">
-              <button class="icon-toggle ${isLiked ? "liked" : ""}" 
-                      data-action="like" 
-                      data-id="${product.id}">
-                  いいね
-              </button>
+            <button class="icon-toggle ${isLiked ? "liked" : ""}"
+                    data-action="like"
+                    data-id="${product.id}">
+              いいね
+            </button>
 
-              <button class="icon-toggle ${isAdded ? "added" : ""}" 
-                      data-action="cart" 
-                      data-id="${product.id}">
-                  カート
-              </button>
+            <button class="icon-toggle ${isAdded ? "added" : ""}"
+                    data-action="cart"
+                    data-id="${product.id}">
+              カート
+            </button>
           </div>
         </div>
       </div>
@@ -106,7 +141,15 @@ function setupProductActions() {
     renderProducts();
   });
 }
-function setupRecentTracking() { document.getElementById("productGrid").addEventListener("click", (event) => { const link = event.target.closest('a[href^="detail.html?id="]'); if (!link) return; saveRecentProduct(Number(new URL(link.href).searchParams.get("id"))); }); }
+
+// 商品をクリックしたら「最近閲覧した商品」に記録する
+function setupRecentTracking() {
+  document.getElementById("productGrid").addEventListener("click", (event) => {
+    const link = event.target.closest('a[href^="detail.html?id="]');
+    if (!link) return;
+    saveRecentProduct(Number(new URL(link.href).searchParams.get("id")));
+  });
+}
 
 function updateCartCount() {
   const el = document.getElementById("cartCount");

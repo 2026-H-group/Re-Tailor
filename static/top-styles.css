@@ -1442,3 +1442,25 @@ body.home-page:has(.mobile-drawer.mobile-open) {
     .home-page .category-row::-webkit-scrollbar { display: none; }
     .home-page .cat-pill { flex: 0 0 auto; white-space: nowrap; }
 }
+
+/* ========================================
+   商品写真（photo がある商品だけ）
+======================================== */
+
+.home-page .product-image,
+.home-page .recent-image {
+    overflow: hidden;
+}
+
+.home-page .product-image img,
+.home-page .recent-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      /* 引き伸ばさず、はみ出た部分をカット */
+}
+
+/* 縫い目の点線枠はプレースホルダー用。写真があるときは消す */
+.home-page .product-image:has(img)::after {
+    display: none;
+}
