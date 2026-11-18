@@ -1,43 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@600&display=swap");
+
+/* ========================================
+   Re:Tailor - Sign up page  (v2)
+   トップページ（top-styles.css の .home-page）とデザインを統一
+   HTML は変更せず、この CSS だけで見た目を調整しています
+======================================== */
+
 :root {
+    /* --- トップページと同じカラー --- */
     --color-primary: #696B53;
     --color-primary-hover: #555742;
+    --color-header: #76513B;
     --color-background: #F3F0E9;
     --color-surface: #FFFFFF;
     --color-text: #35362F;
-    --color-text-sub: #85847C;
+    --color-text-sub: #706B64;
     --color-beige: #EAE4DA;
     --color-border: #D8D2C6;
     --color-divider: #E3DED4;
     --color-accent: #B87961;
+    --color-accent-deep: #9A5D46;
     --color-error: #B34B45;
     --color-success: #54745B;
     --color-disabled: #D8D5CD;
+
     --font-main: "Noto Sans JP", sans-serif;
     --font-heading: "Cormorant Garamond", serif;
     --font-section: "Noto Serif JP", serif;
+
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --shadow-soft: 0 18px 36px -24px rgba(53, 54, 47, 0.45);
+    --stitch: rgba(105, 107, 83, 0.38);   /* 縫い目の点線 */
+}
+
+/* ========================================
+   ページ全体
+======================================== */
+
+.signup-page,
+.signup-page *,
+.signup-page *::before,
+.signup-page *::after {
+    box-sizing: border-box;
 }
 
 .signup-page {
     width: auto;
     min-height: 100vh;
     margin: 0;
-    padding: 32px 16px;
-    background:
-        radial-gradient(ellipse at 50% 24%, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.48) 34%, transparent 72%),
-        linear-gradient(135deg, #F8F6F1 0%, var(--color-background) 58%, var(--color-beige) 100%);
+    padding: 40px 16px 56px;
+    background: linear-gradient(125deg, #F8F6F1 0%, #F3F0E9 58%, #EAE4DA 100%);
     color: var(--color-text);
     font-family: var(--font-main);
+    line-height: 1.6;
     text-align: left;
+    -webkit-text-size-adjust: 100%;
 }
 
+.signup-page a {
+    text-underline-offset: 3px;
+}
+
+.signup-page a:focus-visible,
+.signup-page button:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+}
+
+/* ========================================
+   カード（container）
+======================================== */
+
 .signup-page .container {
+    --pad-x: clamp(24px, 5vw, 48px);
+    --pad-y: clamp(24px, 5vw, 48px);
+
     width: min(100%, 680px);
     margin: 0 auto;
-    padding: clamp(24px, 5vw, 48px);
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    box-shadow: none;
+    padding: var(--pad-y) var(--pad-x);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-soft);
+}
+
+/* ページを開いた瞬間に1回だけ、カードがふわっと出る */
+@keyframes cardIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .signup-page .container {
+        animation: cardIn 0.55s cubic-bezier(0.22, 0.8, 0.2, 1) both;
+    }
 }
 
 .signup-page .box {
@@ -46,21 +103,53 @@
     text-align: left;
 }
 
+/* ========================================
+   ロゴ帯（ヘッダー代わり）
+   縫い目の点線を入れて、洋服の裾（ヘム）のように
+======================================== */
+
 .signup-page .logo {
-    margin: 0 0 28px;
-    color: var(--color-primary);
+    position: relative;
+    margin: calc(var(--pad-y) * -1) calc(var(--pad-x) * -1) 32px;
+    padding: 20px 16px 26px;
+    border-radius: calc(var(--radius-lg) - 1px) calc(var(--radius-lg) - 1px) 0 0;
+    background: var(--color-header);
+    color: var(--color-surface);
     font-family: var(--font-heading);
-    font-size: 34px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.3;
     text-align: center;
+}
+
+.signup-page .logo::after {
+    content: "";
+    position: absolute;
+    right: 16px;
+    bottom: 8px;
+    left: 16px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.42);
 }
 
 .signup-page .welcome {
     margin: 0 0 8px;
     color: var(--color-text);
+    font-family: var(--font-section);
     font-size: 24px;
+    font-weight: 600;
+    font-feature-settings: "palt";   /* 日本語の字間をきれいに詰める */
+    line-height: 1.6;
     text-align: center;
+}
+
+.signup-page .welcome::after {
+    content: "";
+    display: block;
+    width: 36px;
+    height: 2px;
+    margin: 12px auto 0;
+    background: var(--color-accent);
 }
 
 .signup-page .description {
@@ -70,6 +159,11 @@
     line-height: 1.7;
     text-align: center;
 }
+
+/* ========================================
+   セクション（fieldset / legend）
+   トップのドロワーメニューと同じ「アイコンのタイル」をつける
+======================================== */
 
 .signup-page .signup-section {
     min-width: 0;
@@ -81,21 +175,55 @@
 .signup-page .signup-section legend {
     display: block;
     width: 100%;
-    border-bottom: 1px solid var(--color-border);
-    padding: 0 0 12px;
+    border-bottom: 1px dashed var(--stitch);
+    padding: 0 0 14px;
     color: var(--color-text);
     font-family: var(--font-section);
     font-size: 22px;
     font-weight: 600;
-    line-height: 1.5;
+    font-feature-settings: "palt";
+    line-height: 38px;
+}
+
+.signup-page .signup-section legend::before {
+    content: "";
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    margin-right: 12px;
+    border-radius: 10px;
+    background-color: var(--color-beige);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    vertical-align: top;
+}
+
+/* 1つ目：基本情報（人のアイコン） */
+.signup-page .signup-section:nth-of-type(1) legend::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23696B53' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='8' r='3.6'/%3E%3Cpath d='M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5'/%3E%3C/svg%3E");
+}
+
+/* 2つ目：ログイン情報（鍵のアイコン） */
+.signup-page .signup-section:nth-of-type(2) legend::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23696B53' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='11' width='14' height='9' rx='2'/%3E%3Cpath d='M8 11V8a4 4 0 0 1 8 0v3'/%3E%3C/svg%3E");
+}
+
+/* 3つ目：連絡先情報（封筒のアイコン） */
+.signup-page .signup-section:nth-of-type(3) legend::before {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23696B53' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3.5' y='5.5' width='17' height='13' rx='2'/%3E%3Cpath d='m4 7 8 6 8-6'/%3E%3C/svg%3E");
 }
 
 .signup-page .section-description {
-    margin: 10px 0 22px;
+    margin: 12px 0 22px;
     color: var(--color-text-sub);
     font-size: 13px;
     line-height: 1.7;
 }
+
+/* ========================================
+   フォーム部品
+======================================== */
 
 .signup-page .input-group {
     margin-bottom: 18px;
@@ -107,6 +235,7 @@
     color: var(--color-text);
     font-size: 14px;
     font-weight: 600;
+    transition: color 0.18s ease;
 }
 
 .signup-page .input-group label {
@@ -115,6 +244,7 @@
     color: var(--color-text);
     font-size: 14px;
     font-weight: 600;
+    transition: color 0.18s ease;
 }
 
 .signup-page .name-fields {
@@ -133,21 +263,76 @@
     font-weight: 500;
 }
 
+/* 入力中の欄のラベルだけ、うっすらオリーブ色に */
+.signup-page .input-group:focus-within > label,
+.signup-page .input-group:focus-within .group-label,
+.signup-page .field-control:focus-within > label {
+    color: var(--color-primary);
+}
+
 .signup-page .input-group input,
 .signup-page .input-group select,
 .signup-page .input-group textarea {
     width: 100%;
-    min-height: 44px;
+    min-height: 46px;
     border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: 0 12px;
+    border-radius: var(--radius-md);
+    padding: 0 14px;
     background: var(--color-surface);
     color: var(--color-text);
     font: inherit;
     font-size: 14px;
-    transition: border-color 150ms ease, box-shadow 150ms ease;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
 }
 
+.signup-page .input-group input:hover,
+.signup-page .input-group select:hover,
+.signup-page .input-group textarea:hover {
+    border-color: var(--color-primary);
+}
+
+.signup-page .input-group textarea {
+    min-height: 104px;
+    padding: 11px 14px;
+    resize: vertical;
+}
+
+.signup-page .input-group input::placeholder,
+.signup-page .input-group textarea::placeholder {
+    color: var(--color-text-sub);
+    opacity: 0.7;
+}
+
+/* 日付：iOS Safari でも他の欄と同じ見た目に */
+.signup-page .input-group input[type="date"] {
+    display: block;
+    min-width: 0;
+    -webkit-appearance: none;
+    appearance: none;
+    text-align: left;
+}
+
+/* プルダウン：OS標準の矢印をやめて、トップページと同じ細い線の矢印に */
+.signup-page .input-group select {
+    padding-right: 42px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23706B64' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-position: right 14px center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.signup-page .input-group input:focus-visible,
+.signup-page .input-group select:focus-visible,
+.signup-page .input-group textarea:focus-visible {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(105, 107, 83, 0.18);
+}
+
+/* パスワード欄 */
 .signup-page .password-control {
     display: flex;
     align-items: stretch;
@@ -159,43 +344,25 @@
 }
 
 .signup-page .password-toggle {
-    min-width: 56px;
+    min-width: 60px;
     margin-left: 8px;
     border: 1px solid var(--color-border);
-    border-radius: 8px;
+    border-radius: 999px;
     background: var(--color-beige);
     color: var(--color-text);
     font: inherit;
     font-size: 13px;
     cursor: pointer;
+    transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
 }
 
 .signup-page .password-toggle:hover {
-    background: var(--color-divider);
+    border-color: var(--color-primary);
+    background: var(--color-primary);
+    color: var(--color-surface);
 }
 
-.signup-page .password-toggle:focus-visible {
-    outline: 3px solid rgba(105, 107, 83, 0.3);
-    outline-offset: 2px;
-}
-
-.signup-page .input-group .name-field {
-    min-width: 0;
-    flex: 1;
-}
-
-.signup-page .input-group textarea {
-    min-height: 104px;
-    padding: 11px 12px;
-    resize: vertical;
-}
-
-.signup-page .input-group input::placeholder,
-.signup-page .input-group textarea::placeholder {
-    color: var(--color-text-sub);
-    opacity: 0.8;
-}
-
+/* ヒント・エラー */
 .signup-page .field-hint {
     margin: -2px 0 8px;
     color: var(--color-text-sub);
@@ -216,66 +383,94 @@
     line-height: 1.5;
 }
 
+/* エラー文の頭に小さな「!」マーク（色だけに頼らないため） */
+.signup-page .field-error:not(:empty)::before {
+    content: "!";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-right: 6px;
+    border-radius: 50%;
+    background: var(--color-error);
+    color: var(--color-surface);
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 14px;
+    text-align: center;
+    vertical-align: 1px;
+}
+
+/* エラー時：border の太さは変えず box-shadow で太く見せる（1px動かないように） */
 .signup-page .input-group input[aria-invalid="true"],
 .signup-page .input-group select[aria-invalid="true"],
 .signup-page .input-group textarea[aria-invalid="true"] {
-    border: 2px solid var(--color-error);
+    border-color: var(--color-error);
+    box-shadow: 0 0 0 1px var(--color-error);
     background-color: #FFF9F8;
-}
-
-.signup-page .input-group input:focus-visible,
-.signup-page .input-group select:focus-visible,
-.signup-page .input-group textarea:focus-visible {
-    border-color: var(--color-primary);
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(105, 107, 83, 0.16);
-}
-
-.signup-page .button {
-    width: 100%;
-    min-height: 48px;
-    margin-top: 6px;
-    border: 0;
-    border-radius: 8px;
-    background: var(--color-primary);
-    color: var(--color-surface);
-    font: inherit;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color 150ms ease, box-shadow 150ms ease;
-}
-
-.signup-page .button:hover {
-    background: var(--color-primary-hover);
-}
-
-.signup-page .button:focus-visible {
-    outline: 3px solid rgba(105, 107, 83, 0.35);
-    outline-offset: 3px;
-}
-
-.signup-page .button:disabled {
-    background: var(--color-disabled);
-    color: var(--color-text-sub);
-    cursor: not-allowed;
 }
 
 .signup-page .input-group input[aria-invalid="true"]:focus-visible,
 .signup-page .input-group select[aria-invalid="true"]:focus-visible,
 .signup-page .input-group textarea[aria-invalid="true"]:focus-visible {
     border-color: var(--color-error);
-    box-shadow: 0 0 0 3px rgba(179, 75, 69, 0.16);
+    box-shadow: 0 0 0 1px var(--color-error), 0 0 0 4px rgba(179, 75, 69, 0.18);
 }
 
+/* ========================================
+   ボタン（トップの .btn-primary と同じ pill 型）
+======================================== */
+
+.signup-page .button {
+    width: 100%;
+    min-height: 50px;
+    margin-top: 8px;
+    border: 1px solid var(--color-primary);
+    border-radius: 999px;
+    background: var(--color-primary);
+    color: var(--color-surface);
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.signup-page .button:hover {
+    background: var(--color-primary-hover);
+    box-shadow: 0 10px 20px -12px rgba(85, 87, 66, 0.7);
+    transform: translateY(-1px);
+}
+
+.signup-page .button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.signup-page .button:disabled {
+    border-color: var(--color-disabled);
+    background: var(--color-disabled);
+    color: var(--color-text-sub);
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ========================================
+   ログインへのリンク
+======================================== */
+
 .signup-page .login {
-    margin-top: 22px;
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--stitch);
     color: var(--color-text-sub);
     font-size: 13px;
     text-align: center;
 }
 
 .signup-page .login a {
+    margin-left: 4px;
     color: var(--color-primary);
     font-weight: 700;
     text-decoration: none;
@@ -286,6 +481,10 @@
     text-decoration: underline;
 }
 
+/* ========================================
+   登録完了メッセージ（チェックマーク付き）
+======================================== */
+
 .signup-page .signup-complete {
     padding: 24px 0 8px;
     text-align: center;
@@ -295,12 +494,28 @@
     display: none;
 }
 
+.signup-page .signup-complete h2::before {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: var(--color-beige) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2354745B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m5 12.5 4.5 4.5L19 7.5'/%3E%3C/svg%3E") center / 30px 30px no-repeat;
+}
+
 .signup-page .signup-complete h2 {
     margin: 0 0 12px;
     color: var(--color-primary);
     font-family: var(--font-section);
     font-size: 22px;
     font-weight: 600;
+    font-feature-settings: "palt";
+}
+
+/* JSが見出しにフォーカスを移すだけなので、枠線は出さない */
+.signup-page .signup-complete h2:focus {
+    outline: none;
 }
 
 .signup-page .signup-complete p {
@@ -317,13 +532,29 @@
     text-decoration: none;
 }
 
+/* ========================================
+   RESPONSIVE
+======================================== */
+
 @media (max-width: 600px) {
     .signup-page {
-        padding: 16px 10px;
+        padding: 16px 10px 40px;
     }
 
     .signup-page .container {
-        padding: 24px 18px;
+        --pad-x: 18px;
+        --pad-y: 24px;
+    }
+
+    .signup-page .logo {
+        padding: 16px 16px 22px;
+        font-size: 28px;
+    }
+
+    .signup-page .logo::after {
+        right: 12px;
+        left: 12px;
+        bottom: 7px;
     }
 
     .signup-page .name-fields {
@@ -339,8 +570,8 @@
         margin-bottom: 26px;
     }
 
-    .signup-page .logo {
-        font-size: 30px;
+    .signup-page .signup-section legend {
+        font-size: 18px;
     }
 
     .signup-page .welcome {
@@ -350,15 +581,23 @@
     .signup-page .description {
         margin-bottom: 26px;
     }
+
+    /* iPhone の Safari は 16px 未満の入力欄をタップすると勝手に拡大するので、スマホだけ 16px にする */
+    .signup-page .input-group input,
+    .signup-page .input-group select,
+    .signup-page .input-group textarea {
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 360px) {
     .signup-page .container {
-        padding: 22px 14px;
+        --pad-x: 14px;
+        --pad-y: 22px;
     }
 
     .signup-page .password-toggle {
-        min-width: 50px;
+        min-width: 52px;
     }
 }
 
@@ -368,5 +607,9 @@
     .signup-page *::after {
         scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
+    }
+
+    .signup-page .button:hover {
+        transform: none;
     }
 }
