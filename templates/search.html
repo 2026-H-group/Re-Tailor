@@ -3,13 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#76513B">
     <title>Re:Tailor - 検索</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../static/search.css">
     <link rel="stylesheet" href="../static/common-footer.css">
     <script src="../static/common-footer.js" defer></script>
 </head>
-<body>
+<body class="search-page">
 
     <!-- ヘッダー（上部のピルボタンを撤去しシンプル化） -->
     <header class="site-header">
@@ -44,7 +48,7 @@
                 <label>系統<select id="styleFilter" name="style"><option value="">すべて</option><option>コンサバ</option><option>トラッド</option><option>きれいめカジュアル</option><option>フェミニン</option><option>アメカジ</option><option>スポカジ</option><option>ストリート</option><option>ベーシック</option><option>ミニマル</option><option>モード</option><option>ガーリー</option><option>エレガンス</option></select></label>
                 <label>カテゴリ<select id="categoryFilter" name="category"><option value="">すべて</option><option>トップス</option><option>ボトムス</option><option>アウター</option><option>ワンピース</option><option>バッグ</option><option>アクセサリー</option></select></label>
                 <label>カラー<select id="colorFilter" name="color"><option value="">すべて</option><option>ナチュラル</option><option>アイボリー</option><option>インディゴ</option><option>生成り</option><option>ブラウン</option><option>ベージュ</option><option>ミックス</option></select></label>
-                <label>サイズ<select id="sizeFilter" name="size"><option value="">すべて</option><option value="XS">XS</option><option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option><option value="F">F</option></select></label>
+                <label>サイズ<select id="sizeFilter" name="size"><option value="">すべて</option><option value="XS">XS</option><option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option><option value="フリー">フリー</option></select></label>
             </form>
             <p id="searchStatus" class="search-status" role="status" aria-live="polite"></p>
             <div class="grid-container" id="searchResults"></div>

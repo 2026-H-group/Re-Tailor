@@ -63,3 +63,302 @@ form .primary-button { margin-top: 22px; }
   .closet-item { align-items: flex-start; }
   .delete-button { align-self: center; }
 }
+
+.closet-page {
+  --closet-primary: #696B53;
+  --closet-primary-hover: #555742;
+  --closet-header: #76513B;
+  --closet-background: #F3F0E9;
+  --closet-surface: #FFFFFF;
+  --closet-text: #35362F;
+  --closet-text-sub: #706B64;
+  --closet-beige: #EAE4DA;
+  --closet-border: #D8D2C6;
+  --closet-divider: #E3DED4;
+  --closet-accent: #B87961;
+  min-height: 100vh;
+  color: var(--closet-text);
+  background:
+    radial-gradient(ellipse at 50% 24%, rgba(255, 255, 255, 0.58) 0%, transparent 70%),
+    linear-gradient(125deg, #F8F6F1 0%, var(--closet-background) 58%, var(--closet-beige) 100%);
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 1.7;
+}
+
+.closet-page a:focus-visible,
+.closet-page button:focus-visible,
+.closet-page select:focus-visible {
+  outline: 3px solid var(--closet-accent);
+  outline-offset: 3px;
+}
+
+.closet-page .topbar {
+  background: var(--closet-header);
+  border: 0;
+  color: var(--closet-surface);
+}
+
+.closet-page .back-link,
+.closet-page .brand,
+.closet-page .nav-link {
+  color: var(--closet-surface);
+}
+
+.closet-page .back-link {
+  width: 36px;
+  border-radius: 50%;
+  text-align: center;
+  transition: background-color 150ms ease;
+}
+
+.closet-page .back-link:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.closet-page .brand {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 27px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.closet-page .nav-link {
+  border-color: rgba(255, 255, 255, 0.6);
+  border-radius: 6px;
+  transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.closet-page .nav-link:hover {
+  border-color: var(--closet-surface);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.closet-page .page-shell {
+  padding-top: 64px;
+}
+
+.closet-page .heading {
+  margin-bottom: 30px;
+}
+
+.closet-page .eyebrow {
+  color: var(--closet-primary);
+  font-family: "Cormorant Garamond", serif;
+  font-size: 14px;
+  letter-spacing: 0.16em;
+}
+
+.closet-page .heading h1 {
+  margin: 3px 0 7px;
+  color: var(--closet-text);
+  font-family: "Noto Serif JP", serif;
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.closet-page .heading p:last-child,
+.closet-page .item-count,
+.closet-page .required,
+.closet-page .empty {
+  color: var(--closet-text-sub);
+}
+
+.closet-page .panel {
+  margin-top: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.closet-page .section-heading {
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--closet-border);
+}
+
+.closet-page .section-heading h2 {
+  color: var(--closet-text);
+  font-family: "Noto Serif JP", serif;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.closet-page .item-count {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 13px;
+}
+
+.closet-page .primary-button,
+.closet-page .diagnosis-link {
+  min-height: 44px;
+  border: 1px solid var(--closet-primary);
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.closet-page .primary-button {
+  background: var(--closet-primary);
+  color: var(--closet-surface);
+}
+
+.closet-page .primary-button:hover {
+  border-color: var(--closet-primary-hover);
+  background: var(--closet-primary-hover);
+}
+
+.closet-page .filter-field {
+  max-width: 360px;
+  margin: 0 0 28px;
+}
+
+.closet-page .filter-field label {
+  color: var(--closet-text);
+  font-weight: 600;
+}
+
+.closet-page .filter-field select {
+  min-height: 44px;
+  border-color: var(--closet-border);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--closet-text);
+  font: inherit;
+}
+
+.closet-page .category-group {
+  margin-top: 30px;
+}
+
+.closet-page .category-group h3 {
+  margin-bottom: 12px;
+  color: var(--closet-text);
+  font-family: "Noto Serif JP", serif;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.closet-page .closet-list {
+  gap: 12px;
+}
+
+.closet-page .closet-item {
+  min-width: 0;
+  border-color: var(--closet-border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+.closet-page .closet-item:hover {
+  border-color: var(--closet-primary);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.closet-page .item-thumb {
+  border-color: var(--closet-border);
+  border-radius: 6px;
+  background: var(--closet-beige);
+}
+
+.closet-page .image-placeholder {
+  color: var(--closet-text-sub);
+}
+
+.closet-page .item-name {
+  color: var(--closet-text);
+}
+
+.closet-page .item-meta {
+  color: var(--closet-text-sub);
+}
+
+.closet-page .delete-button {
+  border-color: var(--closet-border);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--closet-text);
+  transition: border-color 150ms ease, background-color 150ms ease, color 150ms ease;
+}
+
+.closet-page .delete-button:hover {
+  border-color: var(--closet-accent);
+  background: #FFF9F8;
+  color: var(--closet-accent);
+}
+
+.closet-page .status-message {
+  margin: 0 0 24px;
+  border-color: var(--closet-primary);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--closet-primary);
+}
+
+.closet-page .diagnosis-link {
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--closet-primary);
+}
+
+.closet-page .diagnosis-link:hover {
+  background: var(--closet-primary);
+  color: var(--closet-surface);
+}
+
+@media (max-width: 620px) {
+  .closet-page .topbar {
+    padding: 0 15px;
+  }
+
+  .closet-page .brand {
+    font-size: 22px;
+  }
+
+  .closet-page .page-shell {
+    padding-top: 40px;
+  }
+
+  .closet-page .section-heading {
+    gap: 12px;
+  }
+
+  .closet-page .section-heading h2 {
+    font-size: 19px;
+  }
+
+  .closet-page .closet-item {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .closet-page .page-shell {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  .closet-page .nav-link {
+    padding: 6px 8px;
+  }
+
+  .closet-page .closet-item {
+    gap: 10px;
+  }
+
+  .closet-page .item-thumb {
+    width: 60px;
+    height: 60px;
+    flex-basis: 60px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .closet-page *,
+  .closet-page *::before,
+  .closet-page *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
