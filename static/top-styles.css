@@ -672,7 +672,7 @@ a {
 
     color: var(--color-text);
     font-family: var(--font-main);
-    background: linear-gradient(125deg, #F8F6F1 0%, #F3F0E9 58%, #EAE4DA 100%);
+    background: var(--color-background);
 }
 
 .home-page button,
@@ -767,9 +767,7 @@ a {
 .home-page .hero-card {
     padding: clamp(52px, 8vw, 92px) 28px;
     border: 1px solid rgba(216, 210, 198, 0.8);
-    background:
-        radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.86), transparent 68%),
-        rgba(255, 255, 255, 0.42);
+    background: var(--color-surface);
 }
 
 .home-page .hero-mark {
