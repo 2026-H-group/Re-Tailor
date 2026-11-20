@@ -5,19 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>お支払い方法 | Re:Tailor</title>
   <link rel="stylesheet" href="../static/member-profile.css">
+  <link rel="stylesheet" href="../static/payment-method.css">
     <link rel="stylesheet" href="../static/common-footer.css">
     <script src="../static/common-footer.js" defer></script>
 </head>
 <body>
-  <main class="placeholder-page">
-    <a href="./member-profile.html" aria-label="会員情報へ戻る">←</a>
-    <p style="color: var(--rt-olive); font-weight: 700; margin-top: 24px;">（モック）</p>
-    <h1>お支払い方法の管理</h1>
-    <section class="card">
-      <h2 class="field-label">登録中のカード</h2>
-      <p style="font-size: 18px; font-weight: 700;">VISA 末尾 4321</p>
-      <p>顧客ID: cus_mock_yamada</p>
+  <main class="payment-page">
+    <a class="payment-back" href="./member-profile.html" aria-label="会員情報へ戻る">← 会員情報へ戻る</a>
+    <p class="payment-eyebrow">PAYMENT SETTINGS</p>
+    <h1>お支払い方法の変更</h1>
+    <p class="payment-description">次回のお買い物に使用するカード情報を更新できます。</p>
+
+    <section class="payment-card" aria-labelledby="currentPaymentTitle">
+      <h2 id="currentPaymentTitle">現在のお支払い方法</h2>
+      <p id="currentPayment" aria-live="polite">読み込み中...</p>
     </section>
+
+    <form id="paymentForm" class="payment-form">
+      <h2>新しいカード情報</h2>
+      <label for="cardBrand">カードブランド
+        <select id="cardBrand" name="brand" required>
+          <option value="visa">VISA</option>
+          <option value="mastercard">Mastercard</option>
+          <option value="amex">American Express</option>
+          <option value="jcb">JCB</option>
+          <option value="diners">Diners Club</option>
+        </select>
+      </label>
+      <label for="cardLast4">カード番号の下4桁
+        <input id="cardLast4" name="last4" type="text" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off" required>
+      </label>
+      <fieldset>
+        <legend>有効期限</legend>
+        <label for="expMonth">月
+          <input id="expMonth" name="expMonth" type="number" min="1" max="12" inputmode="numeric" required>
+        </label>
+        <label for="expYear">年
+          <input id="expYear" name="expYear" type="number" inputmode="numeric" required>
+        </label>
+      </fieldset>
+      <p class="payment-note">デモ画面です。カード番号全体やセキュリティコードは入力・保存せず、入力した情報はこのブラウザー内に保存されます。</p>
+      <p id="paymentStatus" class="payment-status" role="status" aria-live="polite"></p>
+      <div class="payment-actions">
+        <a href="./member-profile.html">キャンセル</a>
+        <button id="savePayment" type="submit">変更を保存する</button>
+      </div>
+    </form>
   </main>
+  <script src="../static/api.js"></script>
+  <script src="../static/payment-method.js"></script>
 </body>
 </html>

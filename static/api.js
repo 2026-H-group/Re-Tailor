@@ -100,7 +100,7 @@ function formatEmailDisplay(email) {
 
 function formatPaymentMethod(method) {
   if (!method) return "未登録";
-  return `クレジットカード (${PAYMENT_BRAND_LABELS[method.brand]}末尾${method.last4})`;
+  return `クレジットカード (${PAYMENT_BRAND_LABELS[method.brand] || method.brand}末尾${method.last4})`;
 }
 
 async function fetchUserProfile() {
@@ -145,11 +145,41 @@ async function changePassword(input) {
 
 async function createStripePortalSession() {
   await wait(220);
-  const current = readStoredProfile();
-  if (!current.paymentMethod?.stripeCustomerId) {
-    return { data: null, error: { message: "Stripe 顧客が未連携です。" } };
-  }
   return { data: { url: "./billing-portal.html" }, error: null };
+}
+
+async function updatePaymentMethod(input) {
+  await wait(220);
+  const expMonth = Number(input.expMonth);
+  const expYear = Number(input.expYear);
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const isExpired = expYear === currentYear && expMonth < currentDate.getMonth() + 1;
+  if (!PAYMENT_BRAND_LABELS[input.brand] || !/^\d{4}$/.test(input.last4)) {
+    return { data: null, error: { message: "カードブランドとカード番号の下4桁を確認してください。" } };
+  }
+  if (!Number.isInteger(expMonth) || expMonth < 1 || expMonth > 12
+    || !Number.isInteger(expYear) || expYear < currentYear || expYear > currentYear + 25 || isExpired) {
+    return { data: null, error: { message: "有効期限を確認してください。" } };
+  }
+
+  const current = readStoredProfile();
+  const paymentMethod = {
+    ...(current.paymentMethod || {}),
+    id: `pm_mock_${input.brand}_${input.last4}`,
+    brand: input.brand,
+    last4: input.last4,
+    expMonth,
+    expYear,
+    stripePaymentMethodId: `pm_mock_${input.brand}_${input.last4}`,
+  };
+  const next = { ...current, paymentMethod, updatedAt: new Date().toISOString() };
+  try {
+    writeStoredProfile(next);
+  } catch {
+    return { data: null, error: { message: "お支払い方法を保存できませんでした。" } };
+  }
+  return { data: next, error: null };
 }
 
 window.RetailorApi = {
@@ -157,6 +187,7 @@ window.RetailorApi = {
   GENDER_LABELS,
   fetchUserProfile,
   updateUserProfile,
+  updatePaymentMethod,
   changePassword,
   createStripePortalSession,
   formatPostalCode,

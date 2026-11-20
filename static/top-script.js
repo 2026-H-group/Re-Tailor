@@ -85,14 +85,20 @@ function cardTemplate(product) {
           <div class="product-actions">
             <button class="icon-toggle ${isLiked ? "liked" : ""}"
                     data-action="like"
-                    data-id="${product.id}">
-              いいね
+                    data-id="${product.id}"
+                    aria-label="${isLiked ? "いいねを解除" : "いいね"}"
+                    aria-pressed="${isLiked}"
+                    title="${isLiked ? "いいねを解除" : "いいね"}">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg>
             </button>
 
             <button class="icon-toggle ${isAdded ? "added" : ""}"
                     data-action="cart"
-                    data-id="${product.id}">
-              カート
+                    data-id="${product.id}"
+                    aria-label="${isAdded ? "カートから削除" : "カートに追加"}"
+                    aria-pressed="${isAdded}"
+                    title="${isAdded ? "カートから削除" : "カートに追加"}">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M2.5 3h2l2.2 11.4a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L20 7H5.3"/></svg>
             </button>
           </div>
         </div>

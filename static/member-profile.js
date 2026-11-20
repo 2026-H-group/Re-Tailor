@@ -43,7 +43,7 @@
     isEditing = next;
     els.view.classList.toggle("hidden", next);
     els.edit.classList.toggle("hidden", !next);
-    els.startEdit.classList.toggle("hidden", next);
+    if (els.startEdit) els.startEdit.classList.toggle("hidden", next);
     els.cancelEdit.classList.toggle("hidden", !next);
   }
 
@@ -185,10 +185,12 @@
     await persist(form);
   }
 
-  els.startEdit.addEventListener("click", () => {
-    fillForm(profile);
-    setEditing(true);
-  });
+  if (els.startEdit) {
+    els.startEdit.addEventListener("click", () => {
+      fillForm(profile);
+      setEditing(true);
+    });
+  }
 
   els.cancelEdit.addEventListener("click", () => {
     fillForm(profile);
@@ -196,9 +198,11 @@
     setEditing(false);
   });
 
-  els.save.addEventListener("click", () => {
-    void handleSave();
-  });
+  if (els.save) {
+    els.save.addEventListener("click", () => {
+      void handleSave();
+    });
+  }
 
   els.cancelEmail.addEventListener("click", () => {
     els.dialog.classList.add("hidden");

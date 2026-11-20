@@ -888,14 +888,30 @@ a {
 }
 
 .home-page .icon-toggle {
-    min-height: 34px;
-    padding: 6px 11px;
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    padding: 7px;
     border: 1px solid var(--color-border);
     border-radius: 999px;
     background: var(--color-surface);
     color: var(--color-text);
-    font: inherit;
-    font-size: 12px;
+    cursor: pointer;
+}
+
+.home-page .icon-toggle svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.home-page .icon-toggle.liked[data-action="like"] svg {
+    fill: currentColor;
 }
 
 .home-page .icon-toggle:hover,
@@ -1228,7 +1244,8 @@ body.home-page:has(.mobile-drawer.mobile-open) {
 }
 
 /* アイコンのタイル */
-.home-page .drawer-link::before {
+.home-page .drawer-link::before,
+.about-page .drawer-link::before {
     content: "";
     width: 38px;
     height: 38px;
@@ -1242,13 +1259,15 @@ body.home-page:has(.mobile-drawer.mobile-open) {
     transition: background-color 0.18s ease;
 }
 
-.home-page .drawer-link:hover::before {
+.home-page .drawer-link:hover::before,
+.about-page .drawer-link:hover::before {
     background-color: var(--color-primary);
     background-image: var(--ico-on);
 }
 
 /* 右の「＞」（正方形の上と右の枠線だけを45度回転）。margin-left:auto で右端へ */
-.home-page .drawer-link::after {
+.home-page .drawer-link::after,
+.about-page .drawer-link::after {
     content: "";
     width: 8px;
     height: 8px;
@@ -1261,61 +1280,71 @@ body.home-page:has(.mobile-drawer.mobile-open) {
     transition: transform 0.18s ease, opacity 0.18s ease;
 }
 
-.home-page .drawer-link:hover::after {
+.home-page .drawer-link:hover::after,
+.about-page .drawer-link:hover::after {
     opacity: 0.9;
     transform: translateX(3px) rotate(45deg);
 }
 
 /* --- リンクごとの設定（並び順 order とアイコン） --- */
-.home-page .drawer-link[href="syuppin_itiran.html"] {
+.home-page .drawer-link[href="syuppin_itiran.html"],
+.about-page .drawer-link[href="syuppin_itiran.html"] {
     --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23696B53' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 8h3l1.5-2h7L17 8h3v11H4z'/%3E%3Ccircle cx='12' cy='13' r='3.2'/%3E%3C/svg%3E");
     --ico-on: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 8h3l1.5-2h7L17 8h3v11H4z'/%3E%3Ccircle cx='12' cy='13' r='3.2'/%3E%3C/svg%3E");
     --i: 1;
     order: 1;
 }
-.home-page .drawer-link[href="top-index.html"] {
+.home-page .drawer-link[href="top-index.html"],
+.about-page .drawer-link[href="top-index.html"] {
     --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23696B53' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z'/%3E%3C/svg%3E");
     --ico-on: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z'/%3E%3C/svg%3E");
     --i: 3;
     order: 3;
 }
-.home-page .drawer-link[href="#products"] {
+.home-page .drawer-link[href="#products"],
+.about-page .drawer-link[href="top-index.html#products"] {
     --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23696B53' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 8h14l-1 11H6z'/%3E%3Cpath d='M9 8V7a3 3 0 0 1 6 0v1'/%3E%3C/svg%3E");
     --ico-on: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 8h14l-1 11H6z'/%3E%3Cpath d='M9 8V7a3 3 0 0 1 6 0v1'/%3E%3C/svg%3E");
     --i: 4;
     order: 4;
 }
-.home-page .drawer-link[href="personality.html"] {
+.home-page .drawer-link[href="personality.html"],
+.about-page .drawer-link[href="personality.html"] {
     --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23696B53' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='8.5'/%3E%3Cpath d='M9 14.5c.8 1 1.8 1.5 3 1.5s2.2-.5 3-1.5'/%3E%3Cpath d='M9.5 10h.01M14.5 10h.01'/%3E%3C/svg%3E");
     --ico-on: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='8.5'/%3E%3Cpath d='M9 14.5c.8 1 1.8 1.5 3 1.5s2.2-.5 3-1.5'/%3E%3Cpath d='M9.5 10h.01M14.5 10h.01'/%3E%3C/svg%3E");
     --i: 5;
     order: 5;
 }
-.home-page .drawer-link[href="my-closet.html"] {
+.home-page .drawer-link[href="my-closet.html"],
+.about-page .drawer-link[href="my-closet.html"] {
     --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23696B53' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 7a2 2 0 1 1 2 2c-1 .5-2 1-2 2v1'/%3E%3Cpath d='m12 12 8 5.5a1 1 0 0 1-.6 1.8H4.6a1 1 0 0 1-.6-1.8z'/%3E%3C/svg%3E");
     --ico-on: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 7a2 2 0 1 1 2 2c-1 .5-2 1-2 2v1'/%3E%3Cpath d='m12 12 8 5.5a1 1 0 0 1-.6 1.8H4.6a1 1 0 0 1-.6-1.8z'/%3E%3C/svg%3E");
     --i: 6;
     order: 6;
 }
-.home-page .drawer-link[href="cart.html"] {
+.home-page .drawer-link[href="cart.html"],
+.about-page .drawer-link[href="cart.html"] {
     --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23696B53' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='9' cy='20' r='1.4'/%3E%3Ccircle cx='17' cy='20' r='1.4'/%3E%3Cpath d='M2.5 3h2l2.2 11.4a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L20 7H5.3'/%3E%3C/svg%3E");
     --ico-on: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='9' cy='20' r='1.4'/%3E%3Ccircle cx='17' cy='20' r='1.4'/%3E%3Cpath d='M2.5 3h2l2.2 11.4a2 2 0 0 0 2 1.6h7.6a2 2 0 0 0 2-1.6L20 7H5.3'/%3E%3C/svg%3E");
     --i: 7;
     order: 7;
 }
-.home-page .drawer-link[href$="about-index.html"] {
+.home-page .drawer-link[href$="about-index.html"],
+.about-page .drawer-link[href$="about-index.html"] {
     --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23696B53' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='8.5'/%3E%3Cpath d='M12 11v5M12 8h.01'/%3E%3C/svg%3E");
     --ico-on: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='8.5'/%3E%3Cpath d='M12 11v5M12 8h.01'/%3E%3C/svg%3E");
     --i: 8;
     order: 8;
 }
-.home-page .drawer-link[href="help.html"] {
+.home-page .drawer-link[href="help.html"],
+.about-page .drawer-link[href="help.html"] {
     --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23696B53' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3.5' y='5.5' width='17' height='13' rx='2'/%3E%3Cpath d='m4 7 8 6 8-6'/%3E%3C/svg%3E");
     --ico-on: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3.5' y='5.5' width='17' height='13' rx='2'/%3E%3Cpath d='m4 7 8 6 8-6'/%3E%3C/svg%3E");
     --i: 9;
     order: 9;
 }
-.home-page .drawer-link[href$="login.html"] {
+.home-page .drawer-link[href$="login.html"],
+.about-page .drawer-link[href$="login.html"] {
     --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23696B53' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='11' width='14' height='9' rx='2'/%3E%3Cpath d='M8 11V8a4 4 0 0 1 8 0v3'/%3E%3C/svg%3E");
     --ico-on: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23FFFFFF' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='5' y='11' width='14' height='9' rx='2'/%3E%3Cpath d='M8 11V8a4 4 0 0 1 8 0v3'/%3E%3C/svg%3E");
     --i: 11;
@@ -1341,7 +1370,9 @@ body.home-page:has(.mobile-drawer.mobile-open) {
 }
 
 .home-page .drawer-link[href="syuppin_itiran.html"]::before,
-.home-page .drawer-link[href="syuppin_itiran.html"]:hover::before {
+.home-page .drawer-link[href="syuppin_itiran.html"]:hover::before,
+.about-page .drawer-link[href="syuppin_itiran.html"]::before,
+.about-page .drawer-link[href="syuppin_itiran.html"]:hover::before {
     width: 20px;
     height: 20px;
     border-radius: 0;
@@ -1349,7 +1380,8 @@ body.home-page:has(.mobile-drawer.mobile-open) {
     background-image: var(--ico-on);
 }
 
-.home-page .drawer-link[href="syuppin_itiran.html"]::after {
+.home-page .drawer-link[href="syuppin_itiran.html"]::after,
+.about-page .drawer-link[href="syuppin_itiran.html"]::after {
     display: none;
 }
 
@@ -1373,7 +1405,9 @@ body.home-page:has(.mobile-drawer.mobile-open) {
 }
 
 .home-page .drawer-link[href="signup.html"]::before,
-.home-page .drawer-link[href="signup.html"]::after {
+.home-page .drawer-link[href="signup.html"]::after,
+.about-page .drawer-link[href="signup.html"]::before,
+.about-page .drawer-link[href="signup.html"]::after {
     display: none;
 }
 
@@ -1404,7 +1438,9 @@ body.home-page:has(.mobile-drawer.mobile-open) {
 }
 
 .home-page .drawer-link[href$="login.html"]::before,
-.home-page .drawer-link[href$="login.html"]:hover::before {
+.home-page .drawer-link[href$="login.html"]:hover::before,
+.about-page .drawer-link[href$="login.html"]::before,
+.about-page .drawer-link[href$="login.html"]:hover::before {
     width: 15px;
     height: 15px;
     border-radius: 0;
@@ -1413,7 +1449,8 @@ body.home-page:has(.mobile-drawer.mobile-open) {
     background-image: var(--ico);
 }
 
-.home-page .drawer-link[href$="login.html"]::after {
+.home-page .drawer-link[href$="login.html"]::after,
+.about-page .drawer-link[href$="login.html"]::after {
     display: none;
 }
 
