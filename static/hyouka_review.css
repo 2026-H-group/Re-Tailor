@@ -211,31 +211,60 @@
     line-height: 1;
 }
 
-.review-list-page .score-stars,
-.review-list-page .review-stars {
+.review-list-page .score-stars {
+    margin-top: 10px;
     color: var(--color-accent);
+    font-size: 18px;
+    letter-spacing: 3px;
 }
 
 .review-list-page .score-bars {
+    display: flex;
     flex: 1;
     min-width: 0;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.review-list-page .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .review-list-page .bar-label {
+    width: 14px;
     color: var(--color-text-sub);
+    font-size: 13px;
+    text-align: right;
 }
 
 .review-list-page .bar-track {
+    height: 8px;
+    flex: 1;
+    overflow: hidden;
+    border-radius: 999px;
     background: var(--color-beige);
 }
 
 .review-list-page .bar-fill {
+    height: 100%;
+    border-radius: 999px;
     background: var(--color-primary);
+    transition: width 0.4s ease;
 }
 
 /* ---------- 個別レビュー ---------- */
 
+.review-list-page .review-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
 .review-list-page .review-card {
+    display: flex;
+    gap: 16px;
     border: 1px solid var(--color-border);
     border-radius: 8px;
     padding: 20px 22px;
@@ -252,28 +281,63 @@
 }
 
 .review-list-page .review-avatar {
+    width: 46px;
+    height: 46px;
+    flex-shrink: 0;
+    border-radius: 50%;
     background: var(--color-beige);
 }
 
 .review-list-page .review-body {
     min-width: 0;
+    flex: 1;
+}
+
+.review-list-page .review-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
 }
 
 .review-list-page .review-name {
     color: var(--color-text);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.review-list-page .review-stars {
+    color: var(--color-accent);
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.review-list-page .review-product-tag {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 6px 0 10px;
 }
 
 .review-list-page .review-comment {
+    margin: 0;
     color: var(--color-text);
+    font-size: 14px;
+    line-height: 1.7;
     overflow-wrap: anywhere;
 }
 
 .review-list-page .review-product-thumb {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    border-radius: 4px;
     background: var(--color-beige);
 }
 
 .review-list-page .review-product-name {
     color: var(--color-text-sub);
+    font-size: 12px;
 }
 
 /* ---------- レスポンシブ ---------- */
