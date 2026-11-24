@@ -1,20 +1,279 @@
-.purchase-option { display:grid; grid-template-columns:24px 90px 1fr; align-items:center; gap:16px; }
-.purchase-option input { width:18px; height:18px; accent-color:var(--olive,#3f4a2e); }
-.purchase-option .history-image { width:90px; }
-.purchase-option-info { min-width:0; }
-.purchase-option-info h2 { margin:0; font-size:17px; }
-.purchase-option-info p { margin:4px 0 0; color:var(--sub,#666); font-size:13px; }
-.purchase-option-info .registered-label { color:var(--olive,#3f4a2e); font-weight:700; }
-.register-status { min-height:24px; color:var(--olive,#3f4a2e); }
-.complete-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:18px; }
-.register-button,.history-button { display:inline-flex; min-height:44px; align-items:center; justify-content:center; padding:10px 18px; border:1px solid var(--olive,#3f4a2e); font:inherit; text-decoration:none; cursor:pointer; }
-.register-button { background:var(--olive,#3f4a2e); color:#fff; }
-.history-button { background:#fff; }
-.register-button:disabled { opacity:.5; cursor:not-allowed; }
-[hidden] { display:none !important; }
-@media(max-width:600px) {
-  .purchase-option { grid-template-columns:22px 64px 1fr; gap:10px; }
-  .purchase-option .history-image { width:64px; }
-  .complete-actions { flex-direction:column; }
-  .register-button,.history-button { width:100%; }
+
+/* ========================================
+   購入完了ページ専用CSS
+======================================== */
+
+
+/* =========================
+   ヘッダー
+========================= */
+
+.page-header {
+    width: 100%;
+    height: 80px;
+    padding: 0 28px;
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+
+    background: #76513B;
+    color: #fff;
+}
+
+.page-header a {
+    text-decoration: none;
+}
+
+/* 戻るボタン */
+
+.page-header .back-link {
+    justify-self: start;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+    color: #fff;
+    font-size: 30px;
+    line-height: 1;
+
+    transition: opacity .2s ease;
+}
+
+.page-header .back-link:hover {
+    opacity: .7;
+}
+
+/* ロゴ */
+
+.page-header .brand {
+    justify-self: center;
+
+    color: #fff;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: .04em;
+    line-height: 1;
+
+    transition: opacity .2s ease;
+}
+
+.page-header .brand:hover {
+    opacity: .75;
+}
+
+/* 右側の空白 */
+
+.page-header .header-spacer {
+    justify-self: end;
+}
+
+
+/* =========================
+   購入商品選択
+========================= */
+
+.purchase-option {
+    display: grid;
+    grid-template-columns: 24px 90px 1fr;
+    align-items: center;
+    gap: 16px;
+}
+
+.purchase-option input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-primary);
+}
+
+.purchase-option .history-image {
+    width: 90px;
+}
+
+.purchase-option-info {
+    min-width: 0;
+}
+
+.purchase-option-info h2 {
+    margin: 0;
+    font-size: 17px;
+}
+
+.purchase-option-info p {
+    margin: 4px 0 0;
+    color: var(--color-text-sub);
+    font-size: 13px;
+}
+
+.purchase-option-info .registered-label {
+    color: var(--color-success);
+    font-weight: 700;
+}
+
+
+/* =========================
+   登録状態
+========================= */
+
+.register-status {
+    min-height: 24px;
+    color: var(--color-success);
+}
+
+
+/* =========================
+   ボタン
+========================= */
+
+.complete-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.register-button,
+.history-button {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 18px;
+
+    border: 1px solid var(--color-primary);
+
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.register-button {
+    background: var(--color-primary);
+    color: #fff;
+}
+
+.history-button {
+    background: var(--color-surface);
+    color: var(--color-text);
+}
+
+.register-button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+
+/* =========================
+   非表示
+========================= */
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* =========================
+   スマートフォン対応
+========================= */
+
+@media (max-width: 700px) {
+
+    /* ヘッダー */
+
+    .page-header {
+        height: 72px;
+        padding: 0 15px;
+    }
+
+    .page-header .brand {
+        font-size: 28px;
+    }
+
+    .page-header .back-link {
+        font-size: 27px;
+    }
+}
+
+
+/* =========================
+   小型スマートフォン対応
+========================= */
+
+@media (max-width: 380px) {
+
+    .page-header {
+        padding: 0 10px;
+    }
+
+    .page-header .brand {
+        font-size: 25px;
+    }
+
+    .page-header .back-link {
+        width: 34px;
+        height: 34px;
+        font-size: 25px;
+    }
+}
+
+
+/* =========================
+   購入商品・ボタンのスマホ対応
+========================= */
+
+@media (max-width: 600px) {
+
+    .purchase-option {
+        grid-template-columns: 22px 64px 1fr;
+        gap: 10px;
+    }
+
+    .purchase-option .history-image {
+        width: 64px;
+    }
+
+    .complete-actions {
+        flex-direction: column;
+    }
+
+    .register-button,
+    .history-button {
+        width: 100%;
+    }
+}
+
+
+/* =========================
+   フォーカス表示
+========================= */
+
+.page-header a:focus-visible,
+.register-button:focus-visible,
+.history-button:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+}
+
+
+/* =========================
+   アニメーション抑制
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
 }

@@ -1,86 +1,596 @@
+
+/* ========================================
+   フォント
+======================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Sans+JP:wght@400;500;600;700&display=swap");
+
+
+/* ========================================
+   デザイントークン
+======================================== */
+
 :root {
-  --olive: #3f4a2e;
-  --olive-dark: #2f3823;
-  --ink: #222;
-  --muted: #686b62;
-  --line: #dedfd8;
-  --paper: #fff;
-  --canvas: #f7f8f4;
+    --color-primary: #696B53;
+    --color-primary-hover: #555742;
+
+    --color-header: #76513B;
+
+    --color-background: #F3F0E9;
+    --color-surface: #FFFFFF;
+
+    --color-text: #35362F;
+    --color-text-sub: #706B64;
+
+    --color-beige: #EAE4D9;
+    --color-border: #D8D2C8;
+
+    --color-danger: #B85C50;
+
+    --font-main: "Noto Sans JP", sans-serif;
+    --font-brand: "Cormorant Garamond", serif;
 }
 
-* { box-sizing: border-box; }
+
+/* ========================================
+   基本設定
+======================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-  margin: 0;
-  min-height: 100vh;
-  color: var(--ink);
-  background: var(--canvas);
-  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+    margin: 0;
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    color: var(--color-text);
+    background: var(--color-background);
+
+    font-family: var(--font-main);
+    font-size: 14px;
+    line-height: 1.7;
 }
+
+a {
+    color: inherit;
+}
+
+
+/* ========================================
+   ヘッダー
+======================================== */
+
 .header {
-  min-height: 70px;
-  padding: 16px max(24px, calc((100% - 960px) / 2));
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--paper);
-  border-bottom: 1px solid var(--line);
+    width: 100%;
+    min-height: 80px;
+
+    padding: 16px max(28px, calc((100% - 960px) / 2));
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: var(--color-header);
+    color: #FFFFFF;
 }
-.brand { color: var(--olive); font-size: 20px; font-weight: 700; text-decoration: none; }
-.header-title { color: var(--muted); font-size: 14px; }
-.page { width: min(100% - 32px, 760px); margin: 0 auto; padding: 48px 0 64px; }
-.completion { text-align: center; }
+
+/* ブランド名 */
+
+.brand {
+    color: #FFFFFF;
+
+    font-family: var(--font-brand);
+    font-size: 32px;
+    font-weight: 600;
+
+    letter-spacing: 0.04em;
+    line-height: 1;
+
+    text-decoration: none;
+}
+
+/* ヘッダータイトル */
+
+.header-title {
+    color: #FFFFFF;
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/* ========================================
+   メインページ
+======================================== */
+
+.page {
+    width: min(100% - 32px, 760px);
+
+    margin: 0 auto;
+    padding: 48px 0 64px;
+
+    flex: 1;
+}
+
+.completion {
+    width: 100%;
+    text-align: center;
+}
+
+
+/* ========================================
+   完了マーク
+======================================== */
+
 .success-mark {
-  width: 48px;
-  height: 48px;
-  margin: 0 auto 12px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--olive);
-  color: #fff;
-  font-size: 13px;
-  font-weight: 700;
+    width: 52px;
+    height: 52px;
+
+    margin: 0 auto 14px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: var(--color-primary);
+    color: #FFFFFF;
+
+    font-size: 13px;
+    font-weight: 700;
 }
-.eyebrow { margin: 0; color: var(--olive); font-size: 11px; font-weight: 700; }
-h1 { margin: 8px 0; font-size: 26px; }
-.intro { margin: 0 0 28px; color: var(--muted); font-size: 14px; }
-.product { padding: 24px; text-align: left; background: var(--paper); border: 1px solid var(--line); border-radius: 6px; }
-.product-heading { display: flex; align-items: center; gap: 20px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+
+
+/* ========================================
+   完了メッセージ
+======================================== */
+
+.eyebrow {
+    margin: 0;
+
+    color: var(--color-primary);
+
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+}
+
+h1 {
+    margin: 10px 0;
+
+    color: var(--color-text);
+
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.intro {
+    margin: 0 0 28px;
+
+    color: var(--color-text-sub);
+
+    font-size: 14px;
+}
+
+
+/* ========================================
+   商品情報カード
+======================================== */
+
+.product {
+    padding: 24px;
+
+    background: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+
+    text-align: left;
+}
+
+
+/* 商品画像と商品名 */
+
+.product-heading {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    padding-bottom: 22px;
+
+    border-bottom: 1px solid var(--color-border);
+}
+
+
+/* 商品画像 */
+
 .product-image {
-  width: 112px;
-  aspect-ratio: 1;
-  flex: 0 0 auto;
-  display: grid;
-  place-items: center;
-  background: #eceee8;
-  color: #777b70;
-  font-size: 13px;
+    width: 112px;
+    aspect-ratio: 1;
+
+    flex: 0 0 auto;
+
+    display: grid;
+    place-items: center;
+
+    overflow: hidden;
+
+    background: var(--color-beige);
+    border-radius: 5px;
+
+    color: var(--color-text-sub);
+    font-size: 13px;
 }
-.product-title { min-width: 0; }
-.category { margin: 0 0 6px; color: var(--muted); font-size: 13px; }
-h2 { margin: 0; overflow-wrap: anywhere; font-size: 20px; }
-.price { margin: 10px 0 0; color: var(--olive); font-size: 22px; font-weight: 700; }
-.details { margin: 0; }
-.details > div { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 16px; padding: 14px 4px; border-bottom: 1px solid var(--line); }
-.details > div:last-child { border-bottom: 0; }
-dt { color: var(--muted); font-size: 14px; }
-dd { margin: 0; overflow-wrap: anywhere; font-size: 14px; line-height: 1.7; white-space: pre-wrap; }
-.notice { margin: 16px 0 0; color: #9b342d; font-size: 14px; }
-.actions { display: flex; justify-content: center; gap: 12px; margin-top: 24px; }
-.button { min-height: 50px; padding: 14px 22px; display: inline-flex; justify-content: center; align-items: center; border: 1px solid var(--olive); border-radius: 4px; font-size: 15px; font-weight: 700; text-decoration: none; }
-.button-primary { color: #fff; background: var(--olive); }
-.button-primary:hover { background: var(--olive-dark); }
-.button-secondary { color: var(--olive); background: var(--paper); }
-.button:focus-visible, .brand:focus-visible { outline: 3px solid #a8b28f; outline-offset: 3px; }
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+/* 商品情報 */
+
+.product-title {
+    min-width: 0;
+    flex: 1;
+}
+
+
+/* カテゴリ */
+
+.category {
+    margin: 0 0 6px;
+
+    color: var(--color-text-sub);
+
+    font-size: 13px;
+}
+
+
+/* 商品名 */
+
+h2 {
+    margin: 0;
+
+    color: var(--color-text);
+
+    font-size: 20px;
+    font-weight: 700;
+
+    overflow-wrap: anywhere;
+}
+
+
+/* 価格 */
+
+.price {
+    margin: 10px 0 0;
+
+    color: var(--color-primary);
+
+    font-size: 22px;
+    font-weight: 700;
+}
+
+
+/* ========================================
+   商品詳細
+======================================== */
+
+.details {
+    margin: 0;
+}
+
+/* 詳細の各行 */
+
+.details > div {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 1fr);
+    gap: 16px;
+
+    padding: 14px 4px;
+
+    border-bottom: 1px solid var(--color-border);
+}
+
+.details > div:last-child {
+    border-bottom: 0;
+}
+
+
+/* 項目名 */
+
+dt {
+    color: var(--color-text-sub);
+
+    font-size: 14px;
+    font-weight: 500;
+}
+
+
+/* 項目内容 */
+
+dd {
+    margin: 0;
+
+    color: var(--color-text);
+
+    font-size: 14px;
+    line-height: 1.7;
+
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+
+/* ========================================
+   通知メッセージ
+======================================== */
+
+.notice {
+    margin: 16px 0 0;
+    padding: 12px 14px;
+
+    border: 1px solid #E5B8B2;
+    border-radius: 5px;
+
+    background: #FFF4F2;
+    color: var(--color-danger);
+
+    font-size: 13px;
+}
+
+
+/* ========================================
+   操作ボタン
+======================================== */
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+
+    margin-top: 28px;
+}
+
+
+/* ボタン共通 */
+
+.button {
+    min-height: 50px;
+
+    padding: 14px 22px;
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid var(--color-primary);
+    border-radius: 5px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+/* 出品一覧へ戻る */
+
+.button-primary {
+    background: var(--color-primary);
+    color: #FFFFFF;
+}
+
+.button-primary:hover {
+    border-color: var(--color-primary-hover);
+    background: var(--color-primary-hover);
+}
+
+
+/* 出品内容を編集 */
+
+.button-secondary {
+    background: #FFFFFF;
+    color: var(--color-primary);
+}
+
+.button-secondary:hover {
+    background: var(--color-beige);
+}
+
+
+/* キーボード操作時のフォーカス */
+
+.button:focus-visible,
+.brand:focus-visible {
+    outline: 3px solid #B9BBA5;
+    outline-offset: 3px;
+}
+
+
+/* ========================================
+   スマートフォン対応
+======================================== */
+
 @media (max-width: 560px) {
-  .header { min-height: 60px; padding: 14px 16px; }
-  .page { padding-top: 32px; }
-  .product { padding: 16px; }
-  .product-heading { gap: 14px; }
-  .product-image { width: 84px; }
-  h1 { font-size: 22px; }
-  h2 { font-size: 17px; }
-  .details > div { grid-template-columns: 1fr; gap: 4px; }
-  .actions { flex-direction: column; }
-  .button { width: 100%; }
+
+    /* ヘッダー */
+
+    .header {
+        min-height: 72px;
+        padding: 14px 20px;
+    }
+
+    .brand {
+        font-size: 28px;
+    }
+
+    .header-title {
+        font-size: 13px;
+    }
+
+
+    /* ページ */
+
+    .page {
+        width: calc(100% - 32px);
+        padding: 32px 0 48px;
+    }
+
+
+    /* 完了メッセージ */
+
+    .success-mark {
+        width: 48px;
+        height: 48px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .intro {
+        font-size: 13px;
+    }
+
+
+    /* 商品カード */
+
+    .product {
+        padding: 16px;
+    }
+
+    .product-heading {
+        gap: 14px;
+        padding-bottom: 18px;
+    }
+
+    .product-image {
+        width: 84px;
+    }
+
+    h2 {
+        font-size: 17px;
+    }
+
+    .price {
+        font-size: 19px;
+    }
+
+
+    /* 商品詳細 */
+
+    .details > div {
+        grid-template-columns: 1fr;
+        gap: 4px;
+
+        padding: 12px 4px;
+    }
+
+    dt {
+        font-size: 12px;
+    }
+
+    dd {
+        font-size: 13px;
+    }
+
+
+    /* 操作ボタン */
+
+    .actions {
+        flex-direction: column;
+        gap: 10px;
+
+        margin-top: 22px;
+    }
+
+    .button {
+        width: 100%;
+        min-height: 48px;
+    }
+
+}
+
+
+/* ========================================
+   小さいスマートフォン対応
+======================================== */
+
+@media (max-width: 380px) {
+
+    .header {
+        padding: 14px 10px;
+    }
+
+    .brand {
+        font-size: 25px;
+    }
+
+    .header-title {
+        font-size: 12px;
+    }
+
+    .page {
+        width: calc(100% - 24px);
+        padding-top: 26px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .product {
+        padding: 12px;
+    }
+
+    .product-heading {
+        gap: 10px;
+    }
+
+    .product-image {
+        width: 76px;
+    }
+
+    h2 {
+        font-size: 15px;
+    }
+
+    .price {
+        font-size: 17px;
+    }
+
+}
+
+
+/* ========================================
+   動きを減らす設定
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+
 }

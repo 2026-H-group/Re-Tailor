@@ -3,36 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#76513B">
 
-    <title>購入手続き</title>
+    <title>購入手続き | Re:Tailor</title>
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@600&display=swap"
+        rel="stylesheet"
+    >
     <link rel="stylesheet" href="../static/buy-style.css">
     <link rel="stylesheet" href="../static/common-footer.css">
+
     <script src="../static/common-footer.js" defer></script>
 </head>
 
+
 <body>
+    
 
-<div class="page-shell">
-
-    <!-- ヘッダー -->
-    <header class="topbar">
-        <!-- ボタンをクリックしたらトップページに遷移します -->
-        <a href="top-index.html" class="back-btn" aria-label="トップページへ戻る">
+    <!-- ヘッダー：画面幅いっぱい -->
+    <header class="page-header">
+        <a href="top-index.html"
+           class="back-link"
+           aria-label="トップページへ戻る">
             ←
         </a>
 
-        <h1>購入手続き</h1>
+        <a class="brand" href="top-index.html">
+            Re:Tailor
+        </a>
+
+        <span class="header-spacer" aria-hidden="true"></span>
     </header>
+    
 
-
-    <main class="purchase-layout">
+    <!-- 購入ページ本体 -->
+    <main class="page-shell purchase-layout">
 
         <!-- =========================
              左側
         ========================== -->
 
         <div class="purchase-main">
+            <div class="confirm-title">
+            <h1>購入手続き</h1>
+            
+        </div>
+
+            <!-- ここから既存の配送先・支払い方法・配送方法 -->
+
 
             <!-- 配送先 -->
             <section class="panel">
@@ -512,13 +535,12 @@
 
         </aside>
 
+                   
+
     </main>
 
-</div>
-
-
-<script src="../static/product-data.js"></script>
-<script src="../static/script.js"></script>
+    <script src="../static/product-data.js"></script>
+    <script src="../static/script.js"></script>
 
 </body>
 </html>

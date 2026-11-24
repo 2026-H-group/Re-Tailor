@@ -1,22 +1,18 @@
 :root {
-  --iv-bg: #f5f5f2;
-  --iv-surface: #fff;
-  --iv-ink: #171815;
-  --iv-muted: #686a63;
-  --iv-line: #dedfd8;
-  :root {
     --iv-bg: #f5f5f2;
     --iv-surface: #fff;
     --iv-ink: #171815;
     --iv-muted: #686a63;
     --iv-line: #dedfd8;
+
     --iv-olive: #596341;
     --iv-olive-dark: #414b30;
     --iv-soft-olive: #eef0e9;
     --iv-danger: #8b3d35;
+
     --iv-radius: 6px;
     --iv-font: Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
-  }
+}
 
   * { box-sizing: border-box; }
   html { min-width: 320px; background: var(--iv-bg); }
@@ -76,8 +72,76 @@
   .mock-controls label { color: var(--iv-ink); }
   .mock-controls select { min-height: 42px; padding: 8px 10px; border: 1px solid var(--iv-line); border-radius: 4px; background: #fff; color: var(--iv-ink); }
 
-  @media (max-width: 560px) {
-    .topbar { min-height: 58px; padding: 0 16px; }
+  
+  /* =========================
+   共通ヘッダー
+========================= */
+
+.topbar {
+    width: 100%;
+    height: 80px;
+    padding: 0 28px;
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+
+    background-color: #76513B;
+    color: #ffffff;
+}
+
+/* 戻るボタン */
+.topbar .back-link {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    color: #ffffff;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+/* ロゴ */
+.topbar .brand {
+    justify-self: center;
+
+    color: #ffffff;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 32px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* 右側の余白 */
+.topbar .header-spacer {
+    width: 40px;
+    height: 40px;
+    justify-self: end;
+}
+
+/* =========================
+   スマートフォン
+========================= */
+
+@media (max-width: 700px) {
+    .topbar {
+        height: 72px;
+        padding: 0 20px;
+    }
+
+    .topbar .back-link {
+        font-size: 27px;
+    }
+
+    .topbar .brand {
+        font-size: 28px;
+    }
+}
+@media (max-width: 560px) {
     .page-shell { width: min(100% - 32px, 760px); padding: 30px 0 48px; }
     .page-shell > h1 { font-size: 24px; }
     .lead, .card-copy { font-size: 13px; }
@@ -95,3 +159,21 @@
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
   }
+
+/* =========================
+   小型スマートフォン
+========================= */
+
+@media (max-width: 380px) {
+    .topbar {
+        padding: 0 10px;
+    }
+
+    .topbar .back-link {
+        font-size: 25px;
+    }
+
+    .topbar .brand {
+        font-size: 25px;
+    }
+}

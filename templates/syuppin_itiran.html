@@ -1,24 +1,37 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>出品一覧 | Re:Tailor</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="../static/syuppin.css">
-<title>出品一覧</title>
-    <link rel="stylesheet" href="../static/common-footer.css">
-    <script src="../static/common-footer.js" defer></script>
+<link rel="stylesheet" href="../static/common-footer.css">
+
+<script src="../static/common-footer.js" defer></script>
 </head>
+
 <body>
   <div class="site">
-    <div class="header">
-      <div class="header-inner">
-        <a class="back-btn" href="top-index.html" title="戻る">←</a>
-        <div class="header-title">出品一覧</div>
-        <a class="add-btn" href="syuppin.html">＋出品</a>
-      </div>
-    </div>
 
-    <div class="page">
+    <!-- 共通ヘッダー -->
+    <header class="topbar">
+      <a class="back-link" href="top-index.html" aria-label="トップページへ戻る">
+        <span aria-hidden="true">←</span>
+      </a>
+
+      <a class="brand" href="top-index.html">Re:Tailor</a>
+
+      <a class="header-action" href="syuppin.html">＋出品</a>
+    </header>
+
+    <!-- 出品一覧 -->
+    <main class="page">
       <div class="tabs">
         <button class="tab active" type="button" data-status="販売中" aria-pressed="true">販売中</button>
         <button class="tab" type="button" data-status="売却済み" aria-pressed="false">売却済み</button>
@@ -26,19 +39,24 @@
       </div>
 
       <div class="list" id="listingList" aria-live="polite"></div>
-    </div>
+    </main>
+
   </div>
 
   <script src="../static/syuppin.js"></script>
+
   <script>
     document.querySelectorAll('.tab').forEach(function (t) {
       t.addEventListener('click', function () {
-        document.querySelectorAll('.tab').forEach(function (x) { x.classList.remove('active'); });
+        document.querySelectorAll('.tab').forEach(function (x) {
+          x.classList.remove('active');
+          x.setAttribute('aria-pressed', 'false');
+        });
+
         t.classList.add('active');
+        t.setAttribute('aria-pressed', 'true');
       });
     });
   </script>
 </body>
 </html>
-
-          <div class="card-img empty"></div>

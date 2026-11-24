@@ -1,70 +1,726 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@400;500;600&display=swap");
+
+/* =========================
+   1. デザイントークン
+========================= */
+
 :root {
-    --bg: #f4f4f4;
-    --white: #fff;
-    --text: #222;
-    --sub: #666;
-    --border: #c8c8c8;
-    --accent: #333;
-    --soft: #ededed;
+    --color-primary: #696B53;
+    --color-primary-hover: #555742;
+
+    --color-header: #76513B;
+
+    --color-background: #F3F0E9;
+    --color-surface: #FFFFFF;
+    --color-text: #35362F;
+    --color-text-sub: #85847C;
+
+    --color-beige: #EAE4DA;
+    --color-border: #D8D2C6;
+    --color-divider: #E3DED4;
+    --color-accent: #B87961;
+
+    --color-error: #B34B45;
+    --color-success: #54745B;
+    --color-disabled: #D8D5CD;
+
+    --font-main: "Noto Sans JP", sans-serif;
+    --font-heading: "Cormorant Garamond", serif;
+    --font-section: "Noto Serif JP", serif;
 }
 
-* { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--text); font-family: Arial, "Yu Gothic", "Meiryo", sans-serif; line-height: 1.6; }
-a { color: inherit; }
-button { font: inherit; cursor: pointer; }
-.site-header { height: 72px; padding: 0 28px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; background: var(--white); border-bottom: 1px solid var(--border); }
-.back-link, .header-cart { text-decoration: none; }
-.back-link { font-size: 25px; }
-.header-cart { justify-self: end; padding: 7px 14px; border: 1px solid var(--accent); font-size: 13px; }
-.brand { font-size: 24px; font-weight: 700; text-decoration: none; letter-spacing: .03em; }
-.page-shell { max-width: 1040px; margin: 0 auto; padding: 36px 24px 70px; }
-.eyebrow { margin: 0; color: var(--sub); font-size: 12px; font-weight: 700; letter-spacing: .16em; }
-.breadcrumb { margin: 5px 0 28px; color: var(--sub); font-size: 13px; }
-.detail-layout { display: grid; grid-template-columns: minmax(280px, 48%) 1fr; gap: 42px; align-items: start; }
-.main-image { aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; background: #e7e7e7; border: 1px solid var(--border); color: var(--sub); }
-.summary { padding-top: 8px; }
-.tag-row { display: flex; flex-wrap: wrap; gap: 7px; }
-.tag { padding: 3px 9px; border: 1px solid var(--accent); font-size: 12px; }
-h1 { margin: 13px 0 8px; font-size: 30px; line-height: 1.35; }
-.seller-line, .stock { color: var(--sub); font-size: 13px; }
-.seller-line a { font-weight: 700; }
-.rating-line { display: flex; align-items: center; gap: 8px; margin: 18px 0 8px; font-size: 14px; }
-.stars { color: #222; letter-spacing: 2px; }
-.rating-line span:last-child { color: var(--sub); }
-.price { margin: 0; font-size: 28px; font-weight: 700; }
-.action-row { display: flex; gap: 10px; margin: 25px 0 12px; }
-.primary-button, .favorite-button { min-height: 46px; padding: 9px 18px; border: 1px solid var(--accent); }
-.primary-button { flex: 1; background: var(--accent); color: var(--white); font-weight: 700; }
-.favorite-button { background: var(--white); }
-.favorite-button.active { background: #e8e8e8; }
-.notice { margin: 0; color: var(--sub); font-size: 12px; }
-.content-section { margin-top: 32px; padding: 26px; background: var(--white); border: 1px solid var(--border); }
-h2 { margin: 0 0 20px; font-size: 21px; }
-h3 { margin: 25px 0 8px; font-size: 16px; }
-.detail-list { display: grid; grid-template-columns: 1fr 1fr; margin: 0; border-top: 1px solid var(--border); }
-.detail-list div { display: grid; grid-template-columns: 105px 1fr; gap: 12px; padding: 12px 8px; border-bottom: 1px solid var(--border); font-size: 14px; }
-.detail-list dt { color: var(--sub); }
-.detail-list dd { margin: 0; font-weight: 600; }
-.description { max-width: 760px; margin: 0; white-space: pre-line; }
-.compact-list { grid-template-columns: 1fr; }
-.seller-card { display: flex; align-items: center; gap: 14px; }
-.seller-profile-link { min-width: 0; flex: 1; display: flex; align-items: center; gap: 14px; color: inherit; text-decoration: none; }
-.seller-profile-link:hover .seller-profile-copy h3 { text-decoration: underline; }
-.seller-profile-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-.seller-profile-copy { min-width: 0; display: grid; gap: 2px; }
-.seller-profile-copy h3 { margin: 0; }
-.seller-stats,.muted { display: block; }
-.profile-link-label { margin-top: 4px; color: var(--sub); font-size: 12px; }
-.seller-avatar { width: 52px; height: 52px; display: grid; place-items: center; background: var(--accent); color: var(--white); border-radius: 50%; font-size: 20px; font-weight: 700; }
-.seller-card p { margin: 2px 0; font-size: 13px; }
-.follow-button { margin-left: auto; padding: 9px 15px; border: 1px solid var(--accent); background: var(--white); cursor: pointer; white-space: nowrap; }
-.follow-button.active { background: var(--accent); color: var(--white); }
-.muted { color: var(--sub); }
-.section-heading { display: flex; align-items: center; justify-content: space-between; gap: 15px; }
-.section-heading h2 { margin-bottom: 20px; }
-.section-heading a { color: var(--sub); font-size: 13px; }
-.review-item { padding: 16px 0; border-top: 1px solid var(--border); }
-.review-meta { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; }
-.review-meta strong { margin-right: 10px; }
-.review-item p { margin: 6px 0 0; font-size: 14px; }
-@media (max-width: 680px) { .site-header { padding: 0 16px; } .brand { font-size: 20px; } .page-shell { padding: 28px 14px 55px; } .detail-layout { grid-template-columns: 1fr; gap: 22px; } h1 { font-size: 25px; } .content-section { padding: 20px 16px; } .detail-list { grid-template-columns: 1fr; } .action-row { flex-direction: column; } .seller-card { align-items: flex-start; flex-wrap: wrap; } .follow-button { margin-left: 66px; } }
+
+/* =========================
+   2. 基本設定
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(
+        135deg,
+        #F8F6F1 0%,
+        #F3F0E9 55%,
+        #EAE4DA 100%
+    );
+    color: var(--color-text);
+    font-family: var(--font-main);
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+/* =========================
+   3. 共通ヘッダー
+========================= */
+
+.site-header {
+    width: 100%;
+    height: 80px;
+    padding: 0 40px;
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+
+    background: var(--color-header);
+    color: #FFFFFF;
+}
+
+/* 戻るボタン */
+
+.back-link {
+    justify-self: start;
+
+    color: #FFFFFF;
+    font-size: 30px;
+    text-decoration: none;
+
+    transition: opacity 0.2s ease;
+}
+
+.back-link:hover {
+    opacity: 0.75;
+}
+
+/* ロゴ */
+
+.brand {
+    justify-self: center;
+
+    color: #FFFFFF;
+    font-family: var(--font-heading);
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* カート */
+
+.header-cart {
+    justify-self: end;
+
+    padding: 7px 14px;
+
+    color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    font-size: 13px;
+    text-decoration: none;
+
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.header-cart:hover {
+    background: #FFFFFF;
+    color: var(--color-header);
+}
+
+
+/* =========================
+   4. ページ全体
+========================= */
+
+.page-shell {
+    width: min(100% - 48px, 1040px);
+    margin: 0 auto;
+    padding: 36px 0 70px;
+}
+
+/* 英字見出し */
+
+.eyebrow {
+    margin: 0;
+    color: var(--color-text-sub);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+}
+
+/* パンくずリスト */
+
+.breadcrumb {
+    margin: 5px 0 28px;
+    color: var(--color-text-sub);
+    font-size: 13px;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================
+   5. 商品情報
+========================= */
+
+.detail-layout {
+    display: grid;
+    grid-template-columns: minmax(280px, 48%) 1fr;
+    gap: 42px;
+    align-items: start;
+}
+
+/* 商品画像 */
+
+.main-image {
+    aspect-ratio: 1 / 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--color-beige);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-sub);
+}
+
+/* 商品概要 */
+
+.summary {
+    min-width: 0;
+    padding-top: 8px;
+}
+
+/* 商品タグ */
+
+.tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.tag {
+    padding: 3px 9px;
+
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+
+    font-size: 12px;
+}
+
+/* 商品名 */
+
+#productName {
+    margin: 13px 0 8px;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+/* 出品者 */
+
+.seller-line,
+.stock {
+    color: var(--color-text-sub);
+    font-size: 13px;
+}
+
+.seller-line a {
+    font-weight: 700;
+}
+
+/* 評価 */
+
+.rating-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin: 18px 0 8px;
+    font-size: 14px;
+}
+
+.stars {
+    color: var(--color-primary);
+    letter-spacing: 2px;
+}
+
+.rating-line span:last-child {
+    color: var(--color-text-sub);
+}
+
+/* 価格 */
+
+.price {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.stock {
+    margin-top: 8px;
+}
+
+
+/* =========================
+   6. 購入・お気に入りボタン
+========================= */
+
+.action-row {
+    display: flex;
+    gap: 10px;
+    margin: 25px 0 12px;
+}
+
+.primary-button,
+.favorite-button {
+    min-height: 46px;
+    padding: 9px 18px;
+
+    border: 1px solid var(--color-primary);
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* 購入ボタン */
+
+.primary-button {
+    flex: 1;
+
+    background: var(--color-primary);
+    color: #FFFFFF;
+    font-weight: 700;
+}
+
+.primary-button:hover {
+    background: var(--color-primary-hover);
+}
+
+/* お気に入りボタン */
+
+.favorite-button {
+    background: #FFFFFF;
+    color: var(--color-primary);
+}
+
+.favorite-button:hover,
+.favorite-button.active {
+    background: var(--color-beige);
+}
+
+/* 注意書き */
+
+.notice {
+    margin: 0;
+    color: var(--color-text-sub);
+    font-size: 12px;
+}
+
+
+/* =========================
+   7. 商品詳細セクション
+========================= */
+
+.content-section {
+    margin-top: 32px;
+    padding: 26px;
+
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--color-border);
+}
+
+/* セクション見出し */
+
+.content-section h2 {
+    margin: 0 0 20px;
+    padding-bottom: 12px;
+
+    border-bottom: 1px solid var(--color-border);
+
+    color: var(--color-text);
+    font-family: var(--font-section);
+    font-size: 22px;
+    font-weight: 600;
+}
+
+/* 小見出し */
+
+.content-section h3 {
+    margin: 25px 0 8px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* 商品情報一覧 */
+
+.detail-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    margin: 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.detail-list div {
+    display: grid;
+    grid-template-columns: 105px 1fr;
+    gap: 12px;
+
+    padding: 12px 8px;
+
+    border-bottom: 1px solid var(--color-divider);
+    font-size: 14px;
+}
+
+.detail-list dt {
+    color: var(--color-text-sub);
+}
+
+.detail-list dd {
+    margin: 0;
+    font-weight: 600;
+}
+
+/* 商品説明 */
+
+.description {
+    max-width: 760px;
+    margin: 0;
+
+    white-space: pre-line;
+}
+
+/* 配送情報 */
+
+.compact-list {
+    grid-template-columns: 1fr;
+}
+
+
+/* =========================
+   8. 出品者情報
+========================= */
+
+.seller-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* プロフィールリンク */
+
+.seller-profile-link {
+    min-width: 0;
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    color: inherit;
+    text-decoration: none;
+}
+
+.seller-profile-link:hover .seller-profile-copy h3 {
+    text-decoration: underline;
+}
+
+.seller-profile-link:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+}
+
+/* アバター */
+
+.seller-avatar {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+
+    display: grid;
+    place-items: center;
+
+    background: var(--color-primary);
+    color: #FFFFFF;
+    border-radius: 50%;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+/* プロフィール情報 */
+
+.seller-profile-copy {
+    min-width: 0;
+    display: grid;
+    gap: 2px;
+}
+
+.seller-profile-copy h3 {
+    margin: 0;
+}
+
+.seller-stats,
+.muted {
+    display: block;
+}
+
+.seller-stats {
+    font-size: 13px;
+}
+
+.muted {
+    color: var(--color-text-sub);
+    font-size: 12px;
+}
+
+/* プロフィールへのリンク */
+
+.profile-link-label {
+    margin-top: 4px;
+    color: var(--color-primary);
+    font-size: 12px;
+}
+
+/* フォローボタン */
+
+.follow-button {
+    margin-left: auto;
+    padding: 9px 15px;
+
+    border: 1px solid var(--color-primary);
+    background: #FFFFFF;
+    color: var(--color-primary);
+
+    white-space: nowrap;
+}
+
+.follow-button:hover,
+.follow-button.active {
+    background: var(--color-primary);
+    color: #FFFFFF;
+}
+
+
+/* =========================
+   9. 購入者レビュー
+========================= */
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.section-heading h2 {
+    margin-bottom: 20px;
+}
+
+.section-heading > span {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.section-heading a {
+    color: var(--color-primary);
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.section-heading a:hover {
+    text-decoration: underline;
+}
+
+/* レビュー項目 */
+
+.review-item {
+    padding: 16px 0;
+    border-top: 1px solid var(--color-divider);
+}
+
+.review-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 13px;
+}
+
+.review-meta strong {
+    margin-right: 10px;
+}
+
+.review-item p {
+    margin: 6px 0 0;
+    font-size: 14px;
+}
+
+
+/* =========================
+   10. フォーカス表示
+========================= */
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+}
+
+
+/* =========================
+   11. タブレット・スマートフォン
+========================= */
+
+@media (max-width: 680px) {
+
+    /* ヘッダー */
+
+    .site-header {
+        height: 72px;
+        padding: 0 16px;
+    }
+
+    .back-link {
+        font-size: 27px;
+    }
+
+    .brand {
+        font-size: 28px;
+    }
+
+    .header-cart {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    /* ページ */
+
+    .page-shell {
+        width: min(100% - 28px, 1040px);
+        padding: 28px 0 55px;
+    }
+
+    /* 商品情報 */
+
+    .detail-layout {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    #productName {
+        font-size: 25px;
+    }
+
+    /* セクション */
+
+    .content-section {
+        padding: 20px 16px;
+    }
+
+    .content-section h2 {
+        font-size: 20px;
+    }
+
+    /* 商品詳細一覧 */
+
+    .detail-list {
+        grid-template-columns: 1fr;
+    }
+
+    /* ボタン */
+
+    .action-row {
+        flex-direction: column;
+    }
+
+    /* 出品者 */
+
+    .seller-card {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .follow-button {
+        margin-left: 66px;
+    }
+
+    /* レビュー */
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+
+/* =========================
+   12. 小型スマートフォン
+========================= */
+
+@media (max-width: 360px) {
+
+    .site-header {
+        padding: 0 12px;
+    }
+
+    .back-link {
+        font-size: 25px;
+    }
+
+    .brand {
+        font-size: 25px;
+    }
+
+    .header-cart {
+        padding: 5px 8px;
+        font-size: 11px;
+    }
+
+    .page-shell {
+        width: calc(100% - 24px);
+    }
+
+    .content-section {
+        padding: 18px 12px;
+    }
+
+    .detail-list div {
+        grid-template-columns: 90px 1fr;
+        gap: 8px;
+        font-size: 13px;
+    }
+}
+
+
+/* =========================
+   13. アニメーション抑制
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
