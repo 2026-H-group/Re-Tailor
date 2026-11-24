@@ -5,21 +5,104 @@ const notices = [
   { id: "retailor-update", date: "9/5", category: "Re:Tailor", title: "系統発掘機能が追加されました！", body: "あなたに似合うファッション系統を発掘できる機能を追加しました。\nトップページからお試しください。" }
 ];
 
+function getOrders() {
+  try {
+    const storedOrders = JSON.parse(localStorage.getItem("reTailorPurchaseHistory") || "[]");
+    return Array.isArray(storedOrders) ? storedOrders : [];
+  } catch {
+    localStorage.removeItem("reTailorPurchaseHistory");
+    return [];
+  }
+}
+
+function getCurrentUsername() {
+  for (const key of ["reTailorProfile", "retailor.user-profile.v1"]) {
+    try {
+      const profile = JSON.parse(localStorage.getItem(key) || "null");
+      if (profile?.username) return String(profile.username).replace(/^@/, "");
+    } catch {
+      continue;
+    }
+  }
+  return "";
+}
+
+function getImportantNotices() {
+  const username = getCurrentUsername();
+  return getOrders().flatMap((order) => {
+    if (!Array.isArray(order.items)) return [];
+    return order.items.flatMap((item, index) => {
+      const seller = String(item.seller || "");
+      if (username && seller !== username) return [];
+      const itemId = item.id ?? index;
+      const purchaseNotice = {
+        id: `purchase-${order.id}-${itemId}`,
+        date: order.date || "",
+        category: "取引",
+        title: "購入されました",
+        body: `${item.name || "商品"}が購入されました。\n注文日時：${order.date || "記録なし"}`,
+        timestamp: Date.parse(order.createdAt || order.date) || 0,
+        orderId: order.id,
+        productId: item.id,
+      };
+      const receiptNotice = item.receivedAt ? [{
+        id: `received-${order.id}-${itemId}`,
+        date: new Date(item.receivedAt).toLocaleDateString("ja-JP", { month: "numeric", day: "numeric" }),
+        category: "取引",
+        title: "商品を受け取りました",
+        body: `購入者が「${item.name || "商品"}」を受け取りました。\n受取日時：${new Date(item.receivedAt).toLocaleString("ja-JP")}`,
+        timestamp: Date.parse(item.receivedAt) || 0,
+        orderId: order.id,
+        productId: item.id,
+      }] : [];
+      return [purchaseNotice, ...receiptNotice];
+    });
+  }).sort((first, second) => second.timestamp - first.timestamp);
+}
+
 function getNotice() {
   const id = new URLSearchParams(window.location.search).get("id");
-  return notices.find((notice) => notice.id === id);
+  return notices.find((notice) => notice.id === id)
+    || getImportantNotices().find((notice) => notice.id === id);
+}
+
+function createNoticeLink(notice) {
+  const link = document.createElement("a");
+  link.className = "notice-link";
+  link.href = `notification-detail.html?id=${encodeURIComponent(notice.id)}`;
+
+  const date = document.createElement("time");
+  date.className = "notice-date";
+  date.textContent = notice.date;
+  const category = document.createElement("span");
+  category.className = "notice-category";
+  category.textContent = notice.category;
+  const title = document.createElement("span");
+  title.className = "notice-title";
+  title.textContent = notice.title;
+  const arrow = document.createElement("span");
+  arrow.className = "notice-arrow";
+  arrow.setAttribute("aria-hidden", "true");
+  arrow.textContent = "→";
+  link.append(date, category, title, arrow);
+  return link;
 }
 
 function renderList() {
   const list = document.getElementById("noticeList");
-  if (!list) return;
-  list.innerHTML = notices.map((notice) => `
-    <a class="notice-link" href="notification-detail.html?id=${notice.id}">
-      <time class="notice-date">${notice.date}</time>
-      <span class="notice-category">${notice.category}</span>
-      <span class="notice-title">${notice.title}</span>
-      <span class="notice-arrow" aria-hidden="true">→</span>
-    </a>`).join("");
+  const importantList = document.getElementById("importantNoticeList");
+  if (list) list.replaceChildren(...notices.map(createNoticeLink));
+  if (importantList) {
+    const importantNotices = getImportantNotices();
+    if (importantNotices.length) {
+      importantList.replaceChildren(...importantNotices.map(createNoticeLink));
+    } else {
+      const empty = document.createElement("p");
+      empty.className = "empty-message";
+      empty.textContent = "大切なお知らせはありません。";
+      importantList.replaceChildren(empty);
+    }
+  }
 }
 
 function renderDetail() {
@@ -27,15 +110,44 @@ function renderDetail() {
   if (!container) return;
   const notice = getNotice();
   if (!notice) {
-    container.innerHTML = '<div class="page-heading"><p class="eyebrow">INFORMATION</p><h1>お知らせが見つかりません</h1></div><a class="list-button" href="notification.html">一覧へ戻る</a>';
+    const heading = document.createElement("div");
+    heading.className = "page-heading";
+    const eyebrow = document.createElement("p");
+    eyebrow.className = "eyebrow";
+    eyebrow.textContent = "INFORMATION";
+    const title = document.createElement("h1");
+    title.textContent = "お知らせが見つかりません";
+    heading.append(eyebrow, title);
+    const backLink = document.createElement("a");
+    backLink.className = "list-button";
+    backLink.href = "notification.html";
+    backLink.textContent = "一覧へ戻る";
+    container.replaceChildren(heading, backLink);
     return;
   }
   document.title = `${notice.title} | Re:Tailor`;
-  container.innerHTML = `
-    <div class="detail-meta"><time>${notice.date}</time><span class="detail-category">${notice.category}</span></div>
-    <h1 class="detail-title">${notice.title}</h1>
-    <div class="detail-body">${notice.body}</div>
-    <div class="detail-footer"><a class="list-button" href="notification.html">← お知らせ一覧へ</a></div>`;
+  const meta = document.createElement("div");
+  meta.className = "detail-meta";
+  const date = document.createElement("time");
+  date.textContent = notice.date;
+  const category = document.createElement("span");
+  category.className = "detail-category";
+  category.textContent = notice.category;
+  meta.append(date, category);
+  const title = document.createElement("h1");
+  title.className = "detail-title";
+  title.textContent = notice.title;
+  const body = document.createElement("div");
+  body.className = "detail-body";
+  body.textContent = notice.body;
+  const footer = document.createElement("div");
+  footer.className = "detail-footer";
+  const backLink = document.createElement("a");
+  backLink.className = "list-button";
+  backLink.href = "notification.html";
+  backLink.textContent = "← お知らせ一覧へ";
+  footer.append(backLink);
+  container.replaceChildren(meta, title, body, footer);
 }
 
 document.addEventListener("DOMContentLoaded", () => {

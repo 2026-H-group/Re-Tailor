@@ -2,3 +2,8 @@
 .closet-register-button{flex:1;padding:13px;text-align:center;border:1px solid var(--olive);background:var(--white);color:var(--olive);font:inherit;font-size:14px;cursor:pointer}
 .closet-register-button[hidden]{display:none}
 .closet-register-status{margin:10px 0;color:var(--olive);font-size:13px}
+.receipt-section{margin-top:16px;padding:20px;background:var(--white);border:1px solid var(--line)}
+.receipt-section h2{margin:0 0 8px;font-size:19px}
+.receipt-section p{margin:0 0 12px;color:var(--sub);font-size:13px}
+.receipt-button{padding:11px 20px;border:0;background:var(--olive);color:#fff;font:inherit;cursor:pointer}
+.receipt-button:disabled{background:#777;cursor:default}

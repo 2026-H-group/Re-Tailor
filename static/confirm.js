@@ -22,7 +22,8 @@ if (purchaseButton) purchaseButton.addEventListener("click", (event) => {
 	}
 	const orders = JSON.parse(localStorage.getItem("reTailorPurchaseHistory") || "[]");
 	const id = Date.now();
-	const order = { id, date: new Date().toLocaleString("ja-JP"), receipt: `RT-${id}`, items: selected, total: total + 300 };
+	const createdAt = new Date().toISOString();
+	const order = { id, createdAt, date: new Date(createdAt).toLocaleString("ja-JP"), receipt: `RT-${id}`, items: selected, total: total + 300 };
 	orders.unshift(order);
 	localStorage.setItem("reTailorPurchaseHistory", JSON.stringify(orders));
 	const cart = JSON.parse(localStorage.getItem("reTailorCart") || "[]");
