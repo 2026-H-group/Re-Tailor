@@ -1,232 +1,419 @@
-.review-product-panel {
+/* ========================================
+   Re:Tailor - 評価・レビュー画面
+   CSSデザイン定義書（2 / 3 / 4.4 / 4.5 / 5）に準拠
+   syuppin.css の共通レイアウトを土台に、
+   body.review-list-page 以下にスコープして上書きする
+======================================== */
+
+.review-list-page {
+    --color-primary: #696B53;
+    --color-primary-hover: #555742;
+    --color-header: #76513B;
+    --color-background: #F3F0E9;
+    --color-surface: #FFFFFF;
+    --color-text: #35362F;
+    --color-text-sub: #706B64;
+    --color-beige: #EAE4DA;
+    --color-border: #D8D2C6;
+    --color-divider: #E3DED4;
+    --color-accent: #B87961;
+    --font-main: "Noto Sans JP", sans-serif;
+    --font-heading: "Cormorant Garamond", serif;
+    --font-section: "Noto Serif JP", serif;
+
+    /* syuppin.css の変数を、この画面だけ定義書の色に差し替える */
+    --olive: var(--color-primary);
+    --border: var(--color-border);
+    --label: var(--color-text-sub);
+    --img-bg: var(--color-beige);
+
+    min-height: 100vh;
+    color: var(--color-text);
+    background:
+        radial-gradient(ellipse at 50% 24%, rgba(255, 255, 255, 0.58) 0%, transparent 70%),
+        linear-gradient(125deg, #F8F6F1 0%, var(--color-background) 58%, var(--color-beige) 100%);
+    font-family: var(--font-main);
+    line-height: 1.7;
+}
+
+.review-list-page a:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+}
+
+/* ---------- 共通ヘッダー（ブラウン背景・ロゴ中央） ---------- */
+
+.review-list-page .site {
+    min-height: auto;
+}
+
+.review-list-page .header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    border-bottom: 0;
+    background: var(--color-header);
+    color: var(--color-surface);
+}
+
+.review-list-page .header-inner {
+    max-width: 1200px;
+    min-height: 72px;
+    padding: 0 24px;
+}
+
+.review-list-page .back-btn {
+    display: inline-flex;
+    width: 36px;
+    height: 36px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--color-surface);
+    font-size: 25px;
+    transition: background-color 150ms ease;
+}
+
+.review-list-page .back-btn:hover {
+    background: rgba(255, 255, 255, 0.14);
+    opacity: 1;
+}
+
+.review-list-page .header-title {
+    color: var(--color-surface);
+    font-family: var(--font-heading);
+    font-size: 27px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+}
+
+/* ---------- ページ本体：枠線・カード背景をなくして背景と一体化 ---------- */
+
+.review-list-page .page {
+    padding: 64px 24px 80px;
+}
+
+.review-list-page .page > .content {
+    max-width: 820px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+
+.review-list-page .page-heading {
+    margin-bottom: 20px;
+}
+
+.review-list-page .eyebrow {
+    margin: 0 0 4px;
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+}
+
+.review-list-page .page-heading h1 {
+    margin: 0;
+    color: var(--color-text);
+    font-family: var(--font-section);
+    font-size: clamp(28px, 4vw, 36px);
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.review-list-page .review-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 0 24px;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 14px;
+    color: var(--color-text-sub);
+    font-size: 13px;
+}
+
+.review-list-page .review-nav a {
+    color: var(--color-text-sub);
+    text-decoration: none;
+}
+
+.review-list-page .review-nav a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+/* ---------- 商品情報パネル（白が透ける面と境界線） ---------- */
+
+.review-list-page .review-product-panel {
     display: flex;
     align-items: center;
     gap: 18px;
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 18px 22px;
     margin-bottom: 20px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 18px 22px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: none;
 }
 
-.review-product-image {
+.review-list-page .review-product-image {
     width: 64px;
     height: 64px;
-    border-radius: 6px;
-    background: var(--img-bg);
     flex-shrink: 0;
+    border-radius: 6px;
+    background: var(--color-beige);
 }
 
-.review-product-title {
+.review-list-page .review-product-title {
     margin: 0 0 4px;
+    color: var(--color-text);
     font-size: 15px;
     font-weight: 600;
 }
 
-.review-product-price {
+.review-list-page .review-product-price {
     margin: 0;
-    font-size: 14px;
-    color: var(--olive);
+    color: var(--color-primary);
+    font-size: 15px;
     font-weight: 700;
 }
 
-.back-btn {
-    transition: opacity 0.15s ease;
-}
+/* ---------- 総合評価 ---------- */
 
-.back-btn:hover {
-    opacity: 0.6;
-}
-
-.review-summary {
+.review-list-page .review-summary {
     display: flex;
     align-items: center;
     gap: 40px;
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 30px 34px;
     margin-bottom: 32px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 30px 34px;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: none;
 }
 
-.summary-score {
+.review-list-page .summary-score {
     flex-shrink: 0;
-    text-align: center;
     padding-right: 36px;
-    border-right: 1px solid var(--border);
+    border-right: 1px solid var(--color-divider);
+    text-align: center;
 }
 
-.score-number {
-    font-size: 52px;
-    font-weight: 700;
-    color: var(--olive);
+.review-list-page .score-number {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 56px;
+    font-weight: 600;
+    letter-spacing: 0;
     line-height: 1;
-    letter-spacing: -1px;
 }
 
-.score-stars {
+.review-list-page .score-stars {
     margin-top: 10px;
-    color: #e0a63c;
+    color: var(--color-accent);
     font-size: 18px;
     letter-spacing: 3px;
 }
 
-.score-bars {
-    flex: 1;
+.review-list-page .score-bars {
     display: flex;
+    flex: 1;
+    min-width: 0;
     flex-direction: column;
     gap: 9px;
 }
 
-.bar-row {
+.review-list-page .bar-row {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.bar-label {
+.review-list-page .bar-label {
     width: 14px;
+    color: var(--color-text-sub);
     font-size: 13px;
-    color: var(--label);
     text-align: right;
 }
 
-.bar-track {
-    flex: 1;
+.review-list-page .bar-track {
     height: 8px;
-    background: #eeeeea;
-    border-radius: 999px;
+    flex: 1;
     overflow: hidden;
+    border-radius: 999px;
+    background: var(--color-beige);
 }
 
-.bar-fill {
+.review-list-page .bar-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--olive), #5a6b40);
     border-radius: 999px;
+    background: var(--color-primary);
     transition: width 0.4s ease;
 }
 
-.review-list {
+/* ---------- 個別レビュー ---------- */
+
+.review-list-page .review-list {
     display: flex;
     flex-direction: column;
     gap: 16px;
 }
 
-.review-card {
+.review-list-page .review-card {
     display: flex;
     gap: 16px;
-    background: #fff;
-    border: 1px solid var(--border);
-    border-radius: 4px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
     padding: 20px 22px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    background: rgba(255, 255, 255, 0.72);
+    box-shadow: none;
+    transition: border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
 }
 
-.review-card:hover {
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
-    transform: translateY(-1px);
+.review-list-page .review-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-primary);
+    background: var(--color-surface);
+    box-shadow: none;
 }
 
-.review-avatar {
+.review-list-page .review-avatar {
     width: 46px;
     height: 46px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--img-bg), #ddd8cc);
     flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--color-beige);
 }
 
-.review-body {
+.review-list-page .review-body {
+    min-width: 0;
     flex: 1;
 }
 
-.review-top {
+.review-list-page .review-top {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 6px;
 }
 
-.review-name {
-    font-weight: 600;
+.review-list-page .review-name {
+    color: var(--color-text);
     font-size: 15px;
+    font-weight: 600;
 }
 
-.review-stars {
-    color: #e0a63c;
+.review-list-page .review-stars {
+    color: var(--color-accent);
     font-size: 14px;
     letter-spacing: 1px;
 }
 
-.review-comment {
-    margin: 0;
-    font-size: 14px;
-    color: #444;
-    line-height: 1.7;
-}
-
-.review-product-tag {
+.review-list-page .review-product-tag {
     display: flex;
     align-items: center;
     gap: 8px;
     margin: 6px 0 10px;
 }
 
-.review-nav {
-    display: flex;
-    gap: 10px;
-    margin: 0 0 22px;
-    color: var(--label);
-    font-size: 13px;
+.review-list-page .review-comment {
+    margin: 0;
+    color: var(--color-text);
+    font-size: 14px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
 }
 
-.review-nav a:hover {
-    color: var(--olive);
-}
-
-.review-product-thumb {
+.review-list-page .review-product-thumb {
     width: 28px;
     height: 28px;
-    border-radius: 4px;
-    background: var(--img-bg);
     flex-shrink: 0;
+    border-radius: 4px;
+    background: var(--color-beige);
 }
 
-.review-product-name {
+.review-list-page .review-product-name {
+    color: var(--color-text-sub);
     font-size: 12px;
-    color: #777;
 }
 
-/* ========================================
-   レスポンシブ（スマホ表示）
-======================================== */
+/* ---------- レスポンシブ ---------- */
+
 @media (max-width: 640px) {
-    .review-summary {
+    .review-list-page .header-inner {
+        min-height: 62px;
+        padding: 0 16px;
+    }
+
+    .review-list-page .header-title {
+        font-size: 24px;
+    }
+
+    .review-list-page .page {
+        padding: 40px 16px 60px;
+    }
+
+    .review-list-page .review-summary {
         flex-direction: column;
         align-items: flex-start;
         gap: 20px;
         padding: 24px 22px;
     }
 
-    .summary-score {
+    .review-list-page .summary-score {
         width: 100%;
         padding-right: 0;
         padding-bottom: 18px;
         border-right: none;
-        border-bottom: 1px solid var(--border);
+        border-bottom: 1px solid var(--color-divider);
     }
 
-    .score-bars {
+    .review-list-page .score-bars {
         width: 100%;
     }
 
-    .review-product-panel {
+    .review-list-page .review-product-panel {
         padding: 16px 18px;
     }
 
-    .review-card {
+    .review-list-page .review-card {
         padding: 16px 18px;
+    }
+}
+
+@media (max-width: 360px) {
+    .review-list-page .header-inner {
+        padding: 0 10px;
+    }
+
+    .review-list-page .page {
+        padding-right: 12px;
+        padding-left: 12px;
+    }
+
+    .review-list-page .review-card {
+        gap: 12px;
+        padding: 14px;
+    }
+
+    .review-list-page .review-avatar {
+        width: 38px;
+        height: 38px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .review-list-page *,
+    .review-list-page *::before,
+    .review-list-page *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .review-list-page .review-card:hover {
+        transform: none;
     }
 }
